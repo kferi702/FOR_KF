@@ -36,8 +36,9 @@ namespace FOR.Controller
                 cmd.Parameters.AddWithValue("@username", userName);
                 int id = int.Parse(cmd.ExecuteScalar().ToString());
                 MainForm mf = new MainForm(id);
-                loginF.Hide();
                 mf.Show();
+                loginF.Hide();
+               
                 //MessageBox.Show("Helyes adatok "+id);
                 mysql.close();
             }
