@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.welcomeLabel = new MetroFramework.Controls.MetroLabel();
+            this.SuspendLayout();
+            // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Location = new System.Drawing.Point(218, 22);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(76, 19);
+            this.welcomeLabel.TabIndex = 0;
+            this.welcomeLabel.Text = "metroLabel";
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.welcomeLabel);
+            this.Name = "MainForm";
             this.Text = "MainForm";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private MetroFramework.Controls.MetroLabel welcomeLabel;
     }
 }

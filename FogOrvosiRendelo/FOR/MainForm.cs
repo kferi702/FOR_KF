@@ -1,4 +1,5 @@
-﻿using MetroFramework.Forms;
+﻿using FOR.Controller;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,23 @@ namespace FOR
 {
     public partial class MainForm : MetroForm
     {
-        public MainForm()
+        public int id;
+        MainForm mainF;
+        MainController controller;
+
+
+        public MainForm(int id)
         {
+            controller = new MainController();
             InitializeComponent();
+            mainF = this;
+            this.id = id;
+            setWelcomeLabel();
+
+        }
+        public void setWelcomeLabel()
+        {
+            welcomeLabel.Text=controller.setWelcomeLabel(id);
         }
     }
 }

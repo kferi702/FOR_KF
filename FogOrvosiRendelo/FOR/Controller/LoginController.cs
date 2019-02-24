@@ -28,16 +28,23 @@ namespace FOR.Controller
             cmd.Parameters.AddWithValue("username",userName);
             cmd.Parameters.AddWithValue("password",passWord);
             int count = int.Parse(cmd.ExecuteScalar().ToString());
+            
             if (count == 1)
             {
-                MainForm mf = new MainForm();
+                string getID = "SELECT staff.id FROM staff WHERE staff.username=@username;";
+                cmd = mysql.getConnect(getID);
+                cmd.Parameters.AddWithValue("@username", userName);
+                int id = int.Parse(cmd.ExecuteScalar().ToString());
+                MainForm mf = new MainForm(id);
                 loginF.Hide();
                 mf.Show();
-                MessageBox.Show("Helyes adatok");
+                //MessageBox.Show("Helyes adatok "+id);
+                mysql.close();
             }
             else
             {
-                MessageBox.Show("Hibás belépési adatok!");
+                MessageBox.Show("Hibás felhasználóinév vagy jelszó!");
+                mysql.close();
             }
         }
     }

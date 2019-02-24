@@ -25,10 +25,6 @@ namespace FOR
             textBoxPassword.PasswordChar = '*';
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
