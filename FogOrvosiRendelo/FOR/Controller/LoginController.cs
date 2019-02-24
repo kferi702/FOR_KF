@@ -9,13 +9,14 @@ using System.Data;
 using FOR;
 using System.Windows.Forms;
 
+
 namespace FOR.Controller
 {
     class LoginController
     {
         private MySqlCommand cmd;
 
-        public void login(string userName, string passWord)
+        public void login(string userName, string passWord, LoginForm loginF)
         {
             Database mysql= new Database();
             ConnectionData connDb = new ConnectionData();
@@ -30,6 +31,8 @@ namespace FOR.Controller
             if (count == 1)
             {
                 MainForm mf = new MainForm();
+                loginF.Hide();
+                mf.Show();
                 MessageBox.Show("Helyes adatok");
             }
             else

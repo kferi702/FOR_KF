@@ -20,7 +20,7 @@ namespace FOR
         public LoginForm()
         {
             controller = new LoginController();
-            
+            loginF = this;
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
         }
@@ -35,7 +35,7 @@ namespace FOR
             string userName = textBoxUsername.Text;
             string passWord = textBoxPassword.Text;
 
-            controller.login(userName,passWord);
+            controller.login(userName,passWord,loginF);
 
         }
     }
