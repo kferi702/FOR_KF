@@ -57,5 +57,10 @@ namespace FOR
             string search = textBoxSearch.Text;
             controller.searcPatient(listViewPatient, search);
         }
+
+        private void mTileDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

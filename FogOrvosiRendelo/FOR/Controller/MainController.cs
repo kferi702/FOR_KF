@@ -67,7 +67,9 @@ namespace FOR.Controller
             mysql.open();
 
             string query = "SELECT * FROM patient WHERE " +
-                "name, birthdate, tb LIKE '%"+search+"%';";
+                "name LIKE '%"+search+"%'" +
+                "OR birthdate LIKE '%" + search + "%'" +
+                "OR tb LIKE '%" + search + "%'";
             cmd = mysql.getConnect(query);
 
             MySqlDataReader dr = cmd.ExecuteReader();
