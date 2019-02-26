@@ -28,39 +28,21 @@ namespace FOR
             setWelcomeLabel();
             loadListViewPatient();
         }
-        private void setWelcomeLabel()
-        {
-            labelWelcome.Text=controller.setWelcomeLabel(id);
-        }
-        private void loadListViewPatient()
-        {
-            controller.loadListViewPatient(listViewPatient);
-        }
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
+        private void setWelcomeLabel() => labelWelcome.Text = controller.setWelcomeLabel(id);
+        private void loadListViewPatient() => controller.loadListViewPatient(listViewPatient);
+        private void buttonSearch_Click(object sender, EventArgs e) => loadListViewPatient();
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+        private void textBoxSearch_TextChanged(object sender, EventArgs e) => controller.searchPatient(listViewPatient, textBoxSearch.Text);
         private void listViewPatient_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count < 0)
                 return;
         }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            loadListViewPatient();
-        }
-
-        private void textBoxSearch_TextChanged(object sender, EventArgs e)
-        {
-            string search = textBoxSearch.Text;
-            controller.searcPatient(listViewPatient, search);
-        }
-
         private void mTileDelete_Click(object sender, EventArgs e)
         {
-
+            if(listViewPatient.SelectedItems.Count!=0)
+                controller.deletePatient(listViewPatient.SelectedItems[0].SubItems[0].Text);
         }
+        private void mTileNewPatient_Click(object sender, EventArgs e) => controller.addNewPatient();
     }
 }

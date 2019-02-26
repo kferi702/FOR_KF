@@ -132,6 +132,7 @@
             this.mTileNewPatient.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.mTileNewPatient.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileNewPatient.UseSelectable = true;
+            this.mTileNewPatient.Click += new System.EventHandler(this.mTileNewPatient_Click);
             // 
             // mTileDetail
             // 
@@ -174,9 +175,9 @@
             // 
             // 
             this.textBoxSearch.CustomButton.Image = null;
-            this.textBoxSearch.CustomButton.Location = new System.Drawing.Point(270, 1);
+            this.textBoxSearch.CustomButton.Location = new System.Drawing.Point(360, 1);
             this.textBoxSearch.CustomButton.Name = "";
-            this.textBoxSearch.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.textBoxSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.textBoxSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBoxSearch.CustomButton.TabIndex = 1;
             this.textBoxSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;

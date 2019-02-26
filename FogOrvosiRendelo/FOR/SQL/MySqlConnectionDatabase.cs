@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FOR.Modell
 {
-    class ConnectionData
+    class MySqlConnectionDatabase
     {
-        public Database connection()
+        public MySqlComm connection()
         {
-            Database mysql = new Database();
+            MySqlComm mysql = new MySqlComm();
             mysql.setConnServer("localhost","forproba","3306","none");
             mysql.setConnUser("root", "");
             mysql.makeConn();

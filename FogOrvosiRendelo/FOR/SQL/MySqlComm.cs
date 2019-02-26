@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 namespace FOR.Modell
 {
-    class Database
+    class MySqlComm
     {
         private string server;
         private string database;
@@ -57,7 +57,7 @@ namespace FOR.Modell
         }
         public MySqlCommand getConnect(string query)
         {
-            Database db = new Database();
+            MySqlComm db = new MySqlComm();
             MySqlCommand cmd = new MySqlCommand(query, conn);
             return cmd;
         }

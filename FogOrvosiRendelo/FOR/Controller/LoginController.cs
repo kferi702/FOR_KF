@@ -14,39 +14,16 @@ namespace FOR.Controller
 {
     class LoginController
     {
-        private MySqlCommand cmd;
+        LoginModel model;
 
-        public void login(string userName, string passWord, LoginForm loginF)
+        public LoginController()
         {
-            Database mysql= new Database();
-            ConnectionData connDb = new ConnectionData();
-            mysql = connDb.connection();
-            mysql.open();
-            string query = "stafflogin";
-            cmd = mysql.getConnect(query);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("username",userName);
-            cmd.Parameters.AddWithValue("password",passWord);
-            int count = int.Parse(cmd.ExecuteScalar().ToString());
-            
-            if (count == 1)
-            {
-                string getID = "SELECT staff.id FROM staff WHERE staff.username=@username;";
-                cmd = mysql.getConnect(getID);
-                cmd.Parameters.AddWithValue("@username", userName);
-                int id = int.Parse(cmd.ExecuteScalar().ToString());
-                MainForm mf = new MainForm(id);
-                mf.Show();
-                loginF.Hide();
-               
-                //MessageBox.Show("Helyes adatok "+id);
-                mysql.close();
-            }
-            else
-            {
-                MessageBox.Show("Hibás felhasználóinév vagy jelszó!");
-                mysql.close();
-            }
+            model = new LoginModel();
+        }
+
+        public void loginController(string userName, string passWord, LoginForm loginF)
+        {
+            model.loginModel(userName, passWord, loginF);
         }
     }
 }

@@ -11,80 +11,40 @@ namespace FOR.Controller
 {
     class MainController
     {
-        public MySqlCommand cmd;
+        MainModel model;
+        NewPatientForm newPF;
 
-
-
+        public MainController()
+        {
+            model = new MainModel();
+        }
         public string setWelcomeLabel(int id)
         {
-
-            Database mysql = new Database();
-            ConnectionData conn = new ConnectionData();
-            mysql = conn.connection();
-            mysql.open();
-
-            string query = "SELECT staff.name FROM staff WHERE staff.id=@id;";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@id", id);
-            string welcomeLabel =cmd.ExecuteScalar().ToString();
-            mysql.close();
-
-            return welcomeLabel;
+           return model.setWelcomeLabel(id);
         }
 
-        public ListView loadListViewPatient(ListView lvp)
+        public void loadListViewPatient(ListView lvp)
         {
-            lvp.Items.Clear();
-            Database mysql = new Database();
-            ConnectionData conn = new ConnectionData();
-            mysql = conn.connection();
-            mysql.open();
-
-            string query = "SELECT * FROM patient;";
-            cmd = mysql.getConnect(query);
-
-            MySqlDataReader dr= cmd.ExecuteReader();
-            
-            while (dr.Read())
-            {
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = dr["name"].ToString();
-                lvi.SubItems.Add(dr["birthdate"].ToString());
-                lvi.SubItems.Add(dr["tb"].ToString());
-                lvp.Items.Add(lvi);
-            }
-            dr.Close();
-            mysql.close();
-            return lvp;
+            model.loadListViewPatient(lvp);
         }
 
-        public ListView searcPatient(ListView lvp, string search)
+        public void searchPatient(ListView lvp, string search)
         {
-            lvp.Items.Clear();
-            Database mysql = new Database();
-            ConnectionData conn = new ConnectionData();
-            mysql = conn.connection();
-            mysql.open();
+            model.searchPatient(lvp, search);
+        }
 
-            string query = "SELECT * FROM patient WHERE " +
-                "name LIKE '%"+search+"%'" +
-                "OR birthdate LIKE '%" + search + "%'" +
-                "OR tb LIKE '%" + search + "%'";
-            cmd = mysql.getConnect(query);
+        public void deletePatient(string id)
+        {
+                DialogResult delete = MessageBox.Show("Biztosan törli véglegesen "+id+"-t az adatbázisból?", "Törlés megerősítése", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (delete == DialogResult.Yes)
+                    model.deletePatient(id);
+                return;
+        }
 
-            MySqlDataReader dr = cmd.ExecuteReader();
-
-            while(dr.Read())
-            {
-            ListViewItem lvi = new ListViewItem();
-                lvi.Text = dr["name"].ToString();
-                lvi.SubItems.Add(dr["birthdate"].ToString());
-                lvi.SubItems.Add(dr["tb"].ToString());
-                lvp.Items.Add(lvi);
-            }
-            dr.Close();
-            mysql.close();
-            return lvp;
+        public void addNewPatient()
+        {
+            newPF = new NewPatientForm();
+            newPF.Show();
         }
     }
 }

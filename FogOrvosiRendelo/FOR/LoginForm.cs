@@ -31,7 +31,7 @@ namespace FOR
             string userName = textBoxUsername.Text;
             string passWord = textBoxPassword.Text;
 
-            controller.login(userName,passWord,loginF);
+            controller.loginController(userName,passWord,loginF);
 
         }
     }
