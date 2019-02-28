@@ -18,12 +18,17 @@ namespace FOR
         {
             newPF = this;
             InitializeComponent();
+            checkData();
+        }
+
+        public void checkData()
+        {
+
         }
 
         private void mTileCancel_Click(object sender, EventArgs e)
         {
             newPF.Hide();
-
         }
     }
 }
