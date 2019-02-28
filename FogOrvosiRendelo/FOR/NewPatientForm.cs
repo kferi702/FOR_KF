@@ -20,14 +20,10 @@ namespace FOR
             InitializeComponent();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void mTileCancel_Click(object sender, EventArgs e)
         {
             newPF.Hide();
 
-        }
-
-        private void metroButton2_Click(object sender, EventArgs e)
-        {
         }
     }
 }
