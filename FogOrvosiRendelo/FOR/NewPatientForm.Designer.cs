@@ -84,8 +84,7 @@
             this.textBoxAddressZip.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxAddressZip.CustomButton.UseSelectable = true;
             this.textBoxAddressZip.CustomButton.Visible = false;
-            this.textBoxAddressZip.Lines = new string[] {
-        "Irányítószám"};
+            this.textBoxAddressZip.Lines = new string[0];
             this.textBoxAddressZip.Location = new System.Drawing.Point(94, 12);
             this.textBoxAddressZip.MaxLength = 32767;
             this.textBoxAddressZip.Name = "textBoxAddressZip";
@@ -96,8 +95,7 @@
             this.textBoxAddressZip.SelectionStart = 0;
             this.textBoxAddressZip.ShortcutsEnabled = true;
             this.textBoxAddressZip.Size = new System.Drawing.Size(92, 23);
-            this.textBoxAddressZip.TabIndex = 5;
-            this.textBoxAddressZip.Text = "Irányítószám";
+            this.textBoxAddressZip.TabIndex = 4;
             this.textBoxAddressZip.UseSelectable = true;
             this.textBoxAddressZip.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxAddressZip.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -125,8 +123,7 @@
             this.textBoxAddressCity.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxAddressCity.CustomButton.UseSelectable = true;
             this.textBoxAddressCity.CustomButton.Visible = false;
-            this.textBoxAddressCity.Lines = new string[] {
-        "Város"};
+            this.textBoxAddressCity.Lines = new string[0];
             this.textBoxAddressCity.Location = new System.Drawing.Point(94, 42);
             this.textBoxAddressCity.MaxLength = 32767;
             this.textBoxAddressCity.Name = "textBoxAddressCity";
@@ -137,8 +134,7 @@
             this.textBoxAddressCity.SelectionStart = 0;
             this.textBoxAddressCity.ShortcutsEnabled = true;
             this.textBoxAddressCity.Size = new System.Drawing.Size(148, 23);
-            this.textBoxAddressCity.TabIndex = 7;
-            this.textBoxAddressCity.Text = "Város";
+            this.textBoxAddressCity.TabIndex = 5;
             this.textBoxAddressCity.UseSelectable = true;
             this.textBoxAddressCity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxAddressCity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -183,8 +179,7 @@
             this.textBoxAddressHouseNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxAddressHouseNumber.CustomButton.UseSelectable = true;
             this.textBoxAddressHouseNumber.CustomButton.Visible = false;
-            this.textBoxAddressHouseNumber.Lines = new string[] {
-        "Házszám"};
+            this.textBoxAddressHouseNumber.Lines = new string[0];
             this.textBoxAddressHouseNumber.Location = new System.Drawing.Point(94, 101);
             this.textBoxAddressHouseNumber.MaxLength = 32767;
             this.textBoxAddressHouseNumber.Name = "textBoxAddressHouseNumber";
@@ -195,8 +190,7 @@
             this.textBoxAddressHouseNumber.SelectionStart = 0;
             this.textBoxAddressHouseNumber.ShortcutsEnabled = true;
             this.textBoxAddressHouseNumber.Size = new System.Drawing.Size(148, 23);
-            this.textBoxAddressHouseNumber.TabIndex = 11;
-            this.textBoxAddressHouseNumber.Text = "Házszám";
+            this.textBoxAddressHouseNumber.TabIndex = 7;
             this.textBoxAddressHouseNumber.UseSelectable = true;
             this.textBoxAddressHouseNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxAddressHouseNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -224,8 +218,7 @@
             this.textBoxAddressStreet.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxAddressStreet.CustomButton.UseSelectable = true;
             this.textBoxAddressStreet.CustomButton.Visible = false;
-            this.textBoxAddressStreet.Lines = new string[] {
-        "Utca"};
+            this.textBoxAddressStreet.Lines = new string[0];
             this.textBoxAddressStreet.Location = new System.Drawing.Point(94, 73);
             this.textBoxAddressStreet.MaxLength = 32767;
             this.textBoxAddressStreet.Name = "textBoxAddressStreet";
@@ -236,8 +229,7 @@
             this.textBoxAddressStreet.SelectionStart = 0;
             this.textBoxAddressStreet.ShortcutsEnabled = true;
             this.textBoxAddressStreet.Size = new System.Drawing.Size(148, 23);
-            this.textBoxAddressStreet.TabIndex = 9;
-            this.textBoxAddressStreet.Text = "Utca";
+            this.textBoxAddressStreet.TabIndex = 6;
             this.textBoxAddressStreet.UseSelectable = true;
             this.textBoxAddressStreet.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxAddressStreet.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -263,7 +255,7 @@
             this.groupBox2.Location = new System.Drawing.Point(24, 64);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(263, 214);
-            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Név";
             // 
@@ -281,8 +273,7 @@
             this.textBoxNameLast.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxNameLast.CustomButton.UseSelectable = true;
             this.textBoxNameLast.CustomButton.Visible = false;
-            this.textBoxNameLast.Lines = new string[] {
-        "Keresztnév"};
+            this.textBoxNameLast.Lines = new string[0];
             this.textBoxNameLast.Location = new System.Drawing.Point(14, 134);
             this.textBoxNameLast.MaxLength = 32767;
             this.textBoxNameLast.Name = "textBoxNameLast";
@@ -294,7 +285,6 @@
             this.textBoxNameLast.ShortcutsEnabled = true;
             this.textBoxNameLast.Size = new System.Drawing.Size(196, 23);
             this.textBoxNameLast.TabIndex = 5;
-            this.textBoxNameLast.Text = "Keresztnév";
             this.textBoxNameLast.UseSelectable = true;
             this.textBoxNameLast.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxNameLast.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -316,7 +306,7 @@
             this.comboBoxNameTitle.Location = new System.Drawing.Point(73, 15);
             this.comboBoxNameTitle.Name = "comboBoxNameTitle";
             this.comboBoxNameTitle.Size = new System.Drawing.Size(58, 29);
-            this.comboBoxNameTitle.TabIndex = 3;
+            this.comboBoxNameTitle.TabIndex = 1;
             this.comboBoxNameTitle.UseSelectable = true;
             // 
             // metroLabel6
@@ -342,8 +332,7 @@
             this.textBoxNameFirst.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxNameFirst.CustomButton.UseSelectable = true;
             this.textBoxNameFirst.CustomButton.Visible = false;
-            this.textBoxNameFirst.Lines = new string[] {
-        "Vezetéknév"};
+            this.textBoxNameFirst.Lines = new string[0];
             this.textBoxNameFirst.Location = new System.Drawing.Point(14, 86);
             this.textBoxNameFirst.MaxLength = 32767;
             this.textBoxNameFirst.Name = "textBoxNameFirst";
@@ -354,8 +343,7 @@
             this.textBoxNameFirst.SelectionStart = 0;
             this.textBoxNameFirst.ShortcutsEnabled = true;
             this.textBoxNameFirst.Size = new System.Drawing.Size(196, 23);
-            this.textBoxNameFirst.TabIndex = 1;
-            this.textBoxNameFirst.Text = "Vezetéknév";
+            this.textBoxNameFirst.TabIndex = 2;
             this.textBoxNameFirst.UseSelectable = true;
             this.textBoxNameFirst.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxNameFirst.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -400,8 +388,7 @@
             this.textBoxBirthName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxBirthName.CustomButton.UseSelectable = true;
             this.textBoxBirthName.CustomButton.Visible = false;
-            this.textBoxBirthName.Lines = new string[] {
-        "Születési neve"};
+            this.textBoxBirthName.Lines = new string[0];
             this.textBoxBirthName.Location = new System.Drawing.Point(6, 134);
             this.textBoxBirthName.MaxLength = 32767;
             this.textBoxBirthName.Name = "textBoxBirthName";
@@ -412,8 +399,7 @@
             this.textBoxBirthName.SelectionStart = 0;
             this.textBoxBirthName.ShortcutsEnabled = true;
             this.textBoxBirthName.Size = new System.Drawing.Size(264, 23);
-            this.textBoxBirthName.TabIndex = 7;
-            this.textBoxBirthName.Text = "Születési neve";
+            this.textBoxBirthName.TabIndex = 10;
             this.textBoxBirthName.UseSelectable = true;
             this.textBoxBirthName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxBirthName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -441,8 +427,7 @@
             this.textBoxBirthMotherName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxBirthMotherName.CustomButton.UseSelectable = true;
             this.textBoxBirthMotherName.CustomButton.Visible = false;
-            this.textBoxBirthMotherName.Lines = new string[] {
-        "Anyja születési neve"};
+            this.textBoxBirthMotherName.Lines = new string[0];
             this.textBoxBirthMotherName.Location = new System.Drawing.Point(6, 184);
             this.textBoxBirthMotherName.MaxLength = 32767;
             this.textBoxBirthMotherName.Name = "textBoxBirthMotherName";
@@ -453,8 +438,7 @@
             this.textBoxBirthMotherName.SelectionStart = 0;
             this.textBoxBirthMotherName.ShortcutsEnabled = true;
             this.textBoxBirthMotherName.Size = new System.Drawing.Size(264, 23);
-            this.textBoxBirthMotherName.TabIndex = 5;
-            this.textBoxBirthMotherName.Text = "Anyja születési neve";
+            this.textBoxBirthMotherName.TabIndex = 11;
             this.textBoxBirthMotherName.UseSelectable = true;
             this.textBoxBirthMotherName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxBirthMotherName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -482,8 +466,7 @@
             this.textBoxBirthPlace.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxBirthPlace.CustomButton.UseSelectable = true;
             this.textBoxBirthPlace.CustomButton.Visible = false;
-            this.textBoxBirthPlace.Lines = new string[] {
-        "Születési hely"};
+            this.textBoxBirthPlace.Lines = new string[0];
             this.textBoxBirthPlace.Location = new System.Drawing.Point(6, 86);
             this.textBoxBirthPlace.MaxLength = 32767;
             this.textBoxBirthPlace.Name = "textBoxBirthPlace";
@@ -494,8 +477,7 @@
             this.textBoxBirthPlace.SelectionStart = 0;
             this.textBoxBirthPlace.ShortcutsEnabled = true;
             this.textBoxBirthPlace.Size = new System.Drawing.Size(178, 23);
-            this.textBoxBirthPlace.TabIndex = 3;
-            this.textBoxBirthPlace.Text = "Születési hely";
+            this.textBoxBirthPlace.TabIndex = 8;
             this.textBoxBirthPlace.UseSelectable = true;
             this.textBoxBirthPlace.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxBirthPlace.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -512,12 +494,13 @@
             // calendatBirthDate
             // 
             this.calendatBirthDate.Location = new System.Drawing.Point(282, 48);
+            this.calendatBirthDate.MaxDate = new System.DateTime(2040, 12, 31, 0, 0, 0, 0);
             this.calendatBirthDate.MaxSelectionCount = 1;
             this.calendatBirthDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.calendatBirthDate.Name = "calendatBirthDate";
             this.calendatBirthDate.ShowToday = false;
             this.calendatBirthDate.ShowTodayCircle = false;
-            this.calendatBirthDate.TabIndex = 1;
+            this.calendatBirthDate.TabIndex = 9;
             // 
             // metroLabel8
             // 
@@ -568,8 +551,7 @@
             this.textBoxComment.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxComment.CustomButton.UseSelectable = true;
             this.textBoxComment.CustomButton.Visible = false;
-            this.textBoxComment.Lines = new string[] {
-        "metroTextBox12"};
+            this.textBoxComment.Lines = new string[0];
             this.textBoxComment.Location = new System.Drawing.Point(15, 128);
             this.textBoxComment.MaxLength = 32767;
             this.textBoxComment.Multiline = true;
@@ -581,8 +563,7 @@
             this.textBoxComment.SelectionStart = 0;
             this.textBoxComment.ShortcutsEnabled = true;
             this.textBoxComment.Size = new System.Drawing.Size(421, 117);
-            this.textBoxComment.TabIndex = 6;
-            this.textBoxComment.Text = "metroTextBox12";
+            this.textBoxComment.TabIndex = 15;
             this.textBoxComment.UseSelectable = true;
             this.textBoxComment.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxComment.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -601,8 +582,7 @@
             this.textBoxDataEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxDataEmail.CustomButton.UseSelectable = true;
             this.textBoxDataEmail.CustomButton.Visible = false;
-            this.textBoxDataEmail.Lines = new string[] {
-        "E-mail cím"};
+            this.textBoxDataEmail.Lines = new string[0];
             this.textBoxDataEmail.Location = new System.Drawing.Point(96, 73);
             this.textBoxDataEmail.MaxLength = 32767;
             this.textBoxDataEmail.Name = "textBoxDataEmail";
@@ -613,8 +593,7 @@
             this.textBoxDataEmail.SelectionStart = 0;
             this.textBoxDataEmail.ShortcutsEnabled = true;
             this.textBoxDataEmail.Size = new System.Drawing.Size(142, 23);
-            this.textBoxDataEmail.TabIndex = 5;
-            this.textBoxDataEmail.Text = "E-mail cím";
+            this.textBoxDataEmail.TabIndex = 14;
             this.textBoxDataEmail.UseSelectable = true;
             this.textBoxDataEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxDataEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -642,8 +621,7 @@
             this.textBoxDataPhone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxDataPhone.CustomButton.UseSelectable = true;
             this.textBoxDataPhone.CustomButton.Visible = false;
-            this.textBoxDataPhone.Lines = new string[] {
-        "Telefonszám"};
+            this.textBoxDataPhone.Lines = new string[0];
             this.textBoxDataPhone.Location = new System.Drawing.Point(96, 42);
             this.textBoxDataPhone.MaxLength = 32767;
             this.textBoxDataPhone.Name = "textBoxDataPhone";
@@ -654,8 +632,7 @@
             this.textBoxDataPhone.SelectionStart = 0;
             this.textBoxDataPhone.ShortcutsEnabled = true;
             this.textBoxDataPhone.Size = new System.Drawing.Size(142, 23);
-            this.textBoxDataPhone.TabIndex = 3;
-            this.textBoxDataPhone.Text = "Telefonszám";
+            this.textBoxDataPhone.TabIndex = 13;
             this.textBoxDataPhone.UseSelectable = true;
             this.textBoxDataPhone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxDataPhone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -683,8 +660,7 @@
             this.textBoxDataTB.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxDataTB.CustomButton.UseSelectable = true;
             this.textBoxDataTB.CustomButton.Visible = false;
-            this.textBoxDataTB.Lines = new string[] {
-        "TB-szám"};
+            this.textBoxDataTB.Lines = new string[0];
             this.textBoxDataTB.Location = new System.Drawing.Point(96, 12);
             this.textBoxDataTB.MaxLength = 32767;
             this.textBoxDataTB.Name = "textBoxDataTB";
@@ -695,8 +671,7 @@
             this.textBoxDataTB.SelectionStart = 0;
             this.textBoxDataTB.ShortcutsEnabled = true;
             this.textBoxDataTB.Size = new System.Drawing.Size(142, 23);
-            this.textBoxDataTB.TabIndex = 1;
-            this.textBoxDataTB.Text = "TB-szám";
+            this.textBoxDataTB.TabIndex = 12;
             this.textBoxDataTB.UseSelectable = true;
             this.textBoxDataTB.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxDataTB.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -713,11 +688,11 @@
             // mTileCancel
             // 
             this.mTileCancel.ActiveControl = null;
-            this.mTileCancel.Location = new System.Drawing.Point(23, 453);
+            this.mTileCancel.Location = new System.Drawing.Point(160, 453);
             this.mTileCancel.Name = "mTileCancel";
             this.mTileCancel.Size = new System.Drawing.Size(130, 82);
             this.mTileCancel.Style = MetroFramework.MetroColorStyle.Red;
-            this.mTileCancel.TabIndex = 12;
+            this.mTileCancel.TabIndex = 17;
             this.mTileCancel.Text = "Vissza";
             this.mTileCancel.UseSelectable = true;
             this.mTileCancel.Click += new System.EventHandler(this.mTileCancel_Click);
@@ -725,11 +700,11 @@
             // mTileSave
             // 
             this.mTileSave.ActiveControl = null;
-            this.mTileSave.Location = new System.Drawing.Point(158, 453);
+            this.mTileSave.Location = new System.Drawing.Point(24, 453);
             this.mTileSave.Name = "mTileSave";
             this.mTileSave.Size = new System.Drawing.Size(130, 82);
             this.mTileSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.mTileSave.TabIndex = 13;
+            this.mTileSave.TabIndex = 16;
             this.mTileSave.Text = "Mentés";
             this.mTileSave.UseSelectable = true;
             this.mTileSave.Click += new System.EventHandler(this.mTileSave_Click);

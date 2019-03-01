@@ -33,30 +33,37 @@ namespace FOR
 
         public NewPatientForm()
         {
+
             newPF = this;
             InitializeComponent();
+            controller = new PatientController();
             checkData();
 
-             nameTitle = comboBoxNameTitle.SelectedText;
-             firstName = textBoxNameFirst.Text;
-             lastName = textBoxNameLast.Text;
-
-             zipCode = textBoxAddressZip.Text;
-             city = textBoxAddressCity.Text;
-             street = textBoxAddressStreet.Text;
-             houseNumber = textBoxAddressHouseNumber.Text;
-
-             mother = textBoxBirthMotherName.Text;
-             birthName = textBoxBirthName.Text;
-             birthPlace = textBoxBirthPlace.Text;
-             birthDate = calendatBirthDate.SelectionRange.Start.ToString();
-
-             tb = textBoxDataTB.Text;
-             phone = textBoxDataPhone.Text;
-             email = textBoxDataEmail.Text;
+             
         }
 
-        public bool checkData() => controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
+        public bool checkData()
+        {
+            nameTitle = comboBoxNameTitle.SelectedText;
+            firstName = textBoxNameFirst.Text;
+            lastName = textBoxNameLast.Text;
+
+            zipCode = textBoxAddressZip.Text;
+            city = textBoxAddressCity.Text;
+            street = textBoxAddressStreet.Text;
+            houseNumber = textBoxAddressHouseNumber.Text;
+
+            mother = textBoxBirthMotherName.Text;
+            birthName = textBoxBirthName.Text;
+            birthPlace = textBoxBirthPlace.Text;
+            birthDate = calendatBirthDate.SelectionRange.Start.ToShortDateString();
+
+            tb = textBoxDataTB.Text;
+            phone = textBoxDataPhone.Text;
+            email = textBoxDataEmail.Text;
+
+            return controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
+        }
 
         private void mTileCancel_Click(object sender, EventArgs e) => newPF.Hide();
 
@@ -65,6 +72,7 @@ namespace FOR
             if (checkData())
             {
                 controller.saveNewPatient(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
+                this.Hide();
             }
             else
             {

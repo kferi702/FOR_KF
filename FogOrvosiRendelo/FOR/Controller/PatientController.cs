@@ -13,6 +13,12 @@ namespace FOR.Controller
     {
         PatientModel model;
         NewPatientForm form;
+
+        public PatientController()
+        {
+            model = new PatientModel();
+        }
+
         /// <summary>
         /// Check all data from NewPatientForm and EditPatientDataForm before save them
         /// </summary>
