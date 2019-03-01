@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +71,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modell\LoginModel.cs" />
-    <Compile Include="Modell\MainModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\MainModel.cs" />
+    <Compile Include="Model\PatientModel.cs" />
     <Compile Include="NewPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>

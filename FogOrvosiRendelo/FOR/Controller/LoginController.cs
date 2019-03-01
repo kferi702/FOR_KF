@@ -1,4 +1,4 @@
-﻿using FOR.Modell;
+﻿using FOR.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;

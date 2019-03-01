@@ -33,7 +33,7 @@
             this.textBoxAddressCity = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxAddressStreetNumber = new MetroFramework.Controls.MetroTextBox();
+            this.textBoxAddressHouseNumber = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.textBoxAddressStreet = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -45,6 +45,8 @@
             this.textBoxNameFirst = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxBirthName = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.textBoxBirthMotherName = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.textBoxBirthPlace = new MetroFramework.Controls.MetroTextBox();
@@ -53,7 +55,7 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox12 = new MetroFramework.Controls.MetroTextBox();
+            this.textBoxComment = new MetroFramework.Controls.MetroTextBox();
             this.textBoxDataEmail = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.textBoxDataPhone = new MetroFramework.Controls.MetroTextBox();
@@ -62,8 +64,6 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.mTileCancel = new MetroFramework.Controls.MetroTile();
             this.mTileSave = new MetroFramework.Controls.MetroTile();
-            this.textBoxBirthName = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -154,7 +154,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxAddressStreetNumber);
+            this.groupBox1.Controls.Add(this.textBoxAddressHouseNumber);
             this.groupBox1.Controls.Add(this.metroLabel5);
             this.groupBox1.Controls.Add(this.textBoxAddressStreet);
             this.groupBox1.Controls.Add(this.metroLabel4);
@@ -169,37 +169,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cím";
             // 
-            // textBoxAddressStreetNumber
+            // textBoxAddressHouseNumber
             // 
             // 
             // 
             // 
-            this.textBoxAddressStreetNumber.CustomButton.Image = null;
-            this.textBoxAddressStreetNumber.CustomButton.Location = new System.Drawing.Point(126, 1);
-            this.textBoxAddressStreetNumber.CustomButton.Name = "";
-            this.textBoxAddressStreetNumber.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.textBoxAddressStreetNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textBoxAddressStreetNumber.CustomButton.TabIndex = 1;
-            this.textBoxAddressStreetNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.textBoxAddressStreetNumber.CustomButton.UseSelectable = true;
-            this.textBoxAddressStreetNumber.CustomButton.Visible = false;
-            this.textBoxAddressStreetNumber.Lines = new string[] {
+            this.textBoxAddressHouseNumber.CustomButton.Image = null;
+            this.textBoxAddressHouseNumber.CustomButton.Location = new System.Drawing.Point(126, 1);
+            this.textBoxAddressHouseNumber.CustomButton.Name = "";
+            this.textBoxAddressHouseNumber.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBoxAddressHouseNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxAddressHouseNumber.CustomButton.TabIndex = 1;
+            this.textBoxAddressHouseNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxAddressHouseNumber.CustomButton.UseSelectable = true;
+            this.textBoxAddressHouseNumber.CustomButton.Visible = false;
+            this.textBoxAddressHouseNumber.Lines = new string[] {
         "Házszám"};
-            this.textBoxAddressStreetNumber.Location = new System.Drawing.Point(94, 102);
-            this.textBoxAddressStreetNumber.MaxLength = 32767;
-            this.textBoxAddressStreetNumber.Name = "textBoxAddressStreetNumber";
-            this.textBoxAddressStreetNumber.PasswordChar = '\0';
-            this.textBoxAddressStreetNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textBoxAddressStreetNumber.SelectedText = "";
-            this.textBoxAddressStreetNumber.SelectionLength = 0;
-            this.textBoxAddressStreetNumber.SelectionStart = 0;
-            this.textBoxAddressStreetNumber.ShortcutsEnabled = true;
-            this.textBoxAddressStreetNumber.Size = new System.Drawing.Size(148, 23);
-            this.textBoxAddressStreetNumber.TabIndex = 11;
-            this.textBoxAddressStreetNumber.Text = "Házszám";
-            this.textBoxAddressStreetNumber.UseSelectable = true;
-            this.textBoxAddressStreetNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.textBoxAddressStreetNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBoxAddressHouseNumber.Location = new System.Drawing.Point(94, 101);
+            this.textBoxAddressHouseNumber.MaxLength = 32767;
+            this.textBoxAddressHouseNumber.Name = "textBoxAddressHouseNumber";
+            this.textBoxAddressHouseNumber.PasswordChar = '\0';
+            this.textBoxAddressHouseNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxAddressHouseNumber.SelectedText = "";
+            this.textBoxAddressHouseNumber.SelectionLength = 0;
+            this.textBoxAddressHouseNumber.SelectionStart = 0;
+            this.textBoxAddressHouseNumber.ShortcutsEnabled = true;
+            this.textBoxAddressHouseNumber.Size = new System.Drawing.Size(148, 23);
+            this.textBoxAddressHouseNumber.TabIndex = 11;
+            this.textBoxAddressHouseNumber.Text = "Házszám";
+            this.textBoxAddressHouseNumber.UseSelectable = true;
+            this.textBoxAddressHouseNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxAddressHouseNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel5
             // 
@@ -386,6 +386,47 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Születési adatok";
             // 
+            // textBoxBirthName
+            // 
+            // 
+            // 
+            // 
+            this.textBoxBirthName.CustomButton.Image = null;
+            this.textBoxBirthName.CustomButton.Location = new System.Drawing.Point(242, 1);
+            this.textBoxBirthName.CustomButton.Name = "";
+            this.textBoxBirthName.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBoxBirthName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxBirthName.CustomButton.TabIndex = 1;
+            this.textBoxBirthName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxBirthName.CustomButton.UseSelectable = true;
+            this.textBoxBirthName.CustomButton.Visible = false;
+            this.textBoxBirthName.Lines = new string[] {
+        "Születési neve"};
+            this.textBoxBirthName.Location = new System.Drawing.Point(6, 134);
+            this.textBoxBirthName.MaxLength = 32767;
+            this.textBoxBirthName.Name = "textBoxBirthName";
+            this.textBoxBirthName.PasswordChar = '\0';
+            this.textBoxBirthName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxBirthName.SelectedText = "";
+            this.textBoxBirthName.SelectionLength = 0;
+            this.textBoxBirthName.SelectionStart = 0;
+            this.textBoxBirthName.ShortcutsEnabled = true;
+            this.textBoxBirthName.Size = new System.Drawing.Size(264, 23);
+            this.textBoxBirthName.TabIndex = 7;
+            this.textBoxBirthName.Text = "Születési neve";
+            this.textBoxBirthName.UseSelectable = true;
+            this.textBoxBirthName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxBirthName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(6, 112);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(92, 19);
+            this.metroLabel15.TabIndex = 6;
+            this.metroLabel15.Text = "Születési neve:";
+            // 
             // textBoxBirthMotherName
             // 
             // 
@@ -490,7 +531,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.metroLabel14);
-            this.groupBox4.Controls.Add(this.metroTextBox12);
+            this.groupBox4.Controls.Add(this.textBoxComment);
             this.groupBox4.Controls.Add(this.textBoxDataEmail);
             this.groupBox4.Controls.Add(this.metroLabel13);
             this.groupBox4.Controls.Add(this.textBoxDataPhone);
@@ -513,38 +554,38 @@
             this.metroLabel14.TabIndex = 7;
             this.metroLabel14.Text = "Megjegyzés:";
             // 
-            // metroTextBox12
+            // textBoxComment
             // 
             // 
             // 
             // 
-            this.metroTextBox12.CustomButton.Image = null;
-            this.metroTextBox12.CustomButton.Location = new System.Drawing.Point(305, 1);
-            this.metroTextBox12.CustomButton.Name = "";
-            this.metroTextBox12.CustomButton.Size = new System.Drawing.Size(115, 115);
-            this.metroTextBox12.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox12.CustomButton.TabIndex = 1;
-            this.metroTextBox12.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox12.CustomButton.UseSelectable = true;
-            this.metroTextBox12.CustomButton.Visible = false;
-            this.metroTextBox12.Lines = new string[] {
+            this.textBoxComment.CustomButton.Image = null;
+            this.textBoxComment.CustomButton.Location = new System.Drawing.Point(305, 1);
+            this.textBoxComment.CustomButton.Name = "";
+            this.textBoxComment.CustomButton.Size = new System.Drawing.Size(115, 115);
+            this.textBoxComment.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxComment.CustomButton.TabIndex = 1;
+            this.textBoxComment.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxComment.CustomButton.UseSelectable = true;
+            this.textBoxComment.CustomButton.Visible = false;
+            this.textBoxComment.Lines = new string[] {
         "metroTextBox12"};
-            this.metroTextBox12.Location = new System.Drawing.Point(15, 128);
-            this.metroTextBox12.MaxLength = 32767;
-            this.metroTextBox12.Multiline = true;
-            this.metroTextBox12.Name = "metroTextBox12";
-            this.metroTextBox12.PasswordChar = '\0';
-            this.metroTextBox12.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox12.SelectedText = "";
-            this.metroTextBox12.SelectionLength = 0;
-            this.metroTextBox12.SelectionStart = 0;
-            this.metroTextBox12.ShortcutsEnabled = true;
-            this.metroTextBox12.Size = new System.Drawing.Size(421, 117);
-            this.metroTextBox12.TabIndex = 6;
-            this.metroTextBox12.Text = "metroTextBox12";
-            this.metroTextBox12.UseSelectable = true;
-            this.metroTextBox12.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox12.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBoxComment.Location = new System.Drawing.Point(15, 128);
+            this.textBoxComment.MaxLength = 32767;
+            this.textBoxComment.Multiline = true;
+            this.textBoxComment.Name = "textBoxComment";
+            this.textBoxComment.PasswordChar = '\0';
+            this.textBoxComment.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxComment.SelectedText = "";
+            this.textBoxComment.SelectionLength = 0;
+            this.textBoxComment.SelectionStart = 0;
+            this.textBoxComment.ShortcutsEnabled = true;
+            this.textBoxComment.Size = new System.Drawing.Size(421, 117);
+            this.textBoxComment.TabIndex = 6;
+            this.textBoxComment.Text = "metroTextBox12";
+            this.textBoxComment.UseSelectable = true;
+            this.textBoxComment.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxComment.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // textBoxDataEmail
             // 
@@ -691,47 +732,7 @@
             this.mTileSave.TabIndex = 13;
             this.mTileSave.Text = "Mentés";
             this.mTileSave.UseSelectable = true;
-            // 
-            // textBoxBirthName
-            // 
-            // 
-            // 
-            // 
-            this.textBoxBirthName.CustomButton.Image = null;
-            this.textBoxBirthName.CustomButton.Location = new System.Drawing.Point(242, 1);
-            this.textBoxBirthName.CustomButton.Name = "";
-            this.textBoxBirthName.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.textBoxBirthName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textBoxBirthName.CustomButton.TabIndex = 1;
-            this.textBoxBirthName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.textBoxBirthName.CustomButton.UseSelectable = true;
-            this.textBoxBirthName.CustomButton.Visible = false;
-            this.textBoxBirthName.Lines = new string[] {
-        "Születési neve"};
-            this.textBoxBirthName.Location = new System.Drawing.Point(6, 134);
-            this.textBoxBirthName.MaxLength = 32767;
-            this.textBoxBirthName.Name = "textBoxBirthName";
-            this.textBoxBirthName.PasswordChar = '\0';
-            this.textBoxBirthName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textBoxBirthName.SelectedText = "";
-            this.textBoxBirthName.SelectionLength = 0;
-            this.textBoxBirthName.SelectionStart = 0;
-            this.textBoxBirthName.ShortcutsEnabled = true;
-            this.textBoxBirthName.Size = new System.Drawing.Size(264, 23);
-            this.textBoxBirthName.TabIndex = 7;
-            this.textBoxBirthName.Text = "Születési neve";
-            this.textBoxBirthName.UseSelectable = true;
-            this.textBoxBirthName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.textBoxBirthName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel15
-            // 
-            this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(6, 112);
-            this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(92, 19);
-            this.metroLabel15.TabIndex = 6;
-            this.metroLabel15.Text = "Születési neve:";
+            this.mTileSave.Click += new System.EventHandler(this.mTileSave_Click);
             // 
             // NewPatientForm
             // 
@@ -764,7 +765,7 @@
         private MetroFramework.Controls.MetroTextBox textBoxAddressCity;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private MetroFramework.Controls.MetroTextBox textBoxAddressStreetNumber;
+        private MetroFramework.Controls.MetroTextBox textBoxAddressHouseNumber;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTextBox textBoxAddressStreet;
         private MetroFramework.Controls.MetroLabel metroLabel4;
@@ -790,7 +791,7 @@
         private MetroFramework.Controls.MetroTextBox textBoxDataPhone;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroLabel metroLabel14;
-        private MetroFramework.Controls.MetroTextBox metroTextBox12;
+        private MetroFramework.Controls.MetroTextBox textBoxComment;
         private MetroFramework.Controls.MetroTile mTileCancel;
         private MetroFramework.Controls.MetroTile mTileSave;
         private MetroFramework.Controls.MetroTextBox textBoxBirthName;
