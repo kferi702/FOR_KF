@@ -38,22 +38,18 @@ namespace FOR.Model
             return lvp;
         }
 
-        public void deletePatient(string name)
+        public void deletePatient(string tb)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
 
-            string query = "SELECT * FROM patient WHERE name=@name;";
+            string query = "DELETE FROM patient WHERE tb=@tb;";
             cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@tb", tb);
+            cmd.ExecuteNonQuery();
             mysql.close();
-        }
-
-        public void addNewPatient()
-        {
-            
         }
 
         public ListView searchPatient(ListView lvp, string search)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FOR.Model;
+using FOR.View;
 
 namespace FOR.Controller
 {
@@ -17,6 +18,11 @@ namespace FOR.Controller
         public PatientController()
         {
             model = new PatientModel();
+        }
+
+        public void closePatientDetailForm(PatientDetailForm patDetForm)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -61,9 +67,11 @@ namespace FOR.Controller
         /// <param name="dTB">Data TB number</param>
         /// <param name="dP">Data phone number</param>
         /// <param name="dE">Data Email address</param>
-        public void saveNewPatient(string nT, string nF, string nL, string aZ, string aC, string aS, string aN, string bM, string bN, string bP, string bD, string dTB, string dP, string de)
+        public void saveNewPatient(string nT, string nF, string nL, string aZ, string aC, string aS, string aN, string bM, string bN, string bP, string bD, string dTB, string dP, string dE)
         {
-            model.saveNewPatientData(nT,nF,nL,aZ,aC,aS,aN,bM,bN,bP,bD,dTB,dP,de);
+            model.saveNewPatientData(dTB,nT,nF,nL,bD);
+            model.saveNewPatientSecData(dTB,bP,aZ,aC,aS,aN,dP,dE,bM,bN);
+            model.saveNewPatientWebData(dTB,bD);
         }
     }
 }

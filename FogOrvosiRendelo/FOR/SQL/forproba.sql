@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Feb 24. 11:32
+-- Létrehozás ideje: 2019. Már 01. 19:10
 -- Kiszolgáló verziója: 10.1.37-MariaDB
 -- PHP verzió: 7.2.12
 
@@ -42,10 +42,18 @@ DELIMITER ;
 CREATE TABLE `patient` (
   `id` int(11) NOT NULL,
   `name` varchar(52) COLLATE utf8_hungarian_ci NOT NULL,
-  `birthdate` int(8) NOT NULL,
-  `tb` int(9) NOT NULL,
-  `doctor_name` varchar(52) COLLATE utf8_hungarian_ci NOT NULL
+  `birthdate` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `tb` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `patient`
+--
+
+INSERT INTO `patient` (`id`, `name`, `birthdate`, `tb`) VALUES
+(1, 'Kala Pál', '19880412', 444555666),
+(2, 'Para Zita ', '19990330', 111222333),
+(17, ' korte alma', '1990. 02. 01.', 200100300);
 
 -- --------------------------------------------------------
 
@@ -57,9 +65,20 @@ CREATE TABLE `patient_sec` (
   `patient_id` int(11) NOT NULL,
   `birthplace` varchar(54) COLLATE utf8_hungarian_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `phone` int(15) NOT NULL,
-  `email` varchar(54) COLLATE utf8_hungarian_ci NOT NULL
+  `phone` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(54) COLLATE utf8_hungarian_ci NOT NULL,
+  `mother_name` varchar(52) COLLATE utf8_hungarian_ci NOT NULL,
+  `birth_name` varchar(52) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `patient_sec`
+--
+
+INSERT INTO `patient_sec` (`patient_id`, `birthplace`, `address`, `phone`, `email`, `mother_name`, `birth_name`) VALUES
+(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', '', ''),
+(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', '', ''),
+(17, 'Ecser', '2222 Ecser, Cserfa 12.', '305556633', 'almafa@cserfa.hu', '', '');
 
 -- --------------------------------------------------------
 
@@ -136,7 +155,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT a táblához `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT a táblához `staff`
@@ -152,13 +171,13 @@ ALTER TABLE `staff`
 -- Megkötések a táblához `patient_sec`
 --
 ALTER TABLE `patient_sec`
-  ADD CONSTRAINT `patient_sec_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`);
+  ADD CONSTRAINT `patient_sec_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `patienweb`
 --
 ALTER TABLE `patienweb`
-  ADD CONSTRAINT `patienweb_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`);
+  ADD CONSTRAINT `patienweb_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

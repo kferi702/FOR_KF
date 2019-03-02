@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.labelWelcome = new MetroFramework.Controls.MetroLabel();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.TabPagePatient = new MetroFramework.Controls.MetroTabPage();
+            this.mTileRefreshDB = new MetroFramework.Controls.MetroTile();
             this.mTileDelete = new MetroFramework.Controls.MetroTile();
             this.mTileDetail2 = new MetroFramework.Controls.MetroTile();
             this.mTileNewPatient = new MetroFramework.Controls.MetroTile();
             this.mTileDetail = new MetroFramework.Controls.MetroTile();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.textBoxSearch = new MetroFramework.Controls.MetroTextBox();
             this.listViewPatient = new MetroFramework.Controls.MetroListView();
@@ -73,11 +74,11 @@
             // TabPagePatient
             // 
             this.TabPagePatient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.TabPagePatient.Controls.Add(this.mTileRefreshDB);
             this.TabPagePatient.Controls.Add(this.mTileDelete);
             this.TabPagePatient.Controls.Add(this.mTileDetail2);
             this.TabPagePatient.Controls.Add(this.mTileNewPatient);
             this.TabPagePatient.Controls.Add(this.mTileDetail);
-            this.TabPagePatient.Controls.Add(this.metroTile1);
             this.TabPagePatient.Controls.Add(this.metroLabel1);
             this.TabPagePatient.Controls.Add(this.textBoxSearch);
             this.TabPagePatient.Controls.Add(this.listViewPatient);
@@ -93,6 +94,21 @@
             this.TabPagePatient.VerticalScrollbarBarColor = true;
             this.TabPagePatient.VerticalScrollbarHighlightOnWheel = false;
             this.TabPagePatient.VerticalScrollbarSize = 10;
+            // 
+            // mTileRefreshDB
+            // 
+            this.mTileRefreshDB.ActiveControl = null;
+            this.mTileRefreshDB.Location = new System.Drawing.Point(443, 3);
+            this.mTileRefreshDB.Name = "mTileRefreshDB";
+            this.mTileRefreshDB.Size = new System.Drawing.Size(34, 34);
+            this.mTileRefreshDB.TabIndex = 12;
+            this.mTileRefreshDB.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileRefreshDB.TileImage")));
+            this.mTileRefreshDB.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mTileRefreshDB.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.mTileRefreshDB.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.mTileRefreshDB.UseSelectable = true;
+            this.mTileRefreshDB.UseTileImage = true;
+            this.mTileRefreshDB.Click += new System.EventHandler(this.mTileRefreshDB_Click);
             // 
             // mTileDelete
             // 
@@ -147,18 +163,7 @@
             this.mTileDetail.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.mTileDetail.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileDetail.UseSelectable = true;
-            // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(442, 3);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(138, 34);
-            this.metroTile1.TabIndex = 7;
-            this.metroTile1.Text = "Szűrés törlése";
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile1.UseSelectable = true;
+            this.mTileDetail.Click += new System.EventHandler(this.mTileDetail_Click);
             // 
             // metroLabel1
             // 
@@ -303,6 +308,6 @@
         private MetroFramework.Controls.MetroTile mTileDetail2;
         private MetroFramework.Controls.MetroTile mTileNewPatient;
         private MetroFramework.Controls.MetroTile mTileDetail;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile mTileRefreshDB;
     }
 }

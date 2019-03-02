@@ -73,6 +73,7 @@ namespace FOR
             {
                 controller.saveNewPatient(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
                 this.Hide();
+
             }
             else
             {

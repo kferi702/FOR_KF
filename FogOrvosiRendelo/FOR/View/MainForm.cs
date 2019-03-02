@@ -30,9 +30,10 @@ namespace FOR
         }
         private void setWelcomeLabel() => labelWelcome.Text = controller.setWelcomeLabel(id);
         private void loadListViewPatient() => controller.loadListViewPatient(listViewPatient);
-        private void buttonSearch_Click(object sender, EventArgs e) => loadListViewPatient();
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
         private void textBoxSearch_TextChanged(object sender, EventArgs e) => controller.searchPatient(listViewPatient, textBoxSearch.Text);
+        private void mTileNewPatient_Click(object sender, EventArgs e) => controller.addNewPatient();
+        private void mTileRefreshDB_Click(object sender, EventArgs e) => controller.loadListViewPatient(listViewPatient);
         private void listViewPatient_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count < 0)
@@ -40,9 +41,19 @@ namespace FOR
         }
         private void mTileDelete_Click(object sender, EventArgs e)
         {
-            if(listViewPatient.SelectedItems.Count!=0)
-                controller.deletePatient(listViewPatient.SelectedItems[0].SubItems[0].Text);
+
+            if (listViewPatient.SelectedItems.Count != 0)
+            {
+                string selName = listViewPatient.SelectedItems[0].SubItems[0].Text;
+                string selTB = listViewPatient.SelectedItems[0].SubItems[2].Text;
+                controller.deletePatient(selName, selTB);
+            }
         }
-        private void mTileNewPatient_Click(object sender, EventArgs e) => controller.addNewPatient();
+
+        private void mTileDetail_Click(object sender, EventArgs e)
+        {
+            if(listViewPatient.SelectedItems.Count!=0)
+                controller.patientDetail(listViewPatient.SelectedItems[0].SubItems[2].Text);
+        }
     }
 }
