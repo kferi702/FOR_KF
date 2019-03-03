@@ -5,14 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FOR.Model
 {
     class PatientModel
     {
         public MySqlCommand cmd;
-        string name;
-        PatientDetailForm pdf;
+        private string id;
+        private string name;
+        private string address;
+        private string birthDate;
+        private string birthPlace;
+        private string birthName;
+        private string mother;
+        private string phone;
+        private string email;
+        private string tb;
 
         public PatientModel()
         {
@@ -25,29 +34,91 @@ namespace FOR.Model
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "SELECT * FROM patient, patient_sec, patienweb " +
+            string query = "SELECT * FROM patient, patient_sec " +
                 "WHERE patient.tb=@tb " +
-                "AND patient_sec.patient_id = patient.id "+
-                "AND patienweb.patient_id = patient.id;";
+                "AND patient_sec.patient_id = patient.id;";
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@tb", tb);
             MySqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
-                PatientDetailForm pdf = new PatientDetailForm(tb);
+                name = dr["name"].ToString();
+                address = dr["address"].ToString();
+                birthDate = dr["birthdate"].ToString();
+                birthPlace = dr["birthplace"].ToString();
+                mother = dr["mother_name"].ToString();
+                phone = dr["phone"].ToString();
+                email = dr["email"].ToString();
+                id = dr["id"].ToString();
+                if (dr["birth_name"].ToString().Trim() == "")
+                    birthName = name;
+                else
+                    birthName = dr["birth_name"].ToString();
+                this.tb = tb;
             }
             dr.Close();
             mysql.close();
-
+            
         }
 
+
+        public string getPatientID() => id;
+        public string getPatientName() => name;
+        public string getPatientAddress() => address;
+        public string getPatientBirthDate() => birthDate;
+        public string getPatientBirthPlace() => birthPlace;
+        public string getPatientBirthName() => birthName;
+        public string getPatientMother() => mother;
+        public string getPatientPhone() => phone;
+        public string getPatientEmail() => email;
+        public string getPatientTB() => tb;
+        public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "UPDATE patient, patient_sec SET " +
+                "name=@name, " +
+                "birthdate=@birthdate, " +
+                "tb=@tb, " +
+                "birthplace=@birthplace, " +
+                "address=@address, " +
+                "phone=@phone, " +
+                "email=@email, " +
+                "mother_name=@mother_name, " +
+                "birth_name=@birth_name " +
+                "WHERE patient.id = @id " +
+                "AND patient.id = patient_sec.patient_id;";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@birthdate", birthDate);
+            cmd.Parameters.AddWithValue("@tb", tb);
+            cmd.Parameters.AddWithValue("@birthplace", birthPlace);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@phone", phone);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@mother_name", mother);
+            cmd.Parameters.AddWithValue("@birth_name", birthName);
+            cmd.ExecuteNonQuery();
+            mysql.close();
+        }
         public string setPatientLabel()
         {
-            return "alma";
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "SELECT patient.name FROM patient WHERE patient.tb=@tb;";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@tb", tb);
+            string name=cmd.ExecuteScalar().ToString();
+            mysql.close();
+
+            return name;
         }
-
-
         /// <summary>
         /// Létrehozza a patient adattáblát
         /// </summary>

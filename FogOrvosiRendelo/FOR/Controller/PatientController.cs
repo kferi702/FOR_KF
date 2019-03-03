@@ -13,7 +13,6 @@ namespace FOR.Controller
     class PatientController
     {
         PatientModel model;
-        NewPatientForm form;
 
         public PatientController()
         {
@@ -21,11 +20,19 @@ namespace FOR.Controller
         }
 
         public void loadPatientDetail(string tb) => model.loadPatientDetail(tb);
+        public string setPatientLabel() => model.setPatientLabel();
+        public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment) => model.savePatientDatail(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
 
-        public string setPatientLabel()
-        {
-            return model.setPatientLabel();
-        }
+        public string getPatientID() => model.getPatientID();
+        public string getPatientName() => model.getPatientName();
+        public string getPatientAddress() => model.getPatientAddress();
+        public string getPatientBirthDate() => model.getPatientBirthDate();
+        public string getPatientBirthPlace() => model.getPatientBirthPlace();
+        public string getPatientBirthName() => model.getPatientBirthName();
+        public string getPatientMother() => model.getPatientMother();
+        public string getPatientPhone() => model.getPatientPhone();
+        public string getPatientEmail() => model.getPatientEmail();
+        public string getPatientTB() => model.getPatientTB();
 
         /// <summary>
         /// Check all data from NewPatientForm and EditPatientDataForm before save them

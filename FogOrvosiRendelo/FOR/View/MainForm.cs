@@ -28,6 +28,9 @@ namespace FOR
             setWelcomeLabel();
             loadListViewPatient();
         }
+
+            
+
         private void setWelcomeLabel() => labelWelcome.Text = controller.setWelcomeLabel(id);
         private void loadListViewPatient() => controller.loadListViewPatient(listViewPatient);
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
@@ -49,7 +52,6 @@ namespace FOR
                 controller.deletePatient(selName, selTB);
             }
         }
-
         private void mTileDetail_Click(object sender, EventArgs e)
         {
             if(listViewPatient.SelectedItems.Count!=0)

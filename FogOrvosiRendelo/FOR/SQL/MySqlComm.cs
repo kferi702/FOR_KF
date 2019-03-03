@@ -61,6 +61,7 @@ namespace FOR.Model
             MySqlCommand cmd = new MySqlCommand(query, conn);
             return cmd;
         }
+
         public void open()
         {
             conn.Open();

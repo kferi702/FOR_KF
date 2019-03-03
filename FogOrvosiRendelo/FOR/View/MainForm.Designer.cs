@@ -99,11 +99,14 @@
             // 
             this.mTileRefreshDB.ActiveControl = null;
             this.mTileRefreshDB.Location = new System.Drawing.Point(443, 3);
+            this.mTileRefreshDB.Margin = new System.Windows.Forms.Padding(0);
             this.mTileRefreshDB.Name = "mTileRefreshDB";
-            this.mTileRefreshDB.Size = new System.Drawing.Size(34, 34);
+            this.mTileRefreshDB.Size = new System.Drawing.Size(89, 34);
             this.mTileRefreshDB.TabIndex = 12;
+            this.mTileRefreshDB.Text = "Frissítés";
+            this.mTileRefreshDB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.mTileRefreshDB.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileRefreshDB.TileImage")));
-            this.mTileRefreshDB.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mTileRefreshDB.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mTileRefreshDB.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
             this.mTileRefreshDB.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.mTileRefreshDB.UseSelectable = true;
@@ -119,9 +122,12 @@
             this.mTileDelete.Style = MetroFramework.MetroColorStyle.Red;
             this.mTileDelete.TabIndex = 11;
             this.mTileDelete.Text = "Páciens Törlése";
+            this.mTileDelete.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileDelete.TileImage")));
+            this.mTileDelete.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.mTileDelete.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileDelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.mTileDelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.mTileDelete.UseSelectable = true;
+            this.mTileDelete.UseTileImage = true;
             this.mTileDelete.Click += new System.EventHandler(this.mTileDelete_Click);
             // 
             // mTileDetail2
@@ -134,8 +140,9 @@
             this.mTileDetail2.TabIndex = 10;
             this.mTileDetail2.Text = "Páciens kórtörténet";
             this.mTileDetail2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileDetail2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.mTileDetail2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.mTileDetail2.UseSelectable = true;
+            this.mTileDetail2.UseTileImage = true;
             // 
             // mTileNewPatient
             // 
@@ -145,9 +152,12 @@
             this.mTileNewPatient.Size = new System.Drawing.Size(268, 102);
             this.mTileNewPatient.TabIndex = 9;
             this.mTileNewPatient.Text = "Új páciens felvétele";
+            this.mTileNewPatient.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileNewPatient.TileImage")));
+            this.mTileNewPatient.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.mTileNewPatient.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileNewPatient.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.mTileNewPatient.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.mTileNewPatient.UseSelectable = true;
+            this.mTileNewPatient.UseTileImage = true;
             this.mTileNewPatient.Click += new System.EventHandler(this.mTileNewPatient_Click);
             // 
             // mTileDetail
@@ -160,9 +170,12 @@
             this.mTileDetail.Style = MetroFramework.MetroColorStyle.Brown;
             this.mTileDetail.TabIndex = 8;
             this.mTileDetail.Text = "Páciens részletes Adatai";
+            this.mTileDetail.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileDetail.TileImage")));
+            this.mTileDetail.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.mTileDetail.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileDetail.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.mTileDetail.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.mTileDetail.UseSelectable = true;
+            this.mTileDetail.UseTileImage = true;
             this.mTileDetail.Click += new System.EventHandler(this.mTileDetail_Click);
             // 
             // metroLabel1
@@ -208,7 +221,6 @@
             // listViewPatient
             // 
             this.listViewPatient.AllowSorting = true;
-            this.listViewPatient.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.listViewPatient.AutoArrange = false;
             this.listViewPatient.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.name,
@@ -216,7 +228,9 @@
             this.tbNumber});
             this.listViewPatient.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listViewPatient.FullRowSelect = true;
+            this.listViewPatient.LabelWrap = false;
             this.listViewPatient.Location = new System.Drawing.Point(0, 43);
+            this.listViewPatient.MultiSelect = false;
             this.listViewPatient.Name = "listViewPatient";
             this.listViewPatient.OwnerDraw = true;
             this.listViewPatient.Size = new System.Drawing.Size(624, 426);
@@ -235,12 +249,14 @@
             // birthDate
             // 
             this.birthDate.Text = "Születési Dátum";
-            this.birthDate.Width = 142;
+            this.birthDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.birthDate.Width = 267;
             // 
             // tbNumber
             // 
             this.tbNumber.Text = "TB-szám";
-            this.tbNumber.Width = 91;
+            this.tbNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbNumber.Width = 185;
             // 
             // tabPageMessage
             // 

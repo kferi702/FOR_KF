@@ -20,20 +20,9 @@ namespace FOR.Controller
         {
             model = new MainModel();
         }
-        public string setWelcomeLabel(int id)
-        {
-           return model.setWelcomeLabel(id);
-        }
-
-        public void loadListViewPatient(ListView lvp)
-        {
-            model.loadListViewPatient(lvp);
-        }
-
-        public void searchPatient(ListView lvp, string search)
-        {
-            model.searchPatient(lvp, search);
-        }
+        public string setWelcomeLabel(int id) => model.setWelcomeLabel(id);
+        public void loadListViewPatient(ListView lvp) => model.loadListViewPatient(lvp);
+        public void searchPatient(ListView lvp, string search) => model.searchPatient(lvp, search);
 
         public void deletePatient(string name, string tb)
         {
