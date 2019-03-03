@@ -49,9 +49,9 @@ namespace FOR.Controller
             newPF.Show();
         }
 
-        public void patientDetail(string text)
+        public void patientDetail(string tb)
         {
-            patientDetailF = new PatientDetailForm();
+            patientDetailF = new PatientDetailForm(tb);
             patientDetailF.Show();
         }
     }

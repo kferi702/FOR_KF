@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FOR.View;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,43 @@ namespace FOR.Model
     class PatientModel
     {
         public MySqlCommand cmd;
+        string name;
+        PatientDetailForm pdf;
+
+        public PatientModel()
+        {
+            
+        }
+
+        public void loadPatientDetail(string tb)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "SELECT * FROM patient, patient_sec, patienweb " +
+                "WHERE patient.tb=@tb " +
+                "AND patient_sec.patient_id = patient.id "+
+                "AND patienweb.patient_id = patient.id;";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@tb", tb);
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                PatientDetailForm pdf = new PatientDetailForm(tb);
+            }
+            dr.Close();
+            mysql.close();
+
+        }
+
+        public string setPatientLabel()
+        {
+            return "alma";
+        }
+
+
         /// <summary>
         /// Létrehozza a patient adattáblát
         /// </summary>
@@ -91,10 +129,10 @@ namespace FOR.Model
         /// <returns></returns>
         private string trimBirthDate(string bD)
         {
-            char[] trimChar={'.'};
-            string pass = bD.TrimStart(trimChar);
-            pass.Trim();
-            return pass;
+            string trimBD = bD.Remove(4,2);
+            trimBD=trimBD.Remove(6, 2);
+            trimBD=trimBD.Remove(8);
+            return trimBD;
         }
     }
 }

@@ -17,17 +17,18 @@ namespace FOR.View
     {
         PatientController controller;
         PatientDetailForm patDetForm;
-        public PatientDetailForm()
+        string tb;
+        public PatientDetailForm(string tb)
         {
+            this.tb = tb;
             controller = new PatientController();
             patDetForm = this;
             InitializeComponent();
-
+            loadPatientDetail();
         }
 
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-            patDetForm.Hide();
-        }
+        private void metroTile1_Click(object sender, EventArgs e) => patDetForm.Hide();
+        private void loadPatientDetail() => controller.loadPatientDetail(tb);
+        private void setPatientLabel() => controller.setPatientLabel();
     }
 }

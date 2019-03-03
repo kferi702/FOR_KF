@@ -38,7 +38,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(62, 86);
+            this.metroLabel1.Location = new System.Drawing.Point(62, 158);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(99, 19);
             this.metroLabel1.TabIndex = 0;
@@ -68,7 +68,7 @@
             this.textBoxUsername.CustomButton.UseSelectable = true;
             this.textBoxUsername.CustomButton.Visible = false;
             this.textBoxUsername.Lines = new string[0];
-            this.textBoxUsername.Location = new System.Drawing.Point(62, 108);
+            this.textBoxUsername.Location = new System.Drawing.Point(62, 180);
             this.textBoxUsername.MaxLength = 32767;
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.PasswordChar = '\0';

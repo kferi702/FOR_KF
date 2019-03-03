@@ -20,9 +20,11 @@ namespace FOR.Controller
             model = new PatientModel();
         }
 
-        public void closePatientDetailForm(PatientDetailForm patDetForm)
+        public void loadPatientDetail(string tb) => model.loadPatientDetail(tb);
+
+        public string setPatientLabel()
         {
-            throw new NotImplementedException();
+            return model.setPatientLabel();
         }
 
         /// <summary>

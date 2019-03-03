@@ -45,22 +45,22 @@ namespace FOR
         public bool checkData()
         {
             nameTitle = comboBoxNameTitle.SelectedText;
-            firstName = textBoxNameFirst.Text;
-            lastName = textBoxNameLast.Text;
+            firstName = textBoxNameFirst.Text.Trim();
+            lastName = textBoxNameLast.Text.Trim();
 
-            zipCode = textBoxAddressZip.Text;
-            city = textBoxAddressCity.Text;
-            street = textBoxAddressStreet.Text;
-            houseNumber = textBoxAddressHouseNumber.Text;
+            zipCode = textBoxAddressZip.Text.Trim();
+            city = textBoxAddressCity.Text.Trim();
+            street = textBoxAddressStreet.Text.Trim();
+            houseNumber = textBoxAddressHouseNumber.Text.Trim();
 
-            mother = textBoxBirthMotherName.Text;
-            birthName = textBoxBirthName.Text;
-            birthPlace = textBoxBirthPlace.Text;
+            mother = textBoxBirthMotherName.Text.Trim();
+            birthName = textBoxBirthName.Text.Trim();
+            birthPlace = textBoxBirthPlace.Text.Trim();
             birthDate = calendatBirthDate.SelectionRange.Start.ToShortDateString();
 
-            tb = textBoxDataTB.Text;
-            phone = textBoxDataPhone.Text;
-            email = textBoxDataEmail.Text;
+            tb = textBoxDataTB.Text.Trim();
+            phone = textBoxDataPhone.Text.Trim();
+            email = textBoxDataEmail.Text.Trim();
 
             return controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
         }
@@ -73,7 +73,6 @@ namespace FOR
             {
                 controller.saveNewPatient(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
                 this.Hide();
-
             }
             else
             {
