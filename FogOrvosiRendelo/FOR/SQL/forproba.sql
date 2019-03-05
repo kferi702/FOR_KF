@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Már 01. 19:10
--- Kiszolgáló verziója: 10.1.37-MariaDB
--- PHP verzió: 7.2.12
+-- Létrehozás ideje: 2019. Már 05. 21:25
+-- Kiszolgáló verziója: 10.1.38-MariaDB
+-- PHP verzió: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -53,7 +53,10 @@ CREATE TABLE `patient` (
 INSERT INTO `patient` (`id`, `name`, `birthdate`, `tb`) VALUES
 (1, 'Kala Pál', '19880412', 444555666),
 (2, 'Para Zita ', '19990330', 111222333),
-(17, ' korte alma', '1990. 02. 01.', 200100300);
+(17, ' korte alma', '1990. 02. 01.', 200100300),
+(18, ' Tari Béla', '19840705', 875844623),
+(19, ' Horváth Máté', '19790615', 733832682),
+(20, ' Szikla Szilárd', '19890714', 234211645);
 
 -- --------------------------------------------------------
 
@@ -76,9 +79,12 @@ CREATE TABLE `patient_sec` (
 --
 
 INSERT INTO `patient_sec` (`patient_id`, `birthplace`, `address`, `phone`, `email`, `mother_name`, `birth_name`) VALUES
-(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', '', ''),
-(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', '', ''),
-(17, 'Ecser', '2222 Ecser, Cserfa 12.', '305556633', 'almafa@cserfa.hu', '', '');
+(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', '', 'Kala Pál'),
+(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', '', 'Para Zita '),
+(17, 'Ecser', '2222 Ecser, Cserfa 12.', '305556633', 'almafa@cserfa.hu', '', ' korte alma'),
+(18, 'Kisújszállás', '3321 Szigetszentmiklós, Dunai sor 231..', '06705551234', 'tari@bela.hu', 'Bori Éva', ''),
+(19, 'Kiskundorozsma', '6720 Szeged, Földvári utca 14..', '06704563234', 'horv.m@gmol.hu', 'Nagy Erzsébet', ' Horváth Máté'),
+(20, 'Miskolc', '2334 Monor, Meggy utca 1..', '0623876777', 'sziszi@gim.com', 'Makk Mónika', '');
 
 -- --------------------------------------------------------
 
@@ -91,6 +97,14 @@ CREATE TABLE `patienweb` (
   `username` varchar(24) COLLATE utf8_hungarian_ci NOT NULL,
   `password` varchar(24) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `patienweb`
+--
+
+INSERT INTO `patienweb` (`patient_id`, `username`, `password`) VALUES
+(18, '875844623', '19840705'),
+(19, '733832682', '19790615');
 
 -- --------------------------------------------------------
 
@@ -155,7 +169,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT a táblához `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT a táblához `staff`
