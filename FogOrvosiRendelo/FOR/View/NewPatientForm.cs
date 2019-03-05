@@ -30,6 +30,7 @@ namespace FOR
         string tb;
         string phone;
         string email;
+        string comment;
 
         public NewPatientForm()
         {
@@ -61,8 +62,9 @@ namespace FOR
             tb = textBoxDataTB.Text.Trim();
             phone = textBoxDataPhone.Text.Trim();
             email = textBoxDataEmail.Text.Trim();
+            comment = textBoxComment.Text.Trim();
 
-            return controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
+            return controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email,comment);
         }
 
         private void mTileCancel_Click(object sender, EventArgs e) => newPF.Hide();
@@ -71,7 +73,7 @@ namespace FOR
         {
             if (checkData())
             {
-                controller.saveNewPatient(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email);
+                controller.saveNewPatient(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email, comment);
                 this.Hide();
             }
             else

@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,11 @@ namespace FOR.Model
         private string phone;
         private string email;
         private string tb;
+        private string comment;
 
         public PatientModel()
         {
-            
+
         }
 
         public void loadPatientDetail(string tb)
@@ -56,10 +58,15 @@ namespace FOR.Model
                 else
                     birthName = dr["birth_name"].ToString();
                 this.tb = tb;
+                this.comment = getComment(id);
             }
+
             dr.Close();
+            string getID = "SELECT patient_id FROM patient_sec, patient WHERE  patient.tb=" + tb + " AND patient.id=patient_sec.patient_id;";
+            this.comment = getComment(mysql.getOneData(getID));
             mysql.close();
-            
+
+
         }
 
 
@@ -73,7 +80,51 @@ namespace FOR.Model
         public string getPatientPhone() => phone;
         public string getPatientEmail() => email;
         public string getPatientTB() => tb;
-        public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
+        public string getPatientComment() => comment;
+        /// <summary>
+        /// Load comment from Patient comment text file.
+        /// </summary>
+        /// <param name="id">Patient unique identify number</param>
+        /// <returns></returns>
+        public string getComment(string id)
+        {
+            string path= Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
+            FileInfo file = new FileInfo(path);
+            //if(file.Exists())
+                file.Directory.Create();
+            FileStream fs = file.Create();
+            fs.Close();
+            
+            return File.ReadAllText(path, Encoding.Default);
+        }
+        /// <summary>
+        /// Save text to patient comment file.
+        /// </summary>
+        /// <param name="id">Patient unique identify number</param>
+        /// <param name="text">Text to save</param>
+        /// <returns></returns>
+        public string setComment(string id, string text)
+        {
+            string path = Environment.CurrentDirectory+"/patientsComment/" +id + ".txt";
+            FileInfo file = new FileInfo(path);
+            file.Directory.Create();
+            File.WriteAllText(path, text, Encoding.Default);
+            return comment;
+        }
+        /// <summary>
+        /// Save patient details data to database
+        /// </summary>
+        /// <param name="name">Patient name</param>
+        /// <param name="address">Patient address</param>
+        /// <param name="birthDate">Patient birth date</param>
+        /// <param name="birthPlace">Patient birth place</param>
+        /// <param name="birthName">Patient birth name</param>
+        /// <param name="mother">Patient mother name</param>
+        /// <param name="tb">Patient tb number</param>
+        /// <param name="phone">Patient phone number</param>
+        /// <param name="email">Patient email address</param>
+        /// <param name="comment">Patient comment</param>
+        public void savePatientDetails(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
@@ -104,6 +155,9 @@ namespace FOR.Model
             cmd.Parameters.AddWithValue("@birth_name", birthName);
             cmd.ExecuteNonQuery();
             mysql.close();
+
+            comment = setComment(id,comment);
+            
         }
         public string setPatientLabel()
         {
@@ -111,13 +165,8 @@ namespace FOR.Model
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "SELECT patient.name FROM patient WHERE patient.tb=@tb;";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@tb", tb);
-            string name=cmd.ExecuteScalar().ToString();
-            mysql.close();
-
-            return name;
+            string query = "SELECT patient.name FROM patient WHERE patient.tb="+tb+";";
+            return mysql.getOneData(query);
         }
         /// <summary>
         /// Létrehozza a patient adattáblát
@@ -154,7 +203,7 @@ namespace FOR.Model
         /// <param name="dE">Email address</param>
         /// <param name="bM">Mother name</param>
         /// <param name="bN">Birth Name</param>
-        public void saveNewPatientSecData(string dTB, string bP, string aZ, string aC, string aS, string aN, string dP, string dE, string bM, string bN)
+        public void saveNewPatientSecData(string dTB, string bP, string aZ, string aC, string aS, string aN, string dP, string dE, string bM, string bN, string comment)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
@@ -171,7 +220,9 @@ namespace FOR.Model
             cmd.Parameters.AddWithValue("@mother_name", bM);
             cmd.Parameters.AddWithValue("@birth_name", bN);
             cmd.ExecuteNonQuery();
-            mysql.close();
+            string getID = "SELECT patient_id FROM patient_sec, patient WHERE  patient.tb="+tb+" AND patient.id=patient_sec.patient_id;";
+            setComment(mysql.getOneData(getID), comment);
+
         }
         /// <summary>
         /// létrehozza a patientweb adattáblát

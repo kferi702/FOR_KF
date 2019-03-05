@@ -46,6 +46,7 @@ namespace FOR.View
             mTextboxTB.Text = controller.getPatientTB();
             mTextboxPhone.Text = controller.getPatientPhone();
             mTextboxEmail.Text = controller.getPatientEmail();
+            mTextboxComment.Text = controller.getPatientComment();
         }
         private void textboxEditable()
         {

@@ -83,19 +83,12 @@ namespace FOR.Model
 
         public string setWelcomeLabel(int id)
         {
-
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-
-            string query = "SELECT staff.name FROM staff WHERE staff.id=@id;";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@id", id);
-            string welcomeLabel = cmd.ExecuteScalar().ToString();
-            mysql.close();
-
-            return welcomeLabel;
+            string query = "SELECT staff.name FROM staff WHERE staff.id="+id+";";
+            return mysql.getOneData(query);
         }
     }
 }
