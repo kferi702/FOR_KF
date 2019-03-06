@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Már 06. 17:22
+-- Létrehozás ideje: 2019. Már 06. 21:50
 -- Kiszolgáló verziója: 10.1.38-MariaDB
 -- PHP verzió: 7.3.2
 
@@ -98,6 +98,38 @@ CREATE TABLE `patient_visits` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `patient_visits`
+--
+
+INSERT INTO `patient_visits` (`id`, `patient_id`, `date`) VALUES
+(1, 1, '2019-03-06 20:09:55'),
+(2, 1, '2019-03-03 04:17:43'),
+(3, 2, '2019-03-06 20:10:18'),
+(4, 1, '2019-03-06 20:53:55'),
+(5, 1, '2019-03-06 21:00:42'),
+(6, 2, '2019-03-06 21:01:51'),
+(7, 2, '2019-03-06 21:01:52'),
+(8, 2, '2019-03-06 21:02:00'),
+(9, 1, '2019-03-06 21:04:32'),
+(10, 1, '2019-03-06 21:05:42'),
+(11, 1, '2019-03-06 21:06:31'),
+(12, 1, '2019-03-06 21:06:38'),
+(13, 1, '2019-03-06 21:08:53'),
+(14, 1, '2019-03-06 21:09:09'),
+(15, 1, '2019-03-06 21:09:11'),
+(16, 1, '2019-03-06 21:09:42'),
+(17, 2, '2019-03-06 21:26:59'),
+(18, 1, '2019-03-06 21:30:12'),
+(19, 2, '2019-03-06 21:31:54'),
+(20, 17, '2019-03-06 21:32:47'),
+(21, 17, '2019-03-06 21:33:17'),
+(22, 17, '2019-03-06 21:33:53'),
+(23, 17, '2019-03-06 21:33:54'),
+(24, 1, '2019-03-06 21:36:03'),
+(25, 20, '2019-03-06 21:36:13'),
+(26, 20, '2019-03-06 21:37:03');
+
 -- --------------------------------------------------------
 
 --
@@ -160,7 +192,8 @@ ALTER TABLE `patient_sec`
 -- A tábla indexei `patient_visits`
 --
 ALTER TABLE `patient_visits`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_id` (`patient_id`);
 
 --
 -- A tábla indexei `patienweb`
@@ -187,7 +220,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT a táblához `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT a táblához `patient_visits`
+--
+ALTER TABLE `patient_visits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT a táblához `staff`
@@ -204,6 +243,12 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `patient_sec`
   ADD CONSTRAINT `patient_sec_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `patient_visits`
+--
+ALTER TABLE `patient_visits`
+  ADD CONSTRAINT `patient_visits_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `patienweb`
