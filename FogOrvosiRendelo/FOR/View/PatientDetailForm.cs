@@ -34,7 +34,7 @@ namespace FOR.View
             
         }
 
-        private void metroTile1_Click(object sender, EventArgs e) => patDetForm.Hide();
+        private void metroTile1_Click(object sender, EventArgs e) => controller.hideForm(this);
         private void loadPatientDetail() { 
             labelPatientName.Text ="Páciens neve "+controller.getPatientName();
             mTextboxName.Text = controller.getPatientName();

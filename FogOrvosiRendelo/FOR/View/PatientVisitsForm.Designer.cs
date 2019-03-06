@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.labelPacientName = new System.Windows.Forms.Label();
-            this.listViewVisits = new MetroFramework.Controls.MetroListView();
-            this.Dátum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mTextboxMessage = new MetroFramework.Controls.MetroTextBox();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
-            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.mTileVisitsEditSave = new MetroFramework.Controls.MetroTile();
+            this.mTileCancel = new MetroFramework.Controls.MetroTile();
+            this.mTileDelete = new MetroFramework.Controls.MetroTile();
+            this.mTileNewVisits = new MetroFramework.Controls.MetroTile();
+            this.listViewVisits = new System.Windows.Forms.ListView();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // labelPacientName
@@ -47,26 +48,6 @@
             this.labelPacientName.Size = new System.Drawing.Size(61, 23);
             this.labelPacientName.TabIndex = 0;
             this.labelPacientName.Text = "label1";
-            // 
-            // listViewVisits
-            // 
-            this.listViewVisits.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Dátum});
-            this.listViewVisits.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.listViewVisits.FullRowSelect = true;
-            this.listViewVisits.Location = new System.Drawing.Point(12, 63);
-            this.listViewVisits.Name = "listViewVisits";
-            this.listViewVisits.OwnerDraw = true;
-            this.listViewVisits.Size = new System.Drawing.Size(170, 368);
-            this.listViewVisits.TabIndex = 1;
-            this.listViewVisits.UseCompatibleStateImageBehavior = false;
-            this.listViewVisits.UseSelectable = true;
-            this.listViewVisits.View = System.Windows.Forms.View.List;
-            this.listViewVisits.SelectedIndexChanged += new System.EventHandler(this.ListViewVisits_SelectedIndexChanged);
-            // 
-            // Dátum
-            // 
-            this.Dátum.Text = "Dátum";
             // 
             // mTextboxMessage
             // 
@@ -99,62 +80,91 @@
             this.mTextboxMessage.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mTextboxMessage.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroTile1
+            // mTileVisitsEditSave
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(314, 331);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(120, 100);
-            this.metroTile1.TabIndex = 3;
-            this.metroTile1.Text = "Szerkesztés/\r\nMentés";
-            this.metroTile1.UseSelectable = true;
+            this.mTileVisitsEditSave.ActiveControl = null;
+            this.mTileVisitsEditSave.Location = new System.Drawing.Point(314, 331);
+            this.mTileVisitsEditSave.Name = "mTileVisitsEditSave";
+            this.mTileVisitsEditSave.Size = new System.Drawing.Size(120, 100);
+            this.mTileVisitsEditSave.TabIndex = 3;
+            this.mTileVisitsEditSave.Text = "Szerkesztés/\r\nMentés";
+            this.mTileVisitsEditSave.UseSelectable = true;
             // 
-            // metroTile2
+            // mTileCancel
             // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(440, 331);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(120, 100);
-            this.metroTile2.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroTile2.TabIndex = 4;
-            this.metroTile2.Text = "Vissza";
-            this.metroTile2.UseSelectable = true;
-            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
+            this.mTileCancel.ActiveControl = null;
+            this.mTileCancel.Location = new System.Drawing.Point(440, 331);
+            this.mTileCancel.Name = "mTileCancel";
+            this.mTileCancel.Size = new System.Drawing.Size(120, 100);
+            this.mTileCancel.Style = MetroFramework.MetroColorStyle.Silver;
+            this.mTileCancel.TabIndex = 4;
+            this.mTileCancel.Text = "Vissza";
+            this.mTileCancel.UseSelectable = true;
+            this.mTileCancel.Click += new System.EventHandler(this.metroTile2_Click);
             // 
-            // metroTile3
+            // mTileDelete
             // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.Location = new System.Drawing.Point(566, 331);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(120, 100);
-            this.metroTile3.Style = MetroFramework.MetroColorStyle.Red;
-            this.metroTile3.TabIndex = 5;
-            this.metroTile3.Text = "Törlés";
-            this.metroTile3.UseSelectable = true;
-            this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
+            this.mTileDelete.ActiveControl = null;
+            this.mTileDelete.Location = new System.Drawing.Point(566, 331);
+            this.mTileDelete.Name = "mTileDelete";
+            this.mTileDelete.Size = new System.Drawing.Size(120, 100);
+            this.mTileDelete.Style = MetroFramework.MetroColorStyle.Red;
+            this.mTileDelete.TabIndex = 5;
+            this.mTileDelete.Text = "Törlés";
+            this.mTileDelete.UseSelectable = true;
+            this.mTileDelete.Click += new System.EventHandler(this.mTileDelete_Click);
             // 
-            // metroTile4
+            // mTileNewVisits
             // 
-            this.metroTile4.ActiveControl = null;
-            this.metroTile4.Location = new System.Drawing.Point(188, 331);
-            this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(120, 100);
-            this.metroTile4.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroTile4.TabIndex = 6;
-            this.metroTile4.Text = "Új bejegyzés";
-            this.metroTile4.UseSelectable = true;
+            this.mTileNewVisits.ActiveControl = null;
+            this.mTileNewVisits.Location = new System.Drawing.Point(188, 331);
+            this.mTileNewVisits.Name = "mTileNewVisits";
+            this.mTileNewVisits.Size = new System.Drawing.Size(120, 100);
+            this.mTileNewVisits.Style = MetroFramework.MetroColorStyle.Green;
+            this.mTileNewVisits.TabIndex = 6;
+            this.mTileNewVisits.Text = "Új bejegyzés";
+            this.mTileNewVisits.UseSelectable = true;
+            this.mTileNewVisits.Click += new System.EventHandler(this.mTileNewVisits_Click);
+            // 
+            // listViewVisits
+            // 
+            this.listViewVisits.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.id,
+            this.date});
+            this.listViewVisits.FullRowSelect = true;
+            this.listViewVisits.LabelWrap = false;
+            this.listViewVisits.Location = new System.Drawing.Point(6, 63);
+            this.listViewVisits.MultiSelect = false;
+            this.listViewVisits.Name = "listViewVisits";
+            this.listViewVisits.Size = new System.Drawing.Size(176, 368);
+            this.listViewVisits.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listViewVisits.TabIndex = 7;
+            this.listViewVisits.UseCompatibleStateImageBehavior = false;
+            this.listViewVisits.View = System.Windows.Forms.View.Details;
+            this.listViewVisits.SelectedIndexChanged += new System.EventHandler(this.listViewVisits_SelectedIndexChanged);
+            this.listViewVisits.Click += new System.EventHandler(this.listViewVisits_Click);
+            // 
+            // id
+            // 
+            this.id.Text = "id";
+            this.id.Width = 0;
+            // 
+            // date
+            // 
+            this.date.Text = "dt";
+            this.date.Width = 168;
             // 
             // PatientVisitsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.metroTile4);
-            this.Controls.Add(this.metroTile3);
-            this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile1);
-            this.Controls.Add(this.mTextboxMessage);
+            this.ClientSize = new System.Drawing.Size(714, 450);
             this.Controls.Add(this.listViewVisits);
+            this.Controls.Add(this.mTileNewVisits);
+            this.Controls.Add(this.mTileDelete);
+            this.Controls.Add(this.mTileCancel);
+            this.Controls.Add(this.mTileVisitsEditSave);
+            this.Controls.Add(this.mTextboxMessage);
             this.Controls.Add(this.labelPacientName);
             this.Name = "PatientVisitsForm";
             this.Text = "Bejegyzések";
@@ -166,12 +176,13 @@
         #endregion
 
         private System.Windows.Forms.Label labelPacientName;
-        private MetroFramework.Controls.MetroListView listViewVisits;
         private MetroFramework.Controls.MetroTextBox mTextboxMessage;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile3;
-        private MetroFramework.Controls.MetroTile metroTile4;
-        private System.Windows.Forms.ColumnHeader Dátum;
+        private MetroFramework.Controls.MetroTile mTileVisitsEditSave;
+        private MetroFramework.Controls.MetroTile mTileCancel;
+        private MetroFramework.Controls.MetroTile mTileDelete;
+        private MetroFramework.Controls.MetroTile mTileNewVisits;
+        private System.Windows.Forms.ListView listViewVisits;
+        private System.Windows.Forms.ColumnHeader id;
+        private System.Windows.Forms.ColumnHeader date;
     }
 }

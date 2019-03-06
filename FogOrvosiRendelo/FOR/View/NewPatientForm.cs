@@ -67,7 +67,7 @@ namespace FOR
             return controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email,comment);
         }
 
-        private void mTileCancel_Click(object sender, EventArgs e) => newPF.Hide();
+        private void mTileCancel_Click(object sender, EventArgs e) => controller.hideForm(this);
 
         private void mTileSave_Click(object sender, EventArgs e)
         {

@@ -67,20 +67,49 @@ namespace FOR.Model
 
         }
 
-        public ListView loadListViewVisits(string pac_id, MetroListView lvv)
+        public string showSelectedVisits(string id)
+        {
+            ///Az  üzenezt kikeresése a mappákbó!!!!
+            ///
+            string message = id;
+            return message;
+        }
+
+        public void newVisits(string pat_id, string text)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "INSERT INTO patient_visits(patient_id,date) VALUES(@pat_id,CURRENT_TIMESTAMP);";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@pat_id", pat_id);
+            cmd.ExecuteNonQuery();
+            string fname = trimDate(mysql.getOneData("SELECT date FROM patient_visits WHERE patient_id=" + pat_id + " ORDER BY id DESC LIMIT 1;"));
+            mysql.close();
+            string path = Environment.CurrentDirectory + "/Visits/"+pat_id+"/"+fname+".txt";
+            FileInfo file = new FileInfo(path);
+            file.Directory.Create();
+            File.AppendAllText(path, text, Encoding.Default);
+        }
+
+        public ListView loadListViewVisits(string pat_id, ListView lvv)
         {
             lvv.Items.Clear();
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "";
+            string query = "SELECT id, date FROM patient_visits " +
+                "WHERE patient_id=@pat_id";
             cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@pat_id", pat_id);
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 ListViewItem lvi = new ListViewItem();
-
+                lvi.Text = dr["id"].ToString();
+                lvi.SubItems.Add(dr["date"].ToString());
                 lvv.Items.Add(lvi);
             }
             dr.Close();
@@ -88,20 +117,19 @@ namespace FOR.Model
             return lvv;
         }
 
-        public void deleteVisits(string pac_id, string selDate)
+        public void deleteVisits(string pat_id, string selDate)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "DELETE FROM patient_visits WHERE pac_id=@pac_id AND date=@date";
+            string query = "DELETE FROM patient_visits WHERE pat_id=@pat_id AND date=@date";
             cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@pac_id", pac_id);
+            cmd.Parameters.AddWithValue("@pat_id", pat_id);
             cmd.Parameters.AddWithValue("@date", selDate);
             cmd.ExecuteNonQuery();
             mysql.close();
         }
-
         public string getPatientID() => id;
         public string getPatientName() => name;
         public string getPatientAddress() => address;
@@ -156,12 +184,9 @@ namespace FOR.Model
         /// </summary>
         /// <param name="bD">Birth date</param>
         /// <returns></returns>
-        private string trimBirthDate(string bD)
+        private string trimDate(string bD)
         {
-            string trimBD = bD.Remove(4, 2);
-            trimBD = trimBD.Remove(6, 2);
-            trimBD = trimBD.Remove(8);
-            return trimBD;
+            return bD.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty);
         }
         /// <summary>
         /// Save patient details data to database
@@ -228,7 +253,7 @@ namespace FOR.Model
             string query = "INSERT INTO patient(name,birthdate,tb) VALUES(@name,@birthdate,@tb);";
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@name", nT + " " + nF + " " + nL);
-            cmd.Parameters.AddWithValue("@birthdate", trimBirthDate(bD));
+            cmd.Parameters.AddWithValue("@birthdate", trimDate(bD));
             cmd.Parameters.AddWithValue("@tb", dTB);
             cmd.ExecuteNonQuery();
             mysql.close();
@@ -283,7 +308,7 @@ namespace FOR.Model
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@tb", dTB);
             cmd.Parameters.AddWithValue("@username",dTB);
-            cmd.Parameters.AddWithValue("@password", trimBirthDate(bD));
+            cmd.Parameters.AddWithValue("@password", trimDate(bD));
             cmd.ExecuteNonQuery();
             mysql.close();
         }

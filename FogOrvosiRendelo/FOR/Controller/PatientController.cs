@@ -27,7 +27,13 @@ namespace FOR.Controller
         public string getPatientID() => model.getPatientID();
         public string getPatientName() => model.getPatientName();
         public string getPatientAddress() => model.getPatientAddress();
-        public void loadListViewVisits(string pac_id, MetroListView listViewVisits) => model.loadListViewVisits(pac_id, listViewVisits);
+        public void loadListViewVisits(string pat_id, ListView listViewVisits) => model.loadListViewVisits(pat_id, listViewVisits);
+
+        public void hideForm(Form form)
+        {
+            form.Hide();
+        }
+
         public string getPatientBirthDate() => model.getPatientBirthDate();
         public string getPatientBirthPlace() => model.getPatientBirthPlace();
         public string getPatientBirthName() => model.getPatientBirthName();
@@ -36,6 +42,12 @@ namespace FOR.Controller
         public string getPatientEmail() => model.getPatientEmail();
         public string getPatientTB() => model.getPatientTB();
         public string getPatientComment() => model.getPatientComment();
+        public void newVisits(string pat_id, string text) => model.newVisits(pat_id, text);
+
+        public string showSelectedVisits(string id)
+        {
+            return model.showSelectedVisits(id);
+        }
 
         public void deleteVisits(string pac_id, string selDate)
         {
@@ -44,6 +56,8 @@ namespace FOR.Controller
                 model.deleteVisits(pac_id,selDate);
             return;
         }
+
+
 
         /// <summary>
         /// Check all data from NewPatientForm and EditPatientDataForm before save them
