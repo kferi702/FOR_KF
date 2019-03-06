@@ -44,7 +44,6 @@ namespace FOR
         }
         private void mTileDelete_Click(object sender, EventArgs e)
         {
-
             if (listViewPatient.SelectedItems.Count != 0)
             {
                 string selName = listViewPatient.SelectedItems[0].SubItems[0].Text;
@@ -56,6 +55,11 @@ namespace FOR
         {
             if(listViewPatient.SelectedItems.Count!=0)
                 controller.patientDetail(listViewPatient.SelectedItems[0].SubItems[2].Text);
+        }
+        private void mTileVisits_Click(object sender, EventArgs e)
+        {
+            if (listViewPatient.SelectedItems.Count != 0)
+                controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text);
         }
     }
 }

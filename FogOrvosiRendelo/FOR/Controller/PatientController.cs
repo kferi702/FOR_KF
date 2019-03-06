@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using FOR.Model;
 using FOR.View;
+using MetroFramework.Controls;
 
 namespace FOR.Controller
 {
@@ -20,12 +22,12 @@ namespace FOR.Controller
         }
 
         public void loadPatientDetail(string tb) => model.loadPatientDetail(tb);
-        public string setPatientLabel() => model.setPatientLabel();
         public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment) => model.savePatientDetails(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
 
         public string getPatientID() => model.getPatientID();
         public string getPatientName() => model.getPatientName();
         public string getPatientAddress() => model.getPatientAddress();
+        public void loadListViewVisits(string pac_id, MetroListView listViewVisits) => model.loadListViewVisits(pac_id, listViewVisits);
         public string getPatientBirthDate() => model.getPatientBirthDate();
         public string getPatientBirthPlace() => model.getPatientBirthPlace();
         public string getPatientBirthName() => model.getPatientBirthName();
@@ -34,6 +36,14 @@ namespace FOR.Controller
         public string getPatientEmail() => model.getPatientEmail();
         public string getPatientTB() => model.getPatientTB();
         public string getPatientComment() => model.getPatientComment();
+
+        public void deleteVisits(string pac_id, string selDate)
+        {
+            DialogResult delete = MessageBox.Show("Biztosan törli véglegesen a " + selDate + " számú bejegyzést az adatbázisból?", "Törlés megerősítése", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (delete == DialogResult.Yes)
+                model.deleteVisits(pac_id,selDate);
+            return;
+        }
 
         /// <summary>
         /// Check all data from NewPatientForm and EditPatientDataForm before save them

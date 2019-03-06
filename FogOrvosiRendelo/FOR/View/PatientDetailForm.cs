@@ -23,8 +23,9 @@ namespace FOR.View
 
         public PatientDetailForm(string tb)
         {
-            this.tb = tb;
             controller = new PatientController();
+            controller.loadPatientDetail(tb);
+            this.tb = tb;
             patDetForm = this;
             InitializeComponent();
             loadPatientDetail();
@@ -35,8 +36,7 @@ namespace FOR.View
 
         private void metroTile1_Click(object sender, EventArgs e) => patDetForm.Hide();
         private void loadPatientDetail() { 
-            controller.loadPatientDetail(tb);
-            labelPatientName.Text ="Páciens neve "+controller.setPatientLabel().ToString();
+            labelPatientName.Text ="Páciens neve "+controller.getPatientName();
             mTextboxName.Text = controller.getPatientName();
             mTextboxAddress.Text = controller.getPatientAddress();
             mTextboxBirthDate.Text = controller.getPatientBirthDate();

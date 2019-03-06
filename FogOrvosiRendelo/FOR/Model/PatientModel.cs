@@ -1,4 +1,5 @@
 ﻿using FOR.View;
+using MetroFramework.Controls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,6 @@ namespace FOR.Model
         {
 
         }
-
         public void loadPatientDetail(string tb)
         {
             MySqlComm mysql = new MySqlComm();
@@ -60,15 +60,47 @@ namespace FOR.Model
                 this.tb = tb;
                 this.comment = getComment(id);
             }
-
             dr.Close();
             string getID = "SELECT patient_id FROM patient_sec, patient WHERE  patient.tb=" + tb + " AND patient.id=patient_sec.patient_id;";
             this.comment = getComment(mysql.getOneData(getID));
             mysql.close();
 
-
         }
 
+        public ListView loadListViewVisits(string pac_id, MetroListView lvv)
+        {
+            lvv.Items.Clear();
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "";
+            cmd = mysql.getConnect(query);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ListViewItem lvi = new ListViewItem();
+
+                lvv.Items.Add(lvi);
+            }
+            dr.Close();
+            mysql.close();
+            return lvv;
+        }
+
+        public void deleteVisits(string pac_id, string selDate)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "DELETE FROM patient_visits WHERE pac_id=@pac_id AND date=@date";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@pac_id", pac_id);
+            cmd.Parameters.AddWithValue("@date", selDate);
+            cmd.ExecuteNonQuery();
+            mysql.close();
+        }
 
         public string getPatientID() => id;
         public string getPatientName() => name;
@@ -89,13 +121,21 @@ namespace FOR.Model
         public string getComment(string id)
         {
             string path= Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
-            FileInfo file = new FileInfo(path);
-            //if(file.Exists())
+            try
+            {
+                FileInfo file = new FileInfo(path);
                 file.Directory.Create();
-            FileStream fs = file.Create();
-            fs.Close();
+                return File.ReadAllText(path, Encoding.Default);
+            }
+            catch(FileNotFoundException)
+            {
+                FileInfo file = new FileInfo(path);
+                FileStream fs = file.Create();
+                fs.Close();
+                return File.ReadAllText(path, Encoding.Default);
+            }
             
-            return File.ReadAllText(path, Encoding.Default);
+            
         }
         /// <summary>
         /// Save text to patient comment file.
@@ -110,6 +150,18 @@ namespace FOR.Model
             file.Directory.Create();
             File.WriteAllText(path, text, Encoding.Default);
             return comment;
+        }
+        /// <summary>
+        /// Trimmeli a születési dátumot
+        /// </summary>
+        /// <param name="bD">Birth date</param>
+        /// <returns></returns>
+        private string trimBirthDate(string bD)
+        {
+            string trimBD = bD.Remove(4, 2);
+            trimBD = trimBD.Remove(6, 2);
+            trimBD = trimBD.Remove(8);
+            return trimBD;
         }
         /// <summary>
         /// Save patient details data to database
@@ -158,15 +210,6 @@ namespace FOR.Model
 
             comment = setComment(id,comment);
             
-        }
-        public string setPatientLabel()
-        {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query = "SELECT patient.name FROM patient WHERE patient.tb="+tb+";";
-            return mysql.getOneData(query);
         }
         /// <summary>
         /// Létrehozza a patient adattáblát
@@ -244,17 +287,6 @@ namespace FOR.Model
             cmd.ExecuteNonQuery();
             mysql.close();
         }
-        /// <summary>
-        /// Trimmeli a születési dátumot
-        /// </summary>
-        /// <param name="bD">Birth date</param>
-        /// <returns></returns>
-        private string trimBirthDate(string bD)
-        {
-            string trimBD = bD.Remove(4,2);
-            trimBD=trimBD.Remove(6, 2);
-            trimBD=trimBD.Remove(8);
-            return trimBD;
-        }
+
     }
 }

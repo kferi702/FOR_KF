@@ -13,8 +13,9 @@ namespace FOR.Controller
     class MainController
     {
         MainModel model;
-        NewPatientForm newPF;
+        NewPatientForm newPatientF;
         PatientDetailForm patientDetailF;
+        PatientVisitsForm patientVisitsF;
 
         public MainController()
         {
@@ -34,14 +35,20 @@ namespace FOR.Controller
 
         public void addNewPatient()
         {
-            newPF = new NewPatientForm();
-            newPF.Show();
+            newPatientF = new NewPatientForm();
+            newPatientF.Show();
         }
 
         public void patientDetail(string tb)
         {
             patientDetailF = new PatientDetailForm(tb);
             patientDetailF.Show();
+        }
+
+        public void patientVisits(string tb)
+        {
+            patientVisitsF = new PatientVisitsForm(tb);
+            patientVisitsF.Show();
         }
     }
 }

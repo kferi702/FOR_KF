@@ -18,7 +18,6 @@ namespace FOR.Model
         private MySqlConnection conn;
         private MySqlCommand cmd;
 
-
         public void setConnServer(string server, string database, string port, string ssl)
         {
             this.server = server;
@@ -26,13 +25,11 @@ namespace FOR.Model
             this.port = port;
             this.ssl = ssl;
         }
-
         public void setConnUser(string username, string password)
         {
             this.username = username;
             this.password = password;
         }
-
         public void makeConn()
         {
             string connectionString =
@@ -67,7 +64,6 @@ namespace FOR.Model
         {
             cmd = getConnect(query);
             return cmd.ExecuteScalar().ToString();
-            close();
         }
         public void open()
         {

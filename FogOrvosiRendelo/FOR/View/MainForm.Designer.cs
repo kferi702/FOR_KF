@@ -138,11 +138,12 @@
             this.mTileDetail2.Size = new System.Drawing.Size(268, 102);
             this.mTileDetail2.Style = MetroFramework.MetroColorStyle.Teal;
             this.mTileDetail2.TabIndex = 10;
-            this.mTileDetail2.Text = "Páciens kórtörténet";
+            this.mTileDetail2.Text = "\r\nPáciens kórtörténete/\r\nÚj bejegyzés\r\n\r\n";
             this.mTileDetail2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.mTileDetail2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.mTileDetail2.UseSelectable = true;
             this.mTileDetail2.UseTileImage = true;
+            this.mTileDetail2.Click += new System.EventHandler(this.mTileVisits_Click);
             // 
             // mTileNewPatient
             // 

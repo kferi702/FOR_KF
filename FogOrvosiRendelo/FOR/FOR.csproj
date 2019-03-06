@@ -90,6 +90,12 @@
     <Compile Include="View\PatientDetailForm.Designer.cs">
       <DependentUpon>PatientDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientVisitsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientVisitsForm.Designer.cs">
+      <DependentUpon>PatientVisitsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +117,9 @@
     </Compile>
     <EmbeddedResource Include="View\PatientDetailForm.resx">
       <DependentUpon>PatientDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientVisitsForm.resx">
+      <DependentUpon>PatientVisitsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
