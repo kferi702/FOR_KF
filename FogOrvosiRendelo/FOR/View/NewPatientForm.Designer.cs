@@ -40,8 +40,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxNameLast = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.comboBoxNameTitle = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.textBoxNameFirst = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -158,9 +156,9 @@
             this.groupBox1.Controls.Add(this.textBoxAddressCity);
             this.groupBox1.Controls.Add(this.textBoxAddressZip);
             this.groupBox1.Controls.Add(this.metroLabel3);
-            this.groupBox1.Location = new System.Drawing.Point(24, 284);
+            this.groupBox1.Location = new System.Drawing.Point(24, 235);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(264, 163);
+            this.groupBox1.Size = new System.Drawing.Size(264, 171);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cím";
@@ -248,13 +246,11 @@
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.textBoxNameLast);
             this.groupBox2.Controls.Add(this.metroLabel7);
-            this.groupBox2.Controls.Add(this.comboBoxNameTitle);
-            this.groupBox2.Controls.Add(this.metroLabel6);
             this.groupBox2.Controls.Add(this.textBoxNameFirst);
             this.groupBox2.Controls.Add(this.metroLabel1);
             this.groupBox2.Location = new System.Drawing.Point(24, 64);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(263, 214);
+            this.groupBox2.Size = new System.Drawing.Size(263, 165);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Név";
@@ -274,7 +270,7 @@
             this.textBoxNameLast.CustomButton.UseSelectable = true;
             this.textBoxNameLast.CustomButton.Visible = false;
             this.textBoxNameLast.Lines = new string[0];
-            this.textBoxNameLast.Location = new System.Drawing.Point(14, 134);
+            this.textBoxNameLast.Location = new System.Drawing.Point(24, 95);
             this.textBoxNameLast.MaxLength = 32767;
             this.textBoxNameLast.Name = "textBoxNameLast";
             this.textBoxNameLast.PasswordChar = '\0';
@@ -292,31 +288,11 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(14, 112);
+            this.metroLabel7.Location = new System.Drawing.Point(24, 73);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(73, 19);
             this.metroLabel7.TabIndex = 4;
             this.metroLabel7.Text = "Keresztnév:";
-            // 
-            // comboBoxNameTitle
-            // 
-            this.comboBoxNameTitle.FormattingEnabled = true;
-            this.comboBoxNameTitle.IntegralHeight = false;
-            this.comboBoxNameTitle.ItemHeight = 23;
-            this.comboBoxNameTitle.Location = new System.Drawing.Point(73, 15);
-            this.comboBoxNameTitle.Name = "comboBoxNameTitle";
-            this.comboBoxNameTitle.Size = new System.Drawing.Size(58, 29);
-            this.comboBoxNameTitle.TabIndex = 1;
-            this.comboBoxNameTitle.UseSelectable = true;
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(18, 16);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(49, 19);
-            this.metroLabel6.TabIndex = 2;
-            this.metroLabel6.Text = "Előtag:";
             // 
             // textBoxNameFirst
             // 
@@ -333,7 +309,7 @@
             this.textBoxNameFirst.CustomButton.UseSelectable = true;
             this.textBoxNameFirst.CustomButton.Visible = false;
             this.textBoxNameFirst.Lines = new string[0];
-            this.textBoxNameFirst.Location = new System.Drawing.Point(14, 86);
+            this.textBoxNameFirst.Location = new System.Drawing.Point(24, 47);
             this.textBoxNameFirst.MaxLength = 32767;
             this.textBoxNameFirst.Name = "textBoxNameFirst";
             this.textBoxNameFirst.PasswordChar = '\0';
@@ -351,7 +327,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(14, 64);
+            this.metroLabel1.Location = new System.Drawing.Point(24, 25);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(76, 19);
             this.metroLabel1.TabIndex = 0;
@@ -688,9 +664,9 @@
             // mTileCancel
             // 
             this.mTileCancel.ActiveControl = null;
-            this.mTileCancel.Location = new System.Drawing.Point(160, 453);
+            this.mTileCancel.Location = new System.Drawing.Point(160, 412);
             this.mTileCancel.Name = "mTileCancel";
-            this.mTileCancel.Size = new System.Drawing.Size(130, 82);
+            this.mTileCancel.Size = new System.Drawing.Size(130, 123);
             this.mTileCancel.Style = MetroFramework.MetroColorStyle.Red;
             this.mTileCancel.TabIndex = 17;
             this.mTileCancel.Text = "Vissza";
@@ -700,9 +676,9 @@
             // mTileSave
             // 
             this.mTileSave.ActiveControl = null;
-            this.mTileSave.Location = new System.Drawing.Point(24, 453);
+            this.mTileSave.Location = new System.Drawing.Point(24, 412);
             this.mTileSave.Name = "mTileSave";
-            this.mTileSave.Size = new System.Drawing.Size(130, 82);
+            this.mTileSave.Size = new System.Drawing.Size(130, 123);
             this.mTileSave.Style = MetroFramework.MetroColorStyle.Green;
             this.mTileSave.TabIndex = 16;
             this.mTileSave.Text = "Mentés";
@@ -747,8 +723,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroTextBox textBoxNameLast;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroComboBox comboBoxNameTitle;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox textBoxNameFirst;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.GroupBox groupBox3;

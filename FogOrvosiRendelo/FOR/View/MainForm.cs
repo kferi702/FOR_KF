@@ -33,10 +33,10 @@ namespace FOR
 
         private void setWelcomeLabel() => labelWelcome.Text = controller.setWelcomeLabel(id);
         private void loadListViewPatient() => controller.loadListViewPatient(listViewPatient);
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
         private void textBoxSearch_TextChanged(object sender, EventArgs e) => controller.searchPatient(listViewPatient, textBoxSearch.Text);
         private void mTileNewPatient_Click(object sender, EventArgs e) => controller.addNewPatient();
         private void mTileRefreshDB_Click(object sender, EventArgs e) => controller.loadListViewPatient(listViewPatient);
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
         private void listViewPatient_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count < 0)
@@ -49,6 +49,7 @@ namespace FOR
                 string selName = listViewPatient.SelectedItems[0].SubItems[0].Text;
                 string selTB = listViewPatient.SelectedItems[0].SubItems[2].Text;
                 controller.deletePatient(selName, selTB);
+                loadListViewPatient();
             }
         }
         private void mTileDetail_Click(object sender, EventArgs e)
@@ -61,5 +62,8 @@ namespace FOR
             if (listViewPatient.SelectedItems.Count != 0)
                 controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text);
         }
+
+        private void MainForm_Activated(object sender, EventArgs e) => loadListViewPatient();
+
     }
 }

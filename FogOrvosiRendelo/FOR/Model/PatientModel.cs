@@ -66,9 +66,6 @@ namespace FOR.Model
             mysql.close();
 
         }
-
-
-
         public ListView loadListViewVisits(string pat_id, ListView lvv)
         {
             lvv.Items.Clear();
@@ -243,12 +240,12 @@ namespace FOR.Model
         /// <summary>
         /// Létrehozza a patient adattáblát
         /// </summary>
-        /// <param name="dTB">Tb number</param>
+        /// <param name="tb">Tb number</param>
         /// <param name="nT">Name title</param>
-        /// <param name="nF">First name</param>
-        /// <param name="nL">Last name</param>
-        /// <param name="bD">Birth date</param>
-        public void saveNewPatientData(string dTB, string nT, string nF, string nL, string bD)
+        /// <param name="firstName">First name</param>
+        /// <param name="lastName">Last name</param>
+        /// <param name="birthDate">Birth date</param>
+        public void saveNewPatientData(string tb, string firstName, string lastName, string birthDate)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
@@ -256,9 +253,9 @@ namespace FOR.Model
             mysql.open();
             string query = "INSERT INTO patient(name,birthdate,tb) VALUES(@name,@birthdate,@tb);";
             cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@name", nT + " " + nF + " " + nL);
-            cmd.Parameters.AddWithValue("@birthdate", trimDate(bD));
-            cmd.Parameters.AddWithValue("@tb", dTB);
+            cmd.Parameters.AddWithValue("@name", firstName + " " + lastName);
+            cmd.Parameters.AddWithValue("@birthdate", trimDate(birthDate));
+            cmd.Parameters.AddWithValue("@tb", tb);
             cmd.ExecuteNonQuery();
             mysql.close();
         }
@@ -292,7 +289,7 @@ namespace FOR.Model
             cmd.Parameters.AddWithValue("@mother_name", bM);
             cmd.Parameters.AddWithValue("@birth_name", bN);
             cmd.ExecuteNonQuery();
-            string getID = "SELECT patient_id FROM patient_sec, patient WHERE  patient.tb="+tb+" AND patient.id=patient_sec.patient_id;";
+            string getID = "SELECT id FROM patient WHERE  patient.tb="+ dTB + ";";
             setComment(mysql.getOneData(getID), comment);
 
         }
@@ -303,6 +300,7 @@ namespace FOR.Model
         /// <param name="bD">Birth date</param>
         public void saveNewPatientWebData(string dTB, string bD)
         {
+
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
@@ -316,6 +314,5 @@ namespace FOR.Model
             cmd.ExecuteNonQuery();
             mysql.close();
         }
-
     }
 }

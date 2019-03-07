@@ -55,9 +55,9 @@
             // 
             // 
             this.mTextboxMessage.CustomButton.Image = null;
-            this.mTextboxMessage.CustomButton.Location = new System.Drawing.Point(250, 2);
+            this.mTextboxMessage.CustomButton.Location = new System.Drawing.Point(238, 2);
             this.mTextboxMessage.CustomButton.Name = "";
-            this.mTextboxMessage.CustomButton.Size = new System.Drawing.Size(245, 245);
+            this.mTextboxMessage.CustomButton.Size = new System.Drawing.Size(257, 257);
             this.mTextboxMessage.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.mTextboxMessage.CustomButton.TabIndex = 1;
             this.mTextboxMessage.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -74,7 +74,7 @@
             this.mTextboxMessage.SelectionLength = 0;
             this.mTextboxMessage.SelectionStart = 0;
             this.mTextboxMessage.ShortcutsEnabled = true;
-            this.mTextboxMessage.Size = new System.Drawing.Size(498, 250);
+            this.mTextboxMessage.Size = new System.Drawing.Size(498, 262);
             this.mTextboxMessage.TabIndex = 2;
             this.mTextboxMessage.UseSelectable = true;
             this.mTextboxMessage.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -87,8 +87,9 @@
             this.mTileVisitsEditSave.Name = "mTileVisitsEditSave";
             this.mTileVisitsEditSave.Size = new System.Drawing.Size(120, 100);
             this.mTileVisitsEditSave.TabIndex = 3;
-            this.mTileVisitsEditSave.Text = "Szerkesztés/\r\nMentés";
+            this.mTileVisitsEditSave.Text = "\r\nMentés";
             this.mTileVisitsEditSave.UseSelectable = true;
+            this.mTileVisitsEditSave.Click += new System.EventHandler(this.mTileVisitsEditSave_Click);
             // 
             // mTileCancel
             // 

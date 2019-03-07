@@ -32,6 +32,7 @@ namespace FOR.View
             textboxEditable();
             pac_id = controller.getPatientID();
             
+            
         }
 
         private void metroTile1_Click(object sender, EventArgs e) => controller.hideForm(this);
@@ -68,8 +69,10 @@ namespace FOR.View
         }
         private void mTileEditSave_Click(object sender, EventArgs e)
         {
+            
             if (editable == false)
             {
+                patDetForm.Text = controller.setPatientDetailsFormText(editable);
                 mTextboxName.Enabled = true;
                 mTextboxAddress.Enabled = true;
                 mTextboxBirthDate.Enabled = true;
@@ -83,9 +86,11 @@ namespace FOR.View
                 editable = true;
                 mTileEditSave.Style = MetroFramework.MetroColorStyle.Green;
                 mTileEditSave.Text = "Mentés";
+                
             }
             else
             {
+                patDetForm.Text = controller.setPatientDetailsFormText(editable);
                 string name = mTextboxName.Text;
                 string address = mTextboxAddress.Text;
                 string birthDate = mTextboxBirthDate.Text;

@@ -27,24 +27,39 @@ namespace FOR.View
             patVisForm = this;
             setLabel();
             loadPatientVisits();
+            mTextboxMessage.Enabled = false;
+            mTileVisitsEditSave.Enabled = false;
         }
-        private void loadPatientVisits() => controller.loadListViewVisits(controller.getPatientID(),listViewVisits);
-        private void setLabel() => labelPacientName.Text = controller.getPatientName()+" nevű páciens kórtörténete!";
+        private void loadPatientVisits() => controller.loadListViewVisits(controller.getPatientID(), listViewVisits);
+        private void setLabel() => labelPacientName.Text = controller.getPatientName() + " nevű páciens kórtörténete!";
         private void metroTile2_Click(object sender, EventArgs e) => controller.hideForm(this);
-        private void mTileNewVisits_Click(object sender, EventArgs e) => controller.newVisits(controller.getPatientID(),mTextboxMessage.Text);
         private void listViewVisits_Click(object sender, EventArgs e) => getTextBoxMessage(controller.getSelectedVisits(listViewVisits.SelectedItems[0].SubItems[0].Text));
         private void mTileDelete_Click(object sender, EventArgs e)
         {
             if (listViewVisits.SelectedItems.Count != 0)
-                controller.deleteVisits(listViewVisits.SelectedItems[0].SubItems[0].Text);
+            { 
+            controller.deleteVisits(listViewVisits.SelectedItems[0].SubItems[0].Text);
+            loadPatientVisits();
+            }
         }
         private void getTextBoxMessage(string message) => mTextboxMessage.Text = message;
         private void listViewVisits_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewVisits.SelectedItems.Count < 0)
-                return;
-                
+                return;    
         }
-
+        private void mTileNewVisits_Click(object sender, EventArgs e)
+        {
+            mTextboxMessage.Enabled = true;
+            mTextboxMessage.Clear();
+            mTileVisitsEditSave.Enabled = true;
+        }
+        private void mTileVisitsEditSave_Click(object sender, EventArgs e)
+        {
+                controller.newVisits(controller.getPatientID(), mTextboxMessage.Text);
+                mTextboxMessage.Enabled = false;
+                mTileVisitsEditSave.Enabled = false;
+                loadPatientVisits();
+        }
     }
 }

@@ -16,7 +16,6 @@ namespace FOR
     {
         NewPatientForm newPF;
         PatientController controller;
-        string nameTitle;
         string firstName;
         string lastName;
         string zipCode;
@@ -38,14 +37,13 @@ namespace FOR
             newPF = this;
             InitializeComponent();
             controller = new PatientController();
-            checkData();
+            getFromForm();
 
              
         }
 
-        public bool checkData()
+        public bool getFromForm()
         {
-            nameTitle = comboBoxNameTitle.SelectedText;
             firstName = textBoxNameFirst.Text.Trim();
             lastName = textBoxNameLast.Text.Trim();
 
@@ -64,16 +62,16 @@ namespace FOR
             email = textBoxDataEmail.Text.Trim();
             comment = textBoxComment.Text.Trim();
 
-            return controller.checkData(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email,comment);
+            return controller.checkData(firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email,comment);
         }
 
         private void mTileCancel_Click(object sender, EventArgs e) => controller.hideForm(this);
 
         private void mTileSave_Click(object sender, EventArgs e)
         {
-            if (checkData())
+            if (getFromForm())
             {
-                controller.saveNewPatient(nameTitle, firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email, comment);
+                controller.saveNewPatient(firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email, comment);
                 this.Hide();
             }
             else
