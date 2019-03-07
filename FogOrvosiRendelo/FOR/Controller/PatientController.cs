@@ -37,25 +37,24 @@ namespace FOR.Controller
         public string getPatientBirthDate() => model.getPatientBirthDate();
         public string getPatientBirthPlace() => model.getPatientBirthPlace();
         public string getPatientBirthName() => model.getPatientBirthName();
+
+        public string getSelectedVisits(string id) =>model.getSelectedVisits(id);
         public string getPatientMother() => model.getPatientMother();
+
+        public void deleteVisits(string selVisID)
+        {
+            DialogResult delete = MessageBox.Show("Biztosan törli véglegesen a " + selVisID + " számú bejegyzést az adatbázisból?", "Törlés megerősítése", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (delete == DialogResult.Yes)
+                model.deleteVisits(selVisID);
+            return;
+        }
+
         public string getPatientPhone() => model.getPatientPhone();
         public string getPatientEmail() => model.getPatientEmail();
         public string getPatientTB() => model.getPatientTB();
         public string getPatientComment() => model.getPatientComment();
-        public void newVisits(string pat_id, string text) => model.newVisits(pat_id, text);
+        public void newVisits(string pat_id, string text) => model.setNewVisits(pat_id, text);
 
-        public string showSelectedVisits(string id)
-        {
-            return model.showSelectedVisits(id);
-        }
-
-        public void deleteVisits(string pac_id, string selDate)
-        {
-            DialogResult delete = MessageBox.Show("Biztosan törli véglegesen a " + selDate + " számú bejegyzést az adatbázisból?", "Törlés megerősítése", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (delete == DialogResult.Yes)
-                model.deleteVisits(pac_id,selDate);
-            return;
-        }
 
 
 

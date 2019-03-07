@@ -67,31 +67,7 @@ namespace FOR.Model
 
         }
 
-        public string showSelectedVisits(string id)
-        {
-            ///Az  üzenezt kikeresése a mappákbó!!!!
-            ///
-            string message = id;
-            return message;
-        }
 
-        public void newVisits(string pat_id, string text)
-        {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query = "INSERT INTO patient_visits(patient_id,date) VALUES(@pat_id,CURRENT_TIMESTAMP);";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@pat_id", pat_id);
-            cmd.ExecuteNonQuery();
-            string fname = trimDate(mysql.getOneData("SELECT date FROM patient_visits WHERE patient_id=" + pat_id + " ORDER BY id DESC LIMIT 1;"));
-            mysql.close();
-            string path = Environment.CurrentDirectory + "/Visits/"+pat_id+"/"+fname+".txt";
-            FileInfo file = new FileInfo(path);
-            file.Directory.Create();
-            File.AppendAllText(path, text, Encoding.Default);
-        }
 
         public ListView loadListViewVisits(string pat_id, ListView lvv)
         {
@@ -117,18 +93,21 @@ namespace FOR.Model
             return lvv;
         }
 
-        public void deleteVisits(string pat_id, string selDate)
+        public void deleteVisits(string selVizID)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "DELETE FROM patient_visits WHERE pat_id=@pat_id AND date=@date";
+            string query = "DELETE FROM patient_visits WHERE id=@id;";
             cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@pat_id", pat_id);
-            cmd.Parameters.AddWithValue("@date", selDate);
+            cmd.Parameters.AddWithValue("@id", selVizID);
             cmd.ExecuteNonQuery();
             mysql.close();
+            string path = Environment.CurrentDirectory + "/Visits/" + selVizID + ".txt";
+            FileInfo file = new FileInfo(path);
+            file.Delete();
+
         }
         public string getPatientID() => id;
         public string getPatientName() => name;
@@ -148,7 +127,7 @@ namespace FOR.Model
         /// <returns></returns>
         public string getComment(string id)
         {
-            string path= Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
+            string path = Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
             try
             {
                 FileInfo file = new FileInfo(path);
@@ -173,11 +152,36 @@ namespace FOR.Model
         /// <returns></returns>
         public string setComment(string id, string text)
         {
-            string path = Environment.CurrentDirectory+"/patientsComment/" +id + ".txt";
+            string path = Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
             FileInfo file = new FileInfo(path);
             file.Directory.Create();
             File.WriteAllText(path, text, Encoding.Default);
             return comment;
+
+        }
+        public string getSelectedVisits(string id)
+        {
+            string path = Environment.CurrentDirectory + "/Visits/" + id + ".txt";
+            return File.ReadAllText(path, Encoding.Default);
+        }
+        public void setNewVisits(string pat_id, string text)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "INSERT INTO patient_visits(patient_id,date) VALUES(@pat_id,CURRENT_TIMESTAMP);";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@pat_id", pat_id);
+            cmd.ExecuteNonQuery();
+            string id = mysql.getOneData("SELECT id FROM patient_visits ORDER BY id DESC LIMIT 1;");
+            string date = mysql.getOneData("SELECT date FROM patient_visits WHERE id=" + id + " ORDER BY id DESC LIMIT 1;");
+            mysql.close();
+            string path = Environment.CurrentDirectory + "/Visits/" + id + ".txt";
+            text = date + "\n" + text;
+            FileInfo file = new FileInfo(path);
+            file.Directory.Create();
+            File.AppendAllText(path, text, Encoding.Default);
         }
         /// <summary>
         /// Trimmeli a születési dátumot
