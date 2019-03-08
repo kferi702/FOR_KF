@@ -20,12 +20,16 @@ namespace FOR.Controller
         {
             model = new LoginModel();
         }
-
         public void loginController(string userName, string passWord, LoginForm loginF)
         {
             if(check(userName)&&check(passWord))
                 model.loginModel(userName, passWord, loginF);
         }
+        /// <summary>
+        /// Bejelentkezési adatok ellenörzése hogy ki vannak-e töltve.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public bool check(string text)
         {
             if (text == "")
@@ -33,7 +37,6 @@ namespace FOR.Controller
                 DialogResult dialog = MessageBox.Show("Felhasználóinév és jelszó megadása kötelező!","HIÁNY!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
-
             return true;
         }
     }

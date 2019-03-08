@@ -24,11 +24,6 @@ namespace FOR.View
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
         }
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void mTileLogin_Click(object sender, EventArgs e)
         {
             string userName = textBoxUsername.Text;

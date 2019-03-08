@@ -23,30 +23,24 @@ namespace FOR.Controller
         }
 
         public void loadPatientDetail(string tb) => model.loadPatientDetail(tb);
-        
         public string getPatientID() => model.getPatientID();
         public string getPatientName() => model.getPatientName();
-
-        public string setPatientDetailsFormText(bool editable)
-        {
-            if (editable)
-            {
-                return "Részletes Adatlap Megtekintése";
-            }
-            else
-            {
-                return "Részletes Adatlap Szerkesztése";
-            }
-        }
-
         public string getPatientAddress() => model.getPatientAddress();
-        public void loadListViewVisits(string pat_id, ListView listViewVisits) => model.loadListViewVisits(pat_id, listViewVisits);
-        public void hideForm(Form form)=>form.Hide();
         public string getPatientBirthDate() => model.getPatientBirthDate();
         public string getPatientBirthPlace() => model.getPatientBirthPlace();
         public string getPatientBirthName() => model.getPatientBirthName();
-        public string getSelectedVisits(string id) =>model.getSelectedVisits(id);
         public string getPatientMother() => model.getPatientMother();
+        public string getPatientPhone() => model.getPatientPhone();
+        public string getPatientEmail() => model.getPatientEmail();
+        public string getPatientTB() => model.getPatientTB();
+        public string getPatientComment() => model.getPatientComment();
+        public string getSelectedVisits(string id) => model.getSelectedVisits(id);
+        public void loadListViewVisits(string pat_id, ListView listViewVisits) => model.loadListViewVisits(pat_id, listViewVisits);
+        public void hideForm(Form form) => form.Hide();
+        /// <summary>
+        /// Látogatás törlése => Tovább a model felé
+        /// </summary>
+        /// <param name="selVisID"></param>
         public void deleteVisits(string selVisID)
         {
             DialogResult delete = MessageBox.Show("Biztosan törli véglegesen a " + selVisID + " számú bejegyzést az adatbázisból?", "Törlés megerősítése", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -54,17 +48,25 @@ namespace FOR.Controller
                 model.deleteVisits(selVisID);
             return;
         }
-        public string getPatientPhone() => model.getPatientPhone();
-        public string getPatientEmail() => model.getPatientEmail();
-        public string getPatientTB() => model.getPatientTB();
-        public string getPatientComment() => model.getPatientComment();
-        public void newVisits(string pat_id, string text) => model.setNewVisits(pat_id, text);
-
-
-
         /// <summary>
-        /// Check all data from NewPatientForm and EditPatientDataForm before save them
+        /// Új bejegyzés mentése => továbbküldés a model felé
         /// </summary>
+        /// <param name="pat_id"></param>
+        /// <param name="text"></param>
+        public void newVisits(string pat_id, string text) => model.setNewVisits(pat_id, text);
+        /// <summary>
+        /// Ellenörzi és tovább küldi az új páciens adatait a model felé
+        /// </summary>
+        /// <param name="name">Név</param>
+        /// <param name="address">Cím</param>
+        /// <param name="birthDate">Születési idő</param>
+        /// <param name="birthPlace">Születési hely</param>
+        /// <param name="birthName">Születési név</param>
+        /// <param name="mother">Anyja neve</param>
+        /// <param name="tb">TB szám</param>
+        /// <param name="phone">Telefonszám</param>
+        /// <param name="email">Email cím</param>
+        /// <param name="comment">Comment</param>
         public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
         {
             bool correct = true;
@@ -85,21 +87,22 @@ namespace FOR.Controller
                 if (correct==true)
                 model.savePatientDetails(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
         }
-
-
-        /// <param name="nameFirst">First name</param>
-        /// <param name="nameLast">Last name</param>
-        /// <param name="addressZip">Address zipcode</param>
-        /// <param name="addressCity">Address city</param>
-        /// <param name="addressStreet">Address street</param>
-        /// <param name="addressNumber">Address housenumber</param>
-        /// <param name="birthMother">Mother birthname</param>
-        /// <param name="birthName">Birthname</param>
-        /// <param name="birthPlace">Birth place</param>
-        /// <param name="birthDate">Birth date</param>
-        /// <param name="dataTB">Data TB number</param>
-        /// <param name="dataPhone">Data phone number</param>
-        /// <param name="dataEmail">Data Email address</param>
+        /// <summary>
+        /// Szöveges adatok ellenörzése
+        /// </summary>
+        /// <param name="nameFirst">Vezetéknév</param>
+        /// <param name="nameLast">Keresztnév</param>
+        /// <param name="addressZip">Cím irányítószám</param>
+        /// <param name="addressCity">Cím város</param>
+        /// <param name="addressStreet">Cím utca</param>
+        /// <param name="addressNumber">Cím házszám</param>
+        /// <param name="birthMother">Anyja neve</param>
+        /// <param name="birthName">Születési név</param>
+        /// <param name="birthPlace">Születési hely</param>
+        /// <param name="birthDate">Születési dátum</param>
+        /// <param name="dataTB">TB szám</param>
+        /// <param name="dataPhone">Telefonszám</param>
+        /// <param name="dataEmail">E-mail cím</param>
         public bool checkData(string nameFirst, string nameLast, string addressZip, string addressCity, string addressStreet, string addressNumber, string birthMother, string birthName, string birthPlace, string birthDate, string dataTB, string dataPhone, string dataEmail, string comment)
         {
             string number = "^[0-9]+$";
@@ -117,26 +120,31 @@ namespace FOR.Controller
             return true;
 
         }
+        /// <summary>
+        /// Kapott szöveg trimmelése (szóközök és irásjelek kiszedése)
+        /// </summary>
+        /// <param name="text">Ellenőrizendő szöveg</param>
+        /// <returns></returns>
         private string trim(string text)
         {
             return text.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty).Replace("/", string.Empty).Replace("\"", string.Empty).Replace("-", string.Empty);
         }
         /// <summary>
-        /// 
+        /// Új páciens mentése, adatok továbbítása a model részére
         /// </summary>
-        /// <param name="nameFirst">First name</param>
-        /// <param name="nameLast">Last name</param>
-        /// <param name="addressZip">Address zipcode</param>
-        /// <param name="addressCity">Address city</param>
-        /// <param name="addressStreet">Address street</param>
-        /// <param name="addressNumber">Address housenumber</param>
-        /// <param name="birthMother">Mother birthname</param>
-        /// <param name="birthName">Birthname</param>
-        /// <param name="birthPlace">Birth place</param>
-        /// <param name="birthDate">Birth date</param>
-        /// <param name="dataTB">Data TB number</param>
-        /// <param name="dataPhone">Data phone number</param>
-        /// <param name="dataEmail">Data Email address</param>
+        /// <param name="nameFirst">Vezetéknév</param>
+        /// <param name="nameLast">Keresztnév</param>
+        /// <param name="addressZip">Cím irányítószám</param>
+        /// <param name="addressCity">Cím város</param>
+        /// <param name="addressStreet">Cím utca</param>
+        /// <param name="addressNumber">Cím házszám</param>
+        /// <param name="birthMother">Anyja neve</param>
+        /// <param name="birthName">Születési név</param>
+        /// <param name="birthPlace">Születési hely</param>
+        /// <param name="birthDate">Születési dátum</param>
+        /// <param name="dataTB">TB szám</param>
+        /// <param name="dataPhone">Telefonszám</param>
+        /// <param name="dataEmail">E-mail cím</param>
         public void saveNewPatient(string nameFirst, string nameLast, string addressZip, string addressCity, string addressStreet, string addressNumber, string birthMother, string birthName, string birthPlace, string birthDate, string dataTB, string dataPhone, string dataEmail, string comment)
         {
             model.saveNewPatientData(dataTB,nameFirst,nameLast,birthDate);

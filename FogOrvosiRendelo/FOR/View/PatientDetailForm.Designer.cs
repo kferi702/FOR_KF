@@ -52,6 +52,7 @@
             this.mTextboxName = new MetroFramework.Controls.MetroTextBox();
             this.mLabelName = new MetroFramework.Controls.MetroLabel();
             this.mTileEditSave = new MetroFramework.Controls.MetroTile();
+            this.labelEditable = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,9 +73,10 @@
             // labelPatientName
             // 
             this.labelPatientName.AutoSize = true;
-            this.labelPatientName.Location = new System.Drawing.Point(372, 32);
+            this.labelPatientName.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPatientName.Location = new System.Drawing.Point(361, 20);
             this.labelPatientName.Name = "labelPatientName";
-            this.labelPatientName.Size = new System.Drawing.Size(35, 13);
+            this.labelPatientName.Size = new System.Drawing.Size(71, 32);
             this.labelPatientName.TabIndex = 1;
             this.labelPatientName.Text = "label1";
             // 
@@ -513,11 +515,22 @@
             this.mTileEditSave.UseSelectable = true;
             this.mTileEditSave.Click += new System.EventHandler(this.mTileEditSave_Click);
             // 
+            // labelEditable
+            // 
+            this.labelEditable.AutoSize = true;
+            this.labelEditable.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEditable.Location = new System.Drawing.Point(200, 20);
+            this.labelEditable.Name = "labelEditable";
+            this.labelEditable.Size = new System.Drawing.Size(71, 32);
+            this.labelEditable.TabIndex = 6;
+            this.labelEditable.Text = "label1";
+            // 
             // PatientDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 703);
+            this.Controls.Add(this.labelEditable);
             this.Controls.Add(this.mTileEditSave);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.labelPatientName);
@@ -558,5 +571,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroTextBox mTextboxComment;
         private MetroFramework.Controls.MetroTile mTileEditSave;
+        private System.Windows.Forms.Label labelEditable;
     }
 }

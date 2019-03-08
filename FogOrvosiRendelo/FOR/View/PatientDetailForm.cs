@@ -61,6 +61,7 @@ namespace FOR.View
                 editable = false;
                 mTileEditSave.Style = MetroFramework.MetroColorStyle.Blue;
                 mTileEditSave.Text = "Szerkesztés";
+                labelEditable.Text = "Megtekintése";
                 mTextboxName.Enabled = false;
                 mTextboxAddress.Enabled = false;
                 mTextboxBirthDate.Enabled = false;
@@ -84,7 +85,6 @@ namespace FOR.View
             
             if (editable == false)
             {
-                patDetForm.Text = controller.setPatientDetailsFormText(editable);
                 mTextboxName.Enabled = true;
                 mTextboxAddress.Enabled = true;
                 mTextboxBirthDate.Enabled = true;
@@ -98,11 +98,11 @@ namespace FOR.View
                 editable = true;
                 mTileEditSave.Style = MetroFramework.MetroColorStyle.Green;
                 mTileEditSave.Text = "Mentés";
-                
+                labelEditable.Text = "Szerkesztése";
+
             }
             else
             {
-                patDetForm.Text = controller.setPatientDetailsFormText(editable);
                 string name = mTextboxName.Text;
                 string address = mTextboxAddress.Text;
                 string birthDate = mTextboxBirthDate.Text;

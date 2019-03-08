@@ -42,10 +42,10 @@
             // labelPacientName
             // 
             this.labelPacientName.AutoSize = true;
-            this.labelPacientName.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPacientName.Location = new System.Drawing.Point(212, 17);
+            this.labelPacientName.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPacientName.Location = new System.Drawing.Point(212, 20);
             this.labelPacientName.Name = "labelPacientName";
-            this.labelPacientName.Size = new System.Drawing.Size(61, 23);
+            this.labelPacientName.Size = new System.Drawing.Size(71, 32);
             this.labelPacientName.TabIndex = 0;
             this.labelPacientName.Text = "label1";
             // 

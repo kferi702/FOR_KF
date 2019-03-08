@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.labelWelcome = new MetroFramework.Controls.MetroLabel();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.TabPagePatient = new MetroFramework.Controls.MetroTabPage();
             this.mTileRefreshDB = new MetroFramework.Controls.MetroTile();
@@ -45,18 +44,10 @@
             this.tbNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageMessage = new MetroFramework.Controls.MetroTabPage();
             this.tabPageCalender = new MetroFramework.Controls.MetroTabPage();
+            this.labelWelcome = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.TabPagePatient.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // labelWelcome
-            // 
-            this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Location = new System.Drawing.Point(268, 11);
-            this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(120, 19);
-            this.labelWelcome.TabIndex = 0;
-            this.labelWelcome.Text = "Bejelentekező neve";
             // 
             // tabControl
             // 
@@ -289,13 +280,23 @@
             this.tabPageCalender.VerticalScrollbarHighlightOnWheel = false;
             this.tabPageCalender.VerticalScrollbarSize = 10;
             // 
+            // labelWelcome
+            // 
+            this.labelWelcome.AutoSize = true;
+            this.labelWelcome.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelWelcome.Location = new System.Drawing.Point(520, 25);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(71, 32);
+            this.labelWelcome.TabIndex = 3;
+            this.labelWelcome.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 594);
-            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.labelWelcome);
+            this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Name = "MainForm";
             this.Text = "FogOrvosi Rendelő";
@@ -310,8 +311,6 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroLabel labelWelcome;
         private MetroFramework.Controls.MetroTabControl tabControl;
         private MetroFramework.Controls.MetroTabPage TabPagePatient;
         private MetroFramework.Controls.MetroTabPage tabPageMessage;
@@ -327,5 +326,6 @@
         private MetroFramework.Controls.MetroTile mTileNewPatient;
         private MetroFramework.Controls.MetroTile mTileDetail;
         private MetroFramework.Controls.MetroTile mTileRefreshDB;
+        private System.Windows.Forms.Label labelWelcome;
     }
 }
