@@ -24,15 +24,11 @@ namespace FOR.View
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
         }
-
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string userName = textBoxUsername.Text;
             string passWord = textBoxPassword.Text;
-
             controller.loginController(userName,passWord,loginF);
-
         }
     }
 }

@@ -66,7 +66,7 @@
             this.mTileCancel.Text = "Vissza";
             this.mTileCancel.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.mTileCancel.UseSelectable = true;
-            this.mTileCancel.Click += new System.EventHandler(this.metroTile1_Click);
+            this.mTileCancel.Click += new System.EventHandler(this.mTileCancel_Click);
             // 
             // labelPatientName
             // 

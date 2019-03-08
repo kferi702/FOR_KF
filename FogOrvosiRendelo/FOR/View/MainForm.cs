@@ -29,19 +29,28 @@ namespace FOR.View
             loadListViewPatient();
         }
 
-            
-
         private void setWelcomeLabel() => labelWelcome.Text = controller.setWelcomeLabel(id);
         private void loadListViewPatient() => controller.loadListViewPatient(listViewPatient);
         private void textBoxSearch_TextChanged(object sender, EventArgs e) => controller.searchPatient(listViewPatient, textBoxSearch.Text);
         private void mTileNewPatient_Click(object sender, EventArgs e) => controller.addNewPatient();
         private void mTileRefreshDB_Click(object sender, EventArgs e) => controller.loadListViewPatient(listViewPatient);
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+        /// <summary>
+        /// A form aktiválásánál frissíti az adatbázist!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Activated(object sender, EventArgs e) => loadListViewPatient();
         private void listViewPatient_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count < 0)
                 return;
         }
+        /// <summary>
+        /// Tovább adja a törlésre kiválasztott elemet a controllernek
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mTileDelete_Click(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count != 0)
@@ -63,7 +72,7 @@ namespace FOR.View
                 controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text);
         }
 
-        private void MainForm_Activated(object sender, EventArgs e) => loadListViewPatient();
+        
 
     }
 }

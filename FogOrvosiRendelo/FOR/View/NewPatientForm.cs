@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FOR
+namespace FOR.View
 {
     public partial class NewPatientForm : MetroForm
     {
@@ -33,15 +33,15 @@ namespace FOR
 
         public NewPatientForm()
         {
-
             newPF = this;
             InitializeComponent();
             controller = new PatientController();
             getFromForm();
-
-             
         }
-
+        private void mTileCancel_Click(object sender, EventArgs e) => controller.hideForm(this);
+        /// <summary>
+        /// Trimmeli és ellenörzi a textboxokban lévő értékeket. Hibás értéket jelzi!
+        /// </summary>
         public bool getFromForm()
         {
             firstName = textBoxNameFirst.Text.Trim();
@@ -64,9 +64,11 @@ namespace FOR
 
             return controller.checkData(firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email,comment);
         }
-
-        private void mTileCancel_Click(object sender, EventArgs e) => controller.hideForm(this);
-
+        /// <summary>
+        /// Ellenörzésre küldi a getFromForm metódusba majd elmenti ha az értékek helyesek
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mTileSave_Click(object sender, EventArgs e)
         {
             if (getFromForm())

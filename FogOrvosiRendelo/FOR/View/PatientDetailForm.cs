@@ -21,6 +21,10 @@ namespace FOR.View
         bool editable;
         string pac_id;
 
+        /// <summary>
+        /// Form betöltése
+        /// </summary>
+        /// <param name="tb">A MainForm kiválasztott páciensének azonosító adata</param>
         public PatientDetailForm(string tb)
         {
             controller = new PatientController();
@@ -31,11 +35,11 @@ namespace FOR.View
             loadPatientDetail();
             textboxEditable();
             pac_id = controller.getPatientID();
-            
-            
         }
-
-        private void metroTile1_Click(object sender, EventArgs e) => controller.hideForm(this);
+        private void mTileCancel_Click(object sender, EventArgs e) => controller.hideForm(this);
+        /// <summary>
+        /// Feltölti a textboxokat az adatbázisból
+        /// </summary>
         private void loadPatientDetail() { 
             labelPatientName.Text ="Páciens neve "+controller.getPatientName();
             mTextboxName.Text = controller.getPatientName();
@@ -49,6 +53,9 @@ namespace FOR.View
             mTextboxEmail.Text = controller.getPatientEmail();
             mTextboxComment.Text = controller.getPatientComment();
         }
+        /// <summary>
+        /// Kikapcsolja a szerkeszthetőséget a textboxokról
+        /// </summary>
         private void textboxEditable()
         {
                 editable = false;
@@ -67,6 +74,11 @@ namespace FOR.View
 
 
         }
+        /// <summary>
+        /// Ellenörzi az adatok helyességét és ha rendben találja elmenti azokat.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mTileEditSave_Click(object sender, EventArgs e)
         {
             
