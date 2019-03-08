@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿
+using FOR.View;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +15,7 @@ namespace FOR.Model
     {
         private MySqlCommand cmd;
 
-        public void loginModel(string userName, string passWord, LoginForm loginF)
+        public void loginModel(string userName, string passWord, Form loginF)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase connDb = new MySqlConnectionDatabase();
@@ -32,8 +34,8 @@ namespace FOR.Model
                 cmd = mysql.getConnect(getID);
                 cmd.Parameters.AddWithValue("@username", userName);
                 int id = int.Parse(cmd.ExecuteScalar().ToString());
-                MainForm mf = new MainForm(id);
-                mf.Show();
+                MainForm mainF= new MainForm(id);
+                mainF.Show();
                 loginF.Hide();
 
                 //MessageBox.Show("Helyes adatok "+id);

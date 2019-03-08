@@ -1,4 +1,4 @@
-﻿namespace FOR
+﻿namespace FOR.View
 {
     partial class MainForm
     {

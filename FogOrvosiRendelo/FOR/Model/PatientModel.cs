@@ -30,6 +30,7 @@ namespace FOR.Model
         {
 
         }
+        
         public void loadPatientDetail(string tb)
         {
             MySqlComm mysql = new MySqlComm();
@@ -66,7 +67,33 @@ namespace FOR.Model
             mysql.close();
 
         }
-        public ListView loadListViewVisits(string pat_id, ListView lvv)
+
+        public void deletePatientFiles(string tb)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string getID = "SELECT id FROM patient WHERE  patient.tb=" + tb + ";";
+            string id = mysql.getOneData(getID);
+            //delete comment
+            string path = Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
+            FileInfo file = new FileInfo(path);
+            file.Delete();
+            //delete visits
+            string getVisitsID = "SELECT id FROM patient_visits WHERE patient_id=" + id + ";";
+            cmd = mysql.getConnect(getVisitsID);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                path= Environment.CurrentDirectory + "/visits/" + dr["id"] + ".txt";
+                file = new FileInfo(path);
+                file.Delete();
+            }
+            dr.Close();
+            mysql.close();
+        }
+            public ListView loadListViewVisits(string pat_id, ListView lvv)
         {
             lvv.Items.Clear();
             MySqlComm mysql = new MySqlComm();
@@ -101,7 +128,7 @@ namespace FOR.Model
             cmd.Parameters.AddWithValue("@id", selVizID);
             cmd.ExecuteNonQuery();
             mysql.close();
-            string path = Environment.CurrentDirectory + "/Visits/" + selVizID + ".txt";
+            string path = Environment.CurrentDirectory + "/visits/" + selVizID + ".txt";
             FileInfo file = new FileInfo(path);
             file.Delete();
 
@@ -158,7 +185,7 @@ namespace FOR.Model
         }
         public string getSelectedVisits(string id)
         {
-            string path = Environment.CurrentDirectory + "/Visits/" + id + ".txt";
+            string path = Environment.CurrentDirectory + "/visits/" + id + ".txt";
             return File.ReadAllText(path, Encoding.Default);
         }
         public void setNewVisits(string pat_id, string text)
@@ -174,7 +201,7 @@ namespace FOR.Model
             string id = mysql.getOneData("SELECT id FROM patient_visits ORDER BY id DESC LIMIT 1;");
             string date = mysql.getOneData("SELECT date FROM patient_visits WHERE id=" + id + " ORDER BY id DESC LIMIT 1;");
             mysql.close();
-            string path = Environment.CurrentDirectory + "/Visits/" + id + ".txt";
+            string path = Environment.CurrentDirectory + "/visits/" + id + ".txt";
             text = date + "\n" + text;
             FileInfo file = new FileInfo(path);
             file.Directory.Create();

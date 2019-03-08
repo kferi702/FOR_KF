@@ -82,9 +82,9 @@ namespace FOR.Controller
         public bool checkData(string nameFirst, string nameLast, string addressZip, string addressCity, string addressStreet, string addressNumber, string birthMother, string birthName, string birthPlace, string birthDate, string dataTB, string dataPhone, string dataEmail, string comment)
         {
             string number = "^[0-9]+$";
-            if (Regex.IsMatch(addressZip, number))
+            if (!Regex.IsMatch(addressZip, number))
                 return false;
-            if (Regex.IsMatch(addressNumber, number))
+            if (!Regex.IsMatch(addressNumber, number))
                 return false;
             return true;
 

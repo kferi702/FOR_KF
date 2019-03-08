@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FOR
+namespace FOR.View
 {
     public partial class LoginForm : MetroForm
     {

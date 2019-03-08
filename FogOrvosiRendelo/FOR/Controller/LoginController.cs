@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Data;
 using FOR;
 using System.Windows.Forms;
-
+using FOR.View;
 
 namespace FOR.Controller
 {
@@ -23,7 +23,18 @@ namespace FOR.Controller
 
         public void loginController(string userName, string passWord, LoginForm loginF)
         {
-            model.loginModel(userName, passWord, loginF);
+            if(check(userName)&&check(passWord))
+                model.loginModel(userName, passWord, loginF);
+        }
+        public bool check(string text)
+        {
+            if (text == "")
+            { 
+                DialogResult dialog = MessageBox.Show("Felhasználóinév és jelszó megadása kötelező!","HIÁNY!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
         }
     }
 }
