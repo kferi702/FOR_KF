@@ -101,9 +101,11 @@ namespace FOR.View
                 string phone = mTextboxPhone.Text;
                 string email = mTextboxEmail.Text;
                 string comment = mTextboxComment.Text;
+                
                 controller.savePatientDatail(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
                 textboxEditable();
             }
+
         }
     }
 }

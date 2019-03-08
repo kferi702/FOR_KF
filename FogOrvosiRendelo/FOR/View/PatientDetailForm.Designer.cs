@@ -122,7 +122,7 @@
             this.mTextboxEmail.CustomButton.UseSelectable = true;
             this.mTextboxEmail.CustomButton.Visible = false;
             this.mTextboxEmail.Lines = new string[0];
-            this.mTextboxEmail.Location = new System.Drawing.Point(102, 260);
+            this.mTextboxEmail.Location = new System.Drawing.Point(143, 260);
             this.mTextboxEmail.MaxLength = 32767;
             this.mTextboxEmail.Name = "mTextboxEmail";
             this.mTextboxEmail.PasswordChar = '\0';
@@ -140,20 +140,20 @@
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(11, 292);
+            this.metroLabel14.Location = new System.Drawing.Point(11, 314);
             this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel14.Size = new System.Drawing.Size(96, 38);
             this.metroLabel14.TabIndex = 16;
-            this.metroLabel14.Text = "Megjegyzés:";
+            this.metroLabel14.Text = "Megjegyzés: \r\n(nem kötelező)";
             // 
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
             this.metroLabel13.Location = new System.Drawing.Point(11, 264);
             this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(75, 19);
+            this.metroLabel13.Size = new System.Drawing.Size(96, 38);
             this.metroLabel13.TabIndex = 19;
-            this.metroLabel13.Text = "E-mail cím:";
+            this.metroLabel13.Text = "E-mail cím: \r\n(nem kötelező)";
             // 
             // mTextboxComment
             // 
@@ -161,7 +161,7 @@
             // 
             // 
             this.mTextboxComment.CustomButton.Image = null;
-            this.mTextboxComment.CustomButton.Location = new System.Drawing.Point(138, 1);
+            this.mTextboxComment.CustomButton.Location = new System.Drawing.Point(242, 1);
             this.mTextboxComment.CustomButton.Name = "";
             this.mTextboxComment.CustomButton.Size = new System.Drawing.Size(215, 215);
             this.mTextboxComment.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -170,7 +170,7 @@
             this.mTextboxComment.CustomButton.UseSelectable = true;
             this.mTextboxComment.CustomButton.Visible = false;
             this.mTextboxComment.Lines = new string[0];
-            this.mTextboxComment.Location = new System.Drawing.Point(11, 314);
+            this.mTextboxComment.Location = new System.Drawing.Point(143, 314);
             this.mTextboxComment.MaxLength = 32767;
             this.mTextboxComment.Multiline = true;
             this.mTextboxComment.Name = "mTextboxComment";
@@ -180,7 +180,7 @@
             this.mTextboxComment.SelectionLength = 0;
             this.mTextboxComment.SelectionStart = 0;
             this.mTextboxComment.ShortcutsEnabled = true;
-            this.mTextboxComment.Size = new System.Drawing.Size(354, 217);
+            this.mTextboxComment.Size = new System.Drawing.Size(458, 217);
             this.mTextboxComment.TabIndex = 17;
             this.mTextboxComment.UseSelectable = true;
             this.mTextboxComment.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -201,7 +201,7 @@
             this.mTextboxPhone.CustomButton.UseSelectable = true;
             this.mTextboxPhone.CustomButton.Visible = false;
             this.mTextboxPhone.Lines = new string[0];
-            this.mTextboxPhone.Location = new System.Drawing.Point(102, 232);
+            this.mTextboxPhone.Location = new System.Drawing.Point(143, 232);
             this.mTextboxPhone.MaxLength = 32767;
             this.mTextboxPhone.Name = "mTextboxPhone";
             this.mTextboxPhone.PasswordChar = '\0';
@@ -240,7 +240,7 @@
             this.mTextboxTB.CustomButton.UseSelectable = true;
             this.mTextboxTB.CustomButton.Visible = false;
             this.mTextboxTB.Lines = new string[0];
-            this.mTextboxTB.Location = new System.Drawing.Point(102, 199);
+            this.mTextboxTB.Location = new System.Drawing.Point(143, 199);
             this.mTextboxTB.MaxLength = 32767;
             this.mTextboxTB.Name = "mTextboxTB";
             this.mTextboxTB.PasswordChar = '\0';
@@ -318,7 +318,7 @@
             this.mTextboxBirthName.CustomButton.UseSelectable = true;
             this.mTextboxBirthName.CustomButton.Visible = false;
             this.mTextboxBirthName.Lines = new string[0];
-            this.mTextboxBirthName.Location = new System.Drawing.Point(102, 140);
+            this.mTextboxBirthName.Location = new System.Drawing.Point(193, 140);
             this.mTextboxBirthName.MaxLength = 32767;
             this.mTextboxBirthName.Name = "mTextboxBirthName";
             this.mTextboxBirthName.PasswordChar = '\0';
@@ -338,9 +338,9 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(11, 144);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(85, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(176, 19);
             this.metroLabel1.TabIndex = 11;
-            this.metroLabel1.Text = "Születési név:";
+            this.metroLabel1.Text = "Születési név: (nem kötelező)";
             // 
             // mTextboxBirthPlace
             // 
@@ -357,7 +357,7 @@
             this.mTextboxBirthPlace.CustomButton.UseSelectable = true;
             this.mTextboxBirthPlace.CustomButton.Visible = false;
             this.mTextboxBirthPlace.Lines = new string[0];
-            this.mTextboxBirthPlace.Location = new System.Drawing.Point(102, 108);
+            this.mTextboxBirthPlace.Location = new System.Drawing.Point(143, 108);
             this.mTextboxBirthPlace.MaxLength = 32767;
             this.mTextboxBirthPlace.Name = "mTextboxBirthPlace";
             this.mTextboxBirthPlace.PasswordChar = '\0';
@@ -396,7 +396,7 @@
             this.mTextboxBirthDate.CustomButton.UseSelectable = true;
             this.mTextboxBirthDate.CustomButton.Visible = false;
             this.mTextboxBirthDate.Lines = new string[0];
-            this.mTextboxBirthDate.Location = new System.Drawing.Point(102, 78);
+            this.mTextboxBirthDate.Location = new System.Drawing.Point(143, 78);
             this.mTextboxBirthDate.MaxLength = 32767;
             this.mTextboxBirthDate.Name = "mTextboxBirthDate";
             this.mTextboxBirthDate.PasswordChar = '\0';
@@ -435,7 +435,7 @@
             this.mTextboxAddress.CustomButton.UseSelectable = true;
             this.mTextboxAddress.CustomButton.Visible = false;
             this.mTextboxAddress.Lines = new string[0];
-            this.mTextboxAddress.Location = new System.Drawing.Point(63, 49);
+            this.mTextboxAddress.Location = new System.Drawing.Point(143, 49);
             this.mTextboxAddress.MaxLength = 32767;
             this.mTextboxAddress.Name = "mTextboxAddress";
             this.mTextboxAddress.PasswordChar = '\0';
@@ -474,7 +474,7 @@
             this.mTextboxName.CustomButton.UseSelectable = true;
             this.mTextboxName.CustomButton.Visible = false;
             this.mTextboxName.Lines = new string[0];
-            this.mTextboxName.Location = new System.Drawing.Point(63, 19);
+            this.mTextboxName.Location = new System.Drawing.Point(143, 19);
             this.mTextboxName.MaxLength = 32767;
             this.mTextboxName.Name = "mTextboxName";
             this.mTextboxName.PasswordChar = '\0';

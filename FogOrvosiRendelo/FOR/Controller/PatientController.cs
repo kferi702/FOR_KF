@@ -23,8 +23,7 @@ namespace FOR.Controller
         }
 
         public void loadPatientDetail(string tb) => model.loadPatientDetail(tb);
-        public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment) => model.savePatientDetails(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
-
+        
         public string getPatientID() => model.getPatientID();
         public string getPatientName() => model.getPatientName();
 
@@ -62,10 +61,32 @@ namespace FOR.Controller
         public void newVisits(string pat_id, string text) => model.setNewVisits(pat_id, text);
 
 
+
         /// <summary>
         /// Check all data from NewPatientForm and EditPatientDataForm before save them
         /// </summary>
- 
+        public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
+        {
+            bool correct = true;
+            string number = "^[0-9]+$";
+            if (!Regex.IsMatch(trim(birthDate), number) ||
+                !Regex.IsMatch(trim(phone), number) ||
+                !Regex.IsMatch(trim(tb), number))
+            {
+                correct = false;
+                MessageBox.Show("Születési idő, telefonszám és a TB-szám csak számot tartalmazhat!", "Hibás szám adatok", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (name=="" || address=="" || birthDate=="" || birthPlace==""|| mother==""|| tb==""||phone=="")
+            {
+                correct = false;
+                MessageBox.Show("Kötelező mezők nincsenek kitöltve!", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
+                if (correct==true)
+                model.savePatientDetails(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
+        }
+
+
         /// <param name="nameFirst">First name</param>
         /// <param name="nameLast">Last name</param>
         /// <param name="addressZip">Address zipcode</param>
@@ -82,12 +103,23 @@ namespace FOR.Controller
         public bool checkData(string nameFirst, string nameLast, string addressZip, string addressCity, string addressStreet, string addressNumber, string birthMother, string birthName, string birthPlace, string birthDate, string dataTB, string dataPhone, string dataEmail, string comment)
         {
             string number = "^[0-9]+$";
-            if (!Regex.IsMatch(addressZip, number))
+            if (!Regex.IsMatch(trim(addressZip), number) ||
+                !Regex.IsMatch(trim(birthDate), number) ||
+                !Regex.IsMatch(trim(dataPhone), number) ||
+                !Regex.IsMatch(trim(dataTB), number))
+            {
+            return false;
+            }
+            if (nameFirst == "" || nameLast==""|| birthMother == ""|| birthPlace=="")
+            {
                 return false;
-            if (!Regex.IsMatch(addressNumber, number))
-                return false;
+            }
             return true;
 
+        }
+        private string trim(string text)
+        {
+            return text.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty).Replace("/", string.Empty).Replace("\"", string.Empty).Replace("-", string.Empty);
         }
         /// <summary>
         /// 

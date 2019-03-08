@@ -76,7 +76,7 @@ namespace FOR
             }
             else
             {
-                MessageBox.Show("Hibás adatok!", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hibás vagy hiányos adatok! (A mezők kitöltése kötelező!)", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

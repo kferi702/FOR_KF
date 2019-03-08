@@ -133,6 +133,8 @@
             this.id,
             this.date});
             this.listViewVisits.FullRowSelect = true;
+            this.listViewVisits.GridLines = true;
+            this.listViewVisits.HideSelection = false;
             this.listViewVisits.LabelWrap = false;
             this.listViewVisits.Location = new System.Drawing.Point(6, 63);
             this.listViewVisits.MultiSelect = false;
@@ -148,12 +150,12 @@
             // id
             // 
             this.id.Text = "id";
-            this.id.Width = 0;
+            this.id.Width = 20;
             // 
             // date
             // 
-            this.date.Text = "dt";
-            this.date.Width = 168;
+            this.date.Text = "Dátum";
+            this.date.Width = 150;
             // 
             // PatientVisitsForm
             // 
