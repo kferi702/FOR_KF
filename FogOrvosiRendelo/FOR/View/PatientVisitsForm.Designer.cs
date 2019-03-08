@@ -88,6 +88,8 @@
             this.mTileVisitsEditSave.Size = new System.Drawing.Size(120, 100);
             this.mTileVisitsEditSave.TabIndex = 3;
             this.mTileVisitsEditSave.Text = "\r\nMentés";
+            this.mTileVisitsEditSave.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileVisitsEditSave.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileVisitsEditSave.UseSelectable = true;
             this.mTileVisitsEditSave.Click += new System.EventHandler(this.mTileVisitsEditSave_Click);
             // 
@@ -100,6 +102,8 @@
             this.mTileCancel.Style = MetroFramework.MetroColorStyle.Silver;
             this.mTileCancel.TabIndex = 4;
             this.mTileCancel.Text = "Vissza";
+            this.mTileCancel.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileCancel.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileCancel.UseSelectable = true;
             this.mTileCancel.Click += new System.EventHandler(this.metroTile2_Click);
             // 
@@ -112,6 +116,8 @@
             this.mTileDelete.Style = MetroFramework.MetroColorStyle.Red;
             this.mTileDelete.TabIndex = 5;
             this.mTileDelete.Text = "Törlés";
+            this.mTileDelete.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileDelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileDelete.UseSelectable = true;
             this.mTileDelete.Click += new System.EventHandler(this.mTileDelete_Click);
             // 
@@ -123,7 +129,9 @@
             this.mTileNewVisits.Size = new System.Drawing.Size(120, 100);
             this.mTileNewVisits.Style = MetroFramework.MetroColorStyle.Green;
             this.mTileNewVisits.TabIndex = 6;
-            this.mTileNewVisits.Text = "Új bejegyzés";
+            this.mTileNewVisits.Text = "Új \r\nbejegyzés";
+            this.mTileNewVisits.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileNewVisits.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileNewVisits.UseSelectable = true;
             this.mTileNewVisits.Click += new System.EventHandler(this.mTileNewVisits_Click);
             // 
@@ -170,6 +178,7 @@
             this.Controls.Add(this.mTextboxMessage);
             this.Controls.Add(this.labelPacientName);
             this.Name = "PatientVisitsForm";
+            this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Bejegyzések";
             this.ResumeLayout(false);
             this.PerformLayout();

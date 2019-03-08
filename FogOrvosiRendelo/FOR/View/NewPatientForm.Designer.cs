@@ -519,9 +519,9 @@
             // 
             // 
             this.textBoxComment.CustomButton.Image = null;
-            this.textBoxComment.CustomButton.Location = new System.Drawing.Point(305, 1);
+            this.textBoxComment.CustomButton.Location = new System.Drawing.Point(317, 2);
             this.textBoxComment.CustomButton.Name = "";
-            this.textBoxComment.CustomButton.Size = new System.Drawing.Size(115, 115);
+            this.textBoxComment.CustomButton.Size = new System.Drawing.Size(101, 101);
             this.textBoxComment.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBoxComment.CustomButton.TabIndex = 1;
             this.textBoxComment.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -670,6 +670,8 @@
             this.mTileCancel.Style = MetroFramework.MetroColorStyle.Red;
             this.mTileCancel.TabIndex = 17;
             this.mTileCancel.Text = "Vissza";
+            this.mTileCancel.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileCancel.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileCancel.UseSelectable = true;
             this.mTileCancel.Click += new System.EventHandler(this.mTileCancel_Click);
             // 
@@ -682,6 +684,8 @@
             this.mTileSave.Style = MetroFramework.MetroColorStyle.Green;
             this.mTileSave.TabIndex = 16;
             this.mTileSave.Text = "Mentés";
+            this.mTileSave.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileSave.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileSave.UseSelectable = true;
             this.mTileSave.Click += new System.EventHandler(this.mTileSave_Click);
             // 

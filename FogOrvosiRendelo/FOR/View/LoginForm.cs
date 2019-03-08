@@ -26,9 +26,14 @@ namespace FOR.View
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void mTileLogin_Click(object sender, EventArgs e)
+        {
             string userName = textBoxUsername.Text;
             string passWord = textBoxPassword.Text;
-            controller.loginController(userName,passWord,loginF);
+            controller.loginController(userName, passWord, loginF);
         }
     }
 }

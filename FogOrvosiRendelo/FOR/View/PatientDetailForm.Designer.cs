@@ -65,6 +65,7 @@
             this.mTileCancel.TabIndex = 0;
             this.mTileCancel.Text = "Vissza";
             this.mTileCancel.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileCancel.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileCancel.UseSelectable = true;
             this.mTileCancel.Click += new System.EventHandler(this.mTileCancel_Click);
             // 
@@ -508,6 +509,7 @@
             this.mTileEditSave.TabIndex = 5;
             this.mTileEditSave.Text = "Szerkesztés\r\nMentés";
             this.mTileEditSave.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mTileEditSave.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileEditSave.UseSelectable = true;
             this.mTileEditSave.Click += new System.EventHandler(this.mTileEditSave_Click);
             // 
@@ -521,6 +523,7 @@
             this.Controls.Add(this.labelPatientName);
             this.Controls.Add(this.mTileCancel);
             this.Name = "PatientDetailForm";
+            this.Style = MetroFramework.MetroColorStyle.Brown;
             this.Text = "Részletes Adatlap";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

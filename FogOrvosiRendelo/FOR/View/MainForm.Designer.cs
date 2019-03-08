@@ -125,7 +125,7 @@
             this.mTileDelete.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileDelete.TileImage")));
             this.mTileDelete.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.mTileDelete.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileDelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.mTileDelete.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileDelete.UseSelectable = true;
             this.mTileDelete.UseTileImage = true;
             this.mTileDelete.Click += new System.EventHandler(this.mTileDelete_Click);
@@ -140,7 +140,7 @@
             this.mTileDetail2.TabIndex = 10;
             this.mTileDetail2.Text = "\r\nPáciens kórtörténete/\r\nÚj bejegyzés\r\n\r\n";
             this.mTileDetail2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileDetail2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.mTileDetail2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileDetail2.UseSelectable = true;
             this.mTileDetail2.UseTileImage = true;
             this.mTileDetail2.Click += new System.EventHandler(this.mTileVisits_Click);
@@ -156,7 +156,7 @@
             this.mTileNewPatient.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileNewPatient.TileImage")));
             this.mTileNewPatient.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.mTileNewPatient.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileNewPatient.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.mTileNewPatient.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileNewPatient.UseSelectable = true;
             this.mTileNewPatient.UseTileImage = true;
             this.mTileNewPatient.Click += new System.EventHandler(this.mTileNewPatient_Click);
@@ -174,7 +174,7 @@
             this.mTileDetail.TileImage = ((System.Drawing.Image)(resources.GetObject("mTileDetail.TileImage")));
             this.mTileDetail.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.mTileDetail.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.mTileDetail.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.mTileDetail.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.mTileDetail.UseSelectable = true;
             this.mTileDetail.UseTileImage = true;
             this.mTileDetail.Click += new System.EventHandler(this.mTileDetail_Click);
