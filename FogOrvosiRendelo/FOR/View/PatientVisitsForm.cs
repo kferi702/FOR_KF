@@ -25,6 +25,7 @@ namespace FOR.View
             controller.loadPatientDetail(tb);
             this.tb = tb;
             patVisForm = this;
+            patVisForm.TopMost = true;
             setLabel();
             loadPatientVisits();
             mTextboxMessage.Enabled = false;

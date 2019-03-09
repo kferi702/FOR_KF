@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CryptSharp;
+using FOR.Controller;
 
 namespace FOR.Model
 {
@@ -212,9 +214,9 @@ namespace FOR.Model
         /// </summary>
         /// <param name="bD">Birth date</param>
         /// <returns></returns>
-        private string trimDate(string bD)
+        private string trimText(string bD)
         {
-            return bD.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty);
+            return bD.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty).Replace("\"", string.Empty);
         }
         /// <summary>
         /// Save patient details data to database
@@ -281,63 +283,69 @@ namespace FOR.Model
             string query = "INSERT INTO patient(name,birthdate,tb) VALUES(@name,@birthdate,@tb);";
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@name", firstName + " " + lastName);
-            cmd.Parameters.AddWithValue("@birthdate", trimDate(birthDate));
-            cmd.Parameters.AddWithValue("@tb", tb);
+            cmd.Parameters.AddWithValue("@birthdate", trimText(birthDate));
+            cmd.Parameters.AddWithValue("@tb", trimText(tb));
             cmd.ExecuteNonQuery();
             mysql.close();
         }
         /// <summary>
         /// Létrehozza a patient_sec adattáblát
         /// </summary>
-        /// <param name="dTB">TB number</param>
-        /// <param name="bP">Birth place</param>
-        /// <param name="aZ">Address zip code</param>
-        /// <param name="aC">Address city</param>
-        /// <param name="aS">Address street</param>
-        /// <param name="aN">Address house number</param>
-        /// <param name="dP">Phone number</param>
-        /// <param name="dE">Email address</param>
-        /// <param name="bM">Mother name</param>
-        /// <param name="bN">Birth Name</param>
-        public void saveNewPatientSecData(string dTB, string bP, string aZ, string aC, string aS, string aN, string dP, string dE, string bM, string bN, string comment)
+        /// <param name="tb">TB number</param>
+        /// <param name="birthPlace">Birth place</param>
+        /// <param name="addressZip">Address zip code</param>
+        /// <param name="addressCity">Address city</param>
+        /// <param name="addressStreet">Address street</param>
+        /// <param name="addressNumber">Address house number</param>
+        /// <param name="phone">Phone number</param>
+        /// <param name="email">Email address</param>
+        /// <param name="motherName">Mother name</param>
+        /// <param name="birthName">Birth Name</param>
+        public void saveNewPatientSecData(string tb, string birthPlace, string addressZip, string addressCity, string addressStreet, string addressNumber, string phone, string email, string motherName, string birthName, string comment)
         {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query="INSERT INTO patient_sec(patient_id,birthplace,address,phone,email,mother_name,birth_name)" +
-                " VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@birthplace,@address,@phone,@email,@mother_name,@birth_name);";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@tb", dTB);
-            cmd.Parameters.AddWithValue("@birthplace", bP);
-            cmd.Parameters.AddWithValue("@address", aZ + " " + aC + ", " + aS + " " + aN + ".");
-            cmd.Parameters.AddWithValue("@phone", dP);
-            cmd.Parameters.AddWithValue("@email", dE);
-            cmd.Parameters.AddWithValue("@mother_name", bM);
-            cmd.Parameters.AddWithValue("@birth_name", bN);
-            cmd.ExecuteNonQuery();
-            string getID = "SELECT id FROM patient WHERE  patient.tb="+ dTB + ";";
-            setComment(mysql.getOneData(getID), comment);
+            try
+            {
+                MySqlComm mysql = new MySqlComm();
+                MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+                mysql = conn.connection();
+                mysql.open();
+                string query = "INSERT INTO patient_sec(patient_id,birthplace,address,phone,email,mother_name,birth_name)" +
+                    " VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@birthplace,@address,@phone,@email,@mother_name,@birth_name);";
+                cmd = mysql.getConnect(query);
+                cmd.Parameters.AddWithValue("@tb", trimText(tb));
+                cmd.Parameters.AddWithValue("@birthplace", birthPlace);
+                cmd.Parameters.AddWithValue("@address", trimText(addressZip) + " " + addressCity + ", " + addressStreet + " " + addressNumber + ".");
+                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@mother_name", motherName);
+                cmd.Parameters.AddWithValue("@birth_name", birthName);
+                cmd.ExecuteNonQuery();
+                string getID = "SELECT id FROM patient WHERE  patient.tb=" + trimText(tb) + ";";
+                setComment(mysql.getOneData(getID), comment);
+            }catch(MySqlException e)
+            {
+                MessageBox.Show("Hiba az adatbázis feltöltésénél!","Adatbázis hiba!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
 
         }
         /// <summary>
         /// létrehozza a patientweb adattáblát
         /// </summary>
-        /// <param name="dTB">TB number</param>
-        /// <param name="bD">Birth date</param>
-        public void saveNewPatientWebData(string dTB, string bD)
+        /// <param name="tb">TB number</param>
+        /// <param name="birthDate">Birth date</param>
+        public void saveNewPatientWebData(string tb, string birthDate)
         {
 
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "INSERT INTO patienweb(patient_id,username,password)" +
+            string query = "INSERT INTO patient_web(patient_id,username,password)" +
                 "VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@username,@password);";
             cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@tb", dTB);
-            cmd.Parameters.AddWithValue("@username",dTB);
-            cmd.Parameters.AddWithValue("@password", trimDate(bD));
+            cmd.Parameters.AddWithValue("@tb", trimText(tb));
+            cmd.Parameters.AddWithValue("@username", trimText(tb));
+            cmd.Parameters.AddWithValue("@password", Crypter.Blowfish.Crypt(trimText(birthDate)));
             cmd.ExecuteNonQuery();
             mysql.close();
         }

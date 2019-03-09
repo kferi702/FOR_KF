@@ -31,6 +31,7 @@ namespace FOR.View
             controller.loadPatientDetail(tb);
             this.tb = tb;
             patDetForm = this;
+            patDetForm.TopMost = true;
             InitializeComponent();
             loadPatientDetail();
             textboxEditable();

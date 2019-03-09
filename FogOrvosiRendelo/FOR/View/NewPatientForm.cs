@@ -34,6 +34,7 @@ namespace FOR.View
         public NewPatientForm()
         {
             newPF = this;
+            newPF.TopMost=true;
             InitializeComponent();
             controller = new PatientController();
             getFromForm();

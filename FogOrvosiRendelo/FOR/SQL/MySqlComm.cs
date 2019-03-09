@@ -63,8 +63,16 @@ namespace FOR.Model
         }
         public string getOneData(string query)
         {
-            cmd = getConnect(query);
-            return cmd.ExecuteScalar().ToString();
+            try
+            {
+                cmd = getConnect(query);
+                return cmd.ExecuteScalar().ToString();
+            }catch(NullReferenceException e)
+            {
+                MessageBox.Show("Hiba a lekérdezésben: " + e, "Adatbázis hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
         }
         public void open()
         {
