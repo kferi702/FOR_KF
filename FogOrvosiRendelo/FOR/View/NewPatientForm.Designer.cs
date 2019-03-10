@@ -701,6 +701,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "NewPatientForm";
+            this.Resizable = false;
             this.Text = "Új páciens felvétele";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -178,6 +178,7 @@
             this.Controls.Add(this.mTextboxMessage);
             this.Controls.Add(this.labelPacientName);
             this.Name = "PatientVisitsForm";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Bejegyzések";
             this.ResumeLayout(false);

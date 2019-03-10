@@ -536,6 +536,7 @@
             this.Controls.Add(this.labelPatientName);
             this.Controls.Add(this.mTileCancel);
             this.Name = "PatientDetailForm";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Brown;
             this.Text = "Részletes Adatlap";
             this.groupBox2.ResumeLayout(false);

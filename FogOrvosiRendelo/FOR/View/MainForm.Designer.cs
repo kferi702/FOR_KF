@@ -42,8 +42,6 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.birthDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPageMessage = new MetroFramework.Controls.MetroTabPage();
-            this.tabPageCalender = new MetroFramework.Controls.MetroTabPage();
             this.labelWelcome = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.TabPagePatient.SuspendLayout();
@@ -52,8 +50,6 @@
             // tabControl
             // 
             this.tabControl.Controls.Add(this.TabPagePatient);
-            this.tabControl.Controls.Add(this.tabPageMessage);
-            this.tabControl.Controls.Add(this.tabPageCalender);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(20, 60);
             this.tabControl.Name = "tabControl";
@@ -250,36 +246,6 @@
             this.tbNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbNumber.Width = 185;
             // 
-            // tabPageMessage
-            // 
-            this.tabPageMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tabPageMessage.HorizontalScrollbarBarColor = true;
-            this.tabPageMessage.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabPageMessage.HorizontalScrollbarSize = 20;
-            this.tabPageMessage.Location = new System.Drawing.Point(4, 38);
-            this.tabPageMessage.Name = "tabPageMessage";
-            this.tabPageMessage.Size = new System.Drawing.Size(904, 472);
-            this.tabPageMessage.TabIndex = 1;
-            this.tabPageMessage.Text = "Üzenetek";
-            this.tabPageMessage.VerticalScrollbarBarColor = true;
-            this.tabPageMessage.VerticalScrollbarHighlightOnWheel = false;
-            this.tabPageMessage.VerticalScrollbarSize = 10;
-            // 
-            // tabPageCalender
-            // 
-            this.tabPageCalender.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tabPageCalender.HorizontalScrollbarBarColor = true;
-            this.tabPageCalender.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabPageCalender.HorizontalScrollbarSize = 10;
-            this.tabPageCalender.Location = new System.Drawing.Point(4, 38);
-            this.tabPageCalender.Name = "tabPageCalender";
-            this.tabPageCalender.Size = new System.Drawing.Size(904, 472);
-            this.tabPageCalender.TabIndex = 2;
-            this.tabPageCalender.Text = "Naptár";
-            this.tabPageCalender.VerticalScrollbarBarColor = true;
-            this.tabPageCalender.VerticalScrollbarHighlightOnWheel = false;
-            this.tabPageCalender.VerticalScrollbarSize = 10;
-            // 
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
@@ -299,6 +265,7 @@
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Name = "MainForm";
+            this.Resizable = false;
             this.Text = "FogOrvosi Rendelő";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
@@ -313,8 +280,6 @@
         #endregion
         private MetroFramework.Controls.MetroTabControl tabControl;
         private MetroFramework.Controls.MetroTabPage TabPagePatient;
-        private MetroFramework.Controls.MetroTabPage tabPageMessage;
-        private MetroFramework.Controls.MetroTabPage tabPageCalender;
         private MetroFramework.Controls.MetroListView listViewPatient;
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader birthDate;

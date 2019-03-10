@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Már 06. 21:50
+-- Létrehozás ideje: 2019. Már 10. 10:00
 -- Kiszolgáló verziója: 10.1.38-MariaDB
 -- PHP verzió: 7.3.2
 
@@ -51,12 +51,14 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `name`, `birthdate`, `tb`) VALUES
-(1, 'Kala Pál', '19880412', 444555666),
+(1, 'Kala Pál', '19880410', 444555666),
 (2, 'Para Zita ', '19990330', 111222333),
-(17, ' korte alma', '1990. 02. 01.', 200100300),
-(18, ' Tari Béla', '19840705', 875844623),
-(19, ' Horváth Máté', '19790615', 733832682),
-(20, ' Szikla Szilárd', '19890714', 234211645);
+(18, 'Tari Béla', '19840705', 875844623),
+(19, 'Horváth Máté', '19790615', 733832682),
+(22, 'Ipsz Ilonka', '19860618', 986334112),
+(28, 'Bármi Áron', '19750611', 111777666),
+(29, 'Elektrom Ágnes', '20170405', 224876567),
+(30, 'Riz Otto', '19441205', 887544554);
 
 -- --------------------------------------------------------
 
@@ -79,12 +81,14 @@ CREATE TABLE `patient_sec` (
 --
 
 INSERT INTO `patient_sec` (`patient_id`, `birthplace`, `address`, `phone`, `email`, `mother_name`, `birth_name`) VALUES
-(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', '', 'Kala Pál'),
-(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', '', 'Para Zita '),
-(17, 'Ecser', '2222 Ecser, Cserfa 12.', '305556633', 'almafa@cserfa.hu', '', ' korte alma'),
+(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', 'Kele Mónika', 'Kala Pál'),
+(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', 'Kis Mária', 'Para Zita '),
 (18, 'Kisújszállás', '3321 Szigetszentmiklós, Dunai sor 231..', '06705551234', 'tari@bela.hu', 'Bori Éva', ' Tari Béla'),
 (19, 'Kiskundorozsma', '6720 Szeged, Földvári utca 14..', '06704563234', 'horv.m@gmol.hu', 'Nagy Erzsébet', ' Horváth Máté'),
-(20, 'Miskolc', '2334 Monor, Meggy utca 1..', '0623876777', 'sziszi@gim.com', 'Makk Mónika', ' Szikla Szilárd');
+(22, 'Kisújszállás', '5312 Nyíregyháza, Vasút utca 3. e3 a3.', '06 70 344 33 11', 'ilokna@gmail.com', 'Kis Borbála', 'Iksz Ilonka'),
+(28, 'Kistarcsa', '1177 Nagytarcsa, Halas utca 88..', '0680337744', '', 'Tarcsa Marcsa', ''),
+(29, 'Pécs', '8876 Vértesnádasd, Tölgy utca 1..', '06708876663', '', 'Vol Tamara', ''),
+(30, 'Szeged', '6720 Szeged, Kecske utca 12..', '0670-553-22-33', '', 'Locsolók Anna', '');
 
 -- --------------------------------------------------------
 
@@ -98,57 +102,31 @@ CREATE TABLE `patient_visits` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `patient_visits`
---
-
-INSERT INTO `patient_visits` (`id`, `patient_id`, `date`) VALUES
-(1, 1, '2019-03-06 20:09:55'),
-(2, 1, '2019-03-03 04:17:43'),
-(3, 2, '2019-03-06 20:10:18'),
-(4, 1, '2019-03-06 20:53:55'),
-(5, 1, '2019-03-06 21:00:42'),
-(6, 2, '2019-03-06 21:01:51'),
-(7, 2, '2019-03-06 21:01:52'),
-(8, 2, '2019-03-06 21:02:00'),
-(9, 1, '2019-03-06 21:04:32'),
-(10, 1, '2019-03-06 21:05:42'),
-(11, 1, '2019-03-06 21:06:31'),
-(12, 1, '2019-03-06 21:06:38'),
-(13, 1, '2019-03-06 21:08:53'),
-(14, 1, '2019-03-06 21:09:09'),
-(15, 1, '2019-03-06 21:09:11'),
-(16, 1, '2019-03-06 21:09:42'),
-(17, 2, '2019-03-06 21:26:59'),
-(18, 1, '2019-03-06 21:30:12'),
-(19, 2, '2019-03-06 21:31:54'),
-(20, 17, '2019-03-06 21:32:47'),
-(21, 17, '2019-03-06 21:33:17'),
-(22, 17, '2019-03-06 21:33:53'),
-(23, 17, '2019-03-06 21:33:54'),
-(24, 1, '2019-03-06 21:36:03'),
-(25, 20, '2019-03-06 21:36:13'),
-(26, 20, '2019-03-06 21:37:03');
-
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `patienweb`
+-- Tábla szerkezet ehhez a táblához `patient_web`
 --
 
-CREATE TABLE `patienweb` (
+CREATE TABLE `patient_web` (
   `patient_id` int(11) NOT NULL,
   `username` varchar(24) COLLATE utf8_hungarian_ci NOT NULL,
-  `password` varchar(24) COLLATE utf8_hungarian_ci NOT NULL
+  `password` varchar(256) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `patienweb`
+-- A tábla adatainak kiíratása `patient_web`
 --
 
-INSERT INTO `patienweb` (`patient_id`, `username`, `password`) VALUES
+INSERT INTO `patient_web` (`patient_id`, `username`, `password`) VALUES
+(1, 'kala', 'kala'),
+(2, 'asd', 'asd'),
 (18, '875844623', '19840705'),
-(19, '733832682', '19790615');
+(19, '733832682', '19790615'),
+(22, '986334221', '19860618'),
+(28, 'aaa', '$2a$07$BpiDrwlua0VrYaj0nKc9mOioy0urOOrDUGV4vauWJ7xebF9BGfBFa'),
+(29, '224876567', '$2a$06$lW.lX7cQ.8MdSU6ZR0D0dOXDNLm4Xq0Br6xdUmpvrOVCdd5YVZ/w.'),
+(30, '887544554', '$2a$06$cdQvk.tU.My3hadV7jS3Xu7yew8q3MMZcOFbeXfSlaFoG0b5vovNG');
 
 -- --------------------------------------------------------
 
@@ -196,9 +174,9 @@ ALTER TABLE `patient_visits`
   ADD KEY `patient_id` (`patient_id`);
 
 --
--- A tábla indexei `patienweb`
+-- A tábla indexei `patient_web`
 --
-ALTER TABLE `patienweb`
+ALTER TABLE `patient_web`
   ADD PRIMARY KEY (`patient_id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `patient_id` (`patient_id`);
@@ -220,13 +198,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT a táblához `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT a táblához `patient_visits`
 --
 ALTER TABLE `patient_visits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `staff`
@@ -251,10 +229,10 @@ ALTER TABLE `patient_visits`
   ADD CONSTRAINT `patient_visits_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `patienweb`
+-- Megkötések a táblához `patient_web`
 --
-ALTER TABLE `patienweb`
-  ADD CONSTRAINT `patienweb_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `patient_web`
+  ADD CONSTRAINT `patient_web_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
