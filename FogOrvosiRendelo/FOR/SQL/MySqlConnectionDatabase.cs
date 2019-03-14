@@ -18,3 +18,7 @@ namespace FOR.Model
         }
     }
 }
+
+//Localhost
+//mysql.setConnServer("localhost","forproba","3306","none");
+//mysql.setConnUser("root", "");

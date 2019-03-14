@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Már 10. 10:00
+-- Létrehozás ideje: 2019. Már 14. 18:35
 -- Kiszolgáló verziója: 10.1.38-MariaDB
 -- PHP verzió: 7.3.2
 
@@ -73,6 +73,7 @@ CREATE TABLE `patient_sec` (
   `phone` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   `email` varchar(54) COLLATE utf8_hungarian_ci NOT NULL,
   `mother_name` varchar(52) COLLATE utf8_hungarian_ci NOT NULL,
+  `comment` text COLLATE utf8_hungarian_ci NOT NULL,
   `birth_name` varchar(52) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -80,15 +81,15 @@ CREATE TABLE `patient_sec` (
 -- A tábla adatainak kiíratása `patient_sec`
 --
 
-INSERT INTO `patient_sec` (`patient_id`, `birthplace`, `address`, `phone`, `email`, `mother_name`, `birth_name`) VALUES
-(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', 'Kele Mónika', 'Kala Pál'),
-(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', 'Kis Mária', 'Para Zita '),
-(18, 'Kisújszállás', '3321 Szigetszentmiklós, Dunai sor 231..', '06705551234', 'tari@bela.hu', 'Bori Éva', ' Tari Béla'),
-(19, 'Kiskundorozsma', '6720 Szeged, Földvári utca 14..', '06704563234', 'horv.m@gmol.hu', 'Nagy Erzsébet', ' Horváth Máté'),
-(22, 'Kisújszállás', '5312 Nyíregyháza, Vasút utca 3. e3 a3.', '06 70 344 33 11', 'ilokna@gmail.com', 'Kis Borbála', 'Iksz Ilonka'),
-(28, 'Kistarcsa', '1177 Nagytarcsa, Halas utca 88..', '0680337744', '', 'Tarcsa Marcsa', ''),
-(29, 'Pécs', '8876 Vértesnádasd, Tölgy utca 1..', '06708876663', '', 'Vol Tamara', ''),
-(30, 'Szeged', '6720 Szeged, Kecske utca 12..', '0670-553-22-33', '', 'Locsolók Anna', '');
+INSERT INTO `patient_sec` (`patient_id`, `birthplace`, `address`, `phone`, `email`, `mother_name`, `comment`, `birth_name`) VALUES
+(1, 'Kalocsa', '2341 Kiskunhalas, Pacsirta köz 3', '30554778', 'kalap@gmail.com', 'Kele Mónika', 'Nincs semmi érdemleges', 'Kala Pál'),
+(2, 'Paks', '3252 Paks, Atom utca 56.', '702233445', 'pazi1@citromail.hu', 'Kis Mária', '', 'Para Zita '),
+(18, 'Kisújszállás', '3321 Szigetszentmiklós, Dunai sor 231..', '06705551234', 'tari@bela.hu', 'Bori Éva', '', ' Tari Béla'),
+(19, 'Kiskundorozsma', '6720 Szeged, Földvári utca 14..', '06704563234', 'horv.m@gmol.hu', 'Nagy Erzsébet', '', ' Horváth Máté'),
+(22, 'Kisújszállás', '5312 Nyíregyháza, Vasút utca 3. e3 a3.', '06 70 344 33 11', 'ilokna@gmail.com', 'Kis Borbála', '', 'Iksz Ilonka'),
+(28, 'Kistarcsa', '1177 Nagytarcsa, Halas utca 88.', '0680337744', 'aron@barmi.hu', 'Semmi Mária', '', 'Nincs'),
+(29, 'Pécs', '8876 Vértesnádasd, Tölgy utca 1..', '06708876663', '', 'Vol Tamara', '', ''),
+(30, 'Szeged', '6720 Szeged, Kecske utca 12..', '0670-553-22-33', '', 'Locsolók Anna', '', '');
 
 -- --------------------------------------------------------
 
@@ -99,8 +100,18 @@ INSERT INTO `patient_sec` (`patient_id`, `birthplace`, `address`, `phone`, `emai
 CREATE TABLE `patient_visits` (
   `id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `text` varchar(10000) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `patient_visits`
+--
+
+INSERT INTO `patient_visits` (`id`, `patient_id`, `date`, `text`) VALUES
+(1, 1, '2019-03-14 15:53:49', 'Elso bejegyzés 15:53kor, teszt szándekkal hgyo valóban menti e az üzenetet'),
+(3, 28, '2019-03-14 16:38:37', 'Áronnak fájt a foga, ezért kihúztuk.'),
+(4, 28, '2019-03-14 16:38:54', 'Kapott egy új fogimplantátumot!');
 
 -- --------------------------------------------------------
 
@@ -204,7 +215,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT a táblához `patient_visits`
 --
 ALTER TABLE `patient_visits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `staff`
