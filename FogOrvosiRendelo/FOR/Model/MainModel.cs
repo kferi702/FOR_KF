@@ -46,7 +46,6 @@ namespace FOR.Model
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            pModel.deletePatientFiles(tb);
             string query = "DELETE FROM patient WHERE tb=@tb;";
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@tb", tb);

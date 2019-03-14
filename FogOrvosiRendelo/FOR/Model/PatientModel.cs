@@ -56,44 +56,16 @@ namespace FOR.Model
                 phone = dr["phone"].ToString();
                 email = dr["email"].ToString();
                 id = dr["id"].ToString();
+                comment = dr["comment"].ToString();
                 if (dr["birth_name"].ToString().Trim() == "")
                     birthName = name;
                 else
                     birthName = dr["birth_name"].ToString();
                 this.tb = tb;
-                this.comment = getComment(id);
-            }
-            dr.Close();
-            string getID = "SELECT patient_id FROM patient_sec, patient WHERE  patient.tb=" + tb + " AND patient.id=patient_sec.patient_id;";
-            this.comment = getComment(mysql.getOneData(getID));
-            mysql.close();
-
-        }
-
-        public void deletePatientFiles(string tb)
-        {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string getID = "SELECT id FROM patient WHERE  patient.tb=" + tb + ";";
-            string id = mysql.getOneData(getID);
-            //delete comment
-            string path = Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
-            FileInfo file = new FileInfo(path);
-            file.Delete();
-            //delete visits
-            string getVisitsID = "SELECT id FROM patient_visits WHERE patient_id=" + id + ";";
-            cmd = mysql.getConnect(getVisitsID);
-            MySqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                path= Environment.CurrentDirectory + "/visits/" + dr["id"] + ".txt";
-                file = new FileInfo(path);
-                file.Delete();
             }
             dr.Close();
             mysql.close();
+
         }
             public ListView loadListViewVisits(string pat_id, ListView lvv)
         {
@@ -119,22 +91,7 @@ namespace FOR.Model
             return lvv;
         }
 
-        public void deleteVisits(string selVizID)
-        {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query = "DELETE FROM patient_visits WHERE id=@id;";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@id", selVizID);
-            cmd.ExecuteNonQuery();
-            mysql.close();
-            string path = Environment.CurrentDirectory + "/visits/" + selVizID + ".txt";
-            FileInfo file = new FileInfo(path);
-            file.Delete();
-
-        }
+        
         public string getPatientID() => id;
         public string getPatientName() => name;
         public string getPatientAddress() => address;
@@ -146,49 +103,16 @@ namespace FOR.Model
         public string getPatientEmail() => email;
         public string getPatientTB() => tb;
         public string getPatientComment() => comment;
-        /// <summary>
-        /// Load comment from Patient comment text file.
-        /// </summary>
-        /// <param name="id">Patient unique identify number</param>
-        /// <returns></returns>
-        public string getComment(string id)
-        {
-            string path = Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
-            try
-            {
-                FileInfo file = new FileInfo(path);
-                file.Directory.Create();
-                return File.ReadAllText(path, Encoding.Default);
-            }
-            catch(FileNotFoundException)
-            {
-                FileInfo file = new FileInfo(path);
-                FileStream fs = file.Create();
-                fs.Close();
-                return File.ReadAllText(path, Encoding.Default);
-            }
-            
-            
-        }
-        /// <summary>
-        /// Save text to patient comment file.
-        /// </summary>
-        /// <param name="id">Patient unique identify number</param>
-        /// <param name="text">Text to save</param>
-        /// <returns></returns>
-        public string setComment(string id, string text)
-        {
-            string path = Environment.CurrentDirectory + "/patientsComment/" + id + ".txt";
-            FileInfo file = new FileInfo(path);
-            file.Directory.Create();
-            File.WriteAllText(path, text, Encoding.Default);
-            return comment;
-
-        }
+        public string getComment() => comment;
         public string getSelectedVisits(string id)
         {
-            string path = Environment.CurrentDirectory + "/visits/" + id + ".txt";
-            return File.ReadAllText(path, Encoding.Default);
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "SELECT text FROM patient_visits " +
+                "WHERE id='"+id+"';";
+            return mysql.getOneData(query);
         }
         public void setNewVisits(string pat_id, string text)
         {
@@ -196,27 +120,34 @@ namespace FOR.Model
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "INSERT INTO patient_visits(patient_id,date) VALUES(@pat_id,CURRENT_TIMESTAMP);";
+            string query = "INSERT INTO patient_visits(patient_id,date,text) VALUES(@pat_id,CURRENT_TIMESTAMP,@text);";
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@pat_id", pat_id);
+            cmd.Parameters.AddWithValue("@text", text);
             cmd.ExecuteNonQuery();
-            string id = mysql.getOneData("SELECT id FROM patient_visits ORDER BY id DESC LIMIT 1;");
-            string date = mysql.getOneData("SELECT date FROM patient_visits WHERE id=" + id + " ORDER BY id DESC LIMIT 1;");
             mysql.close();
-            string path = Environment.CurrentDirectory + "/visits/" + id + ".txt";
-            text = date + "\n" + text;
-            FileInfo file = new FileInfo(path);
-            file.Directory.Create();
-            File.AppendAllText(path, text, Encoding.Default);
+        }
+        public void deleteVisits(string selVizID)
+        {
+            MySqlComm mysql = new MySqlComm();
+            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+            mysql = conn.connection();
+            mysql.open();
+            string query = "DELETE FROM patient_visits WHERE id=@id;";
+            cmd = mysql.getConnect(query);
+            cmd.Parameters.AddWithValue("@id", selVizID);
+            cmd.ExecuteNonQuery();
+            mysql.close();
+
         }
         /// <summary>
-        /// Trimmeli a születési dátumot
+        /// Trimmeli a kért szöveget a fölös irásjelektől
         /// </summary>
-        /// <param name="bD">Birth date</param>
+        /// <param name="text">trimmelendő text</param>
         /// <returns></returns>
-        private string trimText(string bD)
+        private string trimText(string text)
         {
-            return bD.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty).Replace("\"", string.Empty);
+            return text.Replace(".", string.Empty).Replace(" ", string.Empty).Replace(":", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty).Replace("\"", string.Empty);
         }
         /// <summary>
         /// Save patient details data to database
@@ -246,6 +177,7 @@ namespace FOR.Model
                 "phone=@phone, " +
                 "email=@email, " +
                 "mother_name=@mother_name, " +
+                "comment=@comment," +
                 "birth_name=@birth_name " +
                 "WHERE patient.id = @id " +
                 "AND patient.id = patient_sec.patient_id;";
@@ -259,11 +191,11 @@ namespace FOR.Model
             cmd.Parameters.AddWithValue("@phone", phone);
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@mother_name", mother);
+            cmd.Parameters.AddWithValue("@comment", comment);
             cmd.Parameters.AddWithValue("@birth_name", birthName);
             cmd.ExecuteNonQuery();
             mysql.close();
 
-            comment = setComment(id,comment);
             
         }
         /// <summary>
@@ -309,8 +241,8 @@ namespace FOR.Model
                 MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
                 mysql = conn.connection();
                 mysql.open();
-                string query = "INSERT INTO patient_sec(patient_id,birthplace,address,phone,email,mother_name,birth_name)" +
-                    " VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@birthplace,@address,@phone,@email,@mother_name,@birth_name);";
+                string query = "INSERT INTO patient_sec(patient_id,birthplace,address,phone,email,mother_name,comment,birth_name)" +
+                    " VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@birthplace,@address,@phone,@email,@mother_name,@comment,@birth_name);";
                 cmd = mysql.getConnect(query);
                 cmd.Parameters.AddWithValue("@tb", trimText(tb));
                 cmd.Parameters.AddWithValue("@birthplace", birthPlace);
@@ -318,15 +250,14 @@ namespace FOR.Model
                 cmd.Parameters.AddWithValue("@phone", phone);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@mother_name", motherName);
+                cmd.Parameters.AddWithValue("@comment", comment);
                 cmd.Parameters.AddWithValue("@birth_name", birthName);
                 cmd.ExecuteNonQuery();
-                string getID = "SELECT id FROM patient WHERE  patient.tb=" + trimText(tb) + ";";
-                setComment(mysql.getOneData(getID), comment);
+                mysql.close();
             }catch(MySqlException e)
             {
                 MessageBox.Show("Hiba az adatbázis feltöltésénél!","Adatbázis hiba!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-
         }
         /// <summary>
         /// létrehozza a patientweb adattáblát
