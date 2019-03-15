@@ -17,13 +17,15 @@ namespace FOR.View
         PatientController controller;
         PatientVisitsForm patVisForm;
         string tb;
+        int staff_id;
 
-        public PatientVisitsForm(string tb)
+        public PatientVisitsForm(string tb,int staff_id)
         {
             InitializeComponent();
             controller = new PatientController();
             controller.loadPatientDetail(tb);
             this.tb = tb;
+            this.staff_id=staff_id;
             patVisForm = this;
             patVisForm.TopMost = true;
             setLabel();
@@ -81,7 +83,7 @@ namespace FOR.View
         /// <param name="e"></param>
         private void mTileVisitsEditSave_Click(object sender, EventArgs e)
         {
-                controller.newVisits(controller.getPatientID(), mTextboxMessage.Text);
+                controller.newVisits(controller.getPatientID(), mTextboxMessage.Text, staff_id);
                 mTextboxMessage.Enabled = false;
                 mTileVisitsEditSave.Enabled = false;
                 loadPatientVisits();

@@ -39,11 +39,52 @@ namespace FOR.View
             controller = new PatientController();
             getFromForm();
         }
-        private void mTileCancel_Click(object sender, EventArgs e) => controller.hideForm(this);
+        private void mTileCancel_Click(object sender, EventArgs e)
+        {
+            if (!emptyTextBox())
+            {
+                controller.hideForm(this);
+            }
+            else
+            {
+                DialogResult result =MessageBox.Show("A adatlap elnem mentett adatokat tartalmaz! Biztosan kiszeretne lépni az új paciens felvétel elött?", "Ablak bezárása", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if(result==DialogResult.Yes)
+                    controller.hideForm(this);
+            }
+            
+        }
+        /// <summary>
+        /// Ellenörzi a textboxok tartalmát hogy nem üresek-e.
+        /// </summary>
+        /// <returns>true ha üresek, false ha tartalmaz szöveget</returns>
+        public bool emptyTextBox()
+        {
+            if (textBoxNameFirst.Text.Trim() == "")
+                return true;
+            if (textBoxNameLast.Text.Trim() == "")
+                return true;
+            if (textBoxAddressZip.Text.Trim() == "")
+                return true;
+            if (textBoxAddressCity.Text.Trim() == "")
+                return true;
+            if (textBoxAddressStreet.Text.Trim() == "")
+                return true;
+            if (textBoxAddressHouseNumber.Text == "")
+                return true;
+            if (textBoxBirthMotherName.Text.Trim() == "")
+                return true;
+            if (textBoxBirthPlace.Text.Trim() == "")
+                return true;
+            if (textBoxDataTB.Text.Trim() == "")
+                return true;
+            if (textBoxDataPhone.Text.Trim() == "")
+                return true;
+            return  false;
+        }
         /// <summary>
         /// Trimmeli és ellenörzi a textboxokban lévő értékeket. Hibás értéket jelzi!
         /// </summary>
-        public bool getFromForm()
+        public void getFromForm()
         {
             firstName = textBoxNameFirst.Text.Trim();
             lastName = textBoxNameLast.Text.Trim();
@@ -62,8 +103,6 @@ namespace FOR.View
             phone = textBoxDataPhone.Text.Trim();
             email = textBoxDataEmail.Text.Trim();
             comment = textBoxComment.Text.Trim();
-
-            return controller.checkData(firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email,comment);
         }
         /// <summary>
         /// Ellenörzésre küldi a getFromForm metódusba majd elmenti ha az értékek helyesek
@@ -72,7 +111,8 @@ namespace FOR.View
         /// <param name="e"></param>
         private void mTileSave_Click(object sender, EventArgs e)
         {
-            if (getFromForm())
+            getFromForm();
+            if (controller.checkData(firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email, comment)==false)
             {
                 controller.saveNewPatient(firstName, lastName, zipCode, city, street, houseNumber, mother, birthName, birthPlace, birthDate, tb, phone, email, comment);
                 this.Hide();

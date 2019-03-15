@@ -32,7 +32,6 @@ namespace FOR.Model
         {
 
         }
-        
         public void loadPatientDetail(string tb)
         {
             MySqlComm mysql = new MySqlComm();
@@ -67,7 +66,7 @@ namespace FOR.Model
             mysql.close();
 
         }
-            public ListView loadListViewVisits(string pat_id, ListView lvv)
+        public ListView loadListViewVisits(string pat_id, ListView lvv)
         {
             lvv.Items.Clear();
             MySqlComm mysql = new MySqlComm();
@@ -90,8 +89,6 @@ namespace FOR.Model
             mysql.close();
             return lvv;
         }
-
-        
         public string getPatientID() => id;
         public string getPatientName() => name;
         public string getPatientAddress() => address;
@@ -114,21 +111,23 @@ namespace FOR.Model
                 "WHERE id='"+id+"';";
             return mysql.getOneData(query);
         }
-        public void setNewVisits(string pat_id, string text)
+        public void setNewVisits(string pat_id, string text,int staff_id)
         {
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
             mysql.open();
-            string query = "INSERT INTO patient_visits(patient_id,date,text) VALUES(@pat_id,CURRENT_TIMESTAMP,@text);";
+            string query = "INSERT INTO patient_visits(patient_id,date,text,staff_id) VALUES(@pat_id,CURRENT_TIMESTAMP,@text,@staff_id);";
             cmd = mysql.getConnect(query);
             cmd.Parameters.AddWithValue("@pat_id", pat_id);
             cmd.Parameters.AddWithValue("@text", text);
+            cmd.Parameters.AddWithValue("@staff_id", staff_id);
             cmd.ExecuteNonQuery();
             mysql.close();
         }
         public void deleteVisits(string selVizID)
         {
+
             MySqlComm mysql = new MySqlComm();
             MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
             mysql = conn.connection();
@@ -164,37 +163,44 @@ namespace FOR.Model
         /// <param name="comment">Patient comment</param>
         public void savePatientDetails(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
         {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query = "UPDATE patient, patient_sec SET " +
-                "name=@name, " +
-                "birthdate=@birthdate, " +
-                "tb=@tb, " +
-                "birthplace=@birthplace, " +
-                "address=@address, " +
-                "phone=@phone, " +
-                "email=@email, " +
-                "mother_name=@mother_name, " +
-                "comment=@comment," +
-                "birth_name=@birth_name " +
-                "WHERE patient.id = @id " +
-                "AND patient.id = patient_sec.patient_id;";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.Parameters.AddWithValue("@birthdate", birthDate);
-            cmd.Parameters.AddWithValue("@tb", tb);
-            cmd.Parameters.AddWithValue("@birthplace", birthPlace);
-            cmd.Parameters.AddWithValue("@address", address);
-            cmd.Parameters.AddWithValue("@phone", phone);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@mother_name", mother);
-            cmd.Parameters.AddWithValue("@comment", comment);
-            cmd.Parameters.AddWithValue("@birth_name", birthName);
-            cmd.ExecuteNonQuery();
-            mysql.close();
+            try
+            {
+                MySqlComm mysql = new MySqlComm();
+                MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+                mysql = conn.connection();
+                mysql.open();
+                string query = "UPDATE patient, patient_sec SET " +
+                    "name=@name, " +
+                    "birthdate=@birthdate, " +
+                    "tb=@tb, " +
+                    "birthplace=@birthplace, " +
+                    "address=@address, " +
+                    "phone=@phone, " +
+                    "email=@email, " +
+                    "mother_name=@mother_name, " +
+                    "comment=@comment," +
+                    "birth_name=@birth_name " +
+                    "WHERE patient.id = @id " +
+                    "AND patient.id = patient_sec.patient_id;";
+                cmd = mysql.getConnect(query);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@birthdate", birthDate);
+                cmd.Parameters.AddWithValue("@tb", tb);
+                cmd.Parameters.AddWithValue("@birthplace", birthPlace);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@mother_name", mother);
+                cmd.Parameters.AddWithValue("@comment", comment);
+                cmd.Parameters.AddWithValue("@birth_name", birthName);
+                cmd.ExecuteNonQuery();
+                mysql.close();
+            }catch(Exception e)
+            {
+                MessageBox.Show("Hiba az adatbázis frissítésekor: " + e, "Adatbázis HIBA!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             
         }
@@ -208,17 +214,23 @@ namespace FOR.Model
         /// <param name="birthDate">Birth date</param>
         public void saveNewPatientData(string tb, string firstName, string lastName, string birthDate)
         {
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query = "INSERT INTO patient(name,birthdate,tb) VALUES(@name,@birthdate,@tb);";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@name", firstName + " " + lastName);
-            cmd.Parameters.AddWithValue("@birthdate", trimText(birthDate));
-            cmd.Parameters.AddWithValue("@tb", trimText(tb));
-            cmd.ExecuteNonQuery();
-            mysql.close();
+            try
+            {
+                MySqlComm mysql = new MySqlComm();
+                MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+                mysql = conn.connection();
+                mysql.open();
+                string query = "INSERT INTO patient(name,birthdate,tb) VALUES(@name,@birthdate,@tb);";
+                cmd = mysql.getConnect(query);
+                cmd.Parameters.AddWithValue("@name", firstName + " " + lastName);
+                cmd.Parameters.AddWithValue("@birthdate", trimText(birthDate));
+                cmd.Parameters.AddWithValue("@tb", trimText(tb));
+                cmd.ExecuteNonQuery();
+                mysql.close();
+            }catch(Exception e){
+                MessageBox.Show("Hiba a feltöltésénél: " + e,"Adatbázis HIBA!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
         }
         /// <summary>
         /// Létrehozza a patient_sec adattáblát
@@ -256,7 +268,7 @@ namespace FOR.Model
                 mysql.close();
             }catch(MySqlException e)
             {
-                MessageBox.Show("Hiba az adatbázis feltöltésénél!","Adatbázis hiba!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Hiba a feltöltésénél!","Adatbázis hiba!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         /// <summary>
@@ -266,19 +278,24 @@ namespace FOR.Model
         /// <param name="birthDate">Birth date</param>
         public void saveNewPatientWebData(string tb, string birthDate)
         {
-
-            MySqlComm mysql = new MySqlComm();
-            MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
-            mysql = conn.connection();
-            mysql.open();
-            string query = "INSERT INTO patient_web(patient_id,username,password)" +
-                "VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@username,@password);";
-            cmd = mysql.getConnect(query);
-            cmd.Parameters.AddWithValue("@tb", trimText(tb));
-            cmd.Parameters.AddWithValue("@username", trimText(tb));
-            cmd.Parameters.AddWithValue("@password", Crypter.Blowfish.Crypt(trimText(birthDate)));
-            cmd.ExecuteNonQuery();
-            mysql.close();
-        }
+            try
+            {
+                MySqlComm mysql = new MySqlComm();
+                MySqlConnectionDatabase conn = new MySqlConnectionDatabase();
+                mysql = conn.connection();
+                mysql.open();
+                string query = "INSERT INTO patient_web(patient_id,username,password)" +
+                    "VALUES((SELECT patient.id FROM patient WHERE patient.tb=@tb),@username,@password);";
+                cmd = mysql.getConnect(query);
+                cmd.Parameters.AddWithValue("@tb", trimText(tb));
+                cmd.Parameters.AddWithValue("@username", trimText(tb));
+                cmd.Parameters.AddWithValue("@password", Crypter.Blowfish.Crypt(trimText(birthDate)));
+                cmd.ExecuteNonQuery();
+                mysql.close();
+            }catch(Exception e){
+                MessageBox.Show("Hiba a feltöltésénél: " + e,"Adatbázis HIBA!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+}
     }
 }

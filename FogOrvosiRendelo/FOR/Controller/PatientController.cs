@@ -53,7 +53,7 @@ namespace FOR.Controller
         /// </summary>
         /// <param name="pat_id"></param>
         /// <param name="text"></param>
-        public void newVisits(string pat_id, string text) => model.setNewVisits(pat_id, text);
+        public void newVisits(string pat_id, string text, int staff_id) => model.setNewVisits(pat_id, text, staff_id);
         /// <summary>
         /// Ellenörzi és tovább küldi az új páciens adatait a model felé
         /// </summary>
@@ -87,6 +87,7 @@ namespace FOR.Controller
                 if (correct==true)
                 model.savePatientDetails(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
         }
+
         /// <summary>
         /// Szöveges adatok ellenörzése
         /// </summary>
@@ -106,18 +107,27 @@ namespace FOR.Controller
         public bool checkData(string nameFirst, string nameLast, string addressZip, string addressCity, string addressStreet, string addressNumber, string birthMother, string birthName, string birthPlace, string birthDate, string dataTB, string dataPhone, string dataEmail, string comment)
         {
             string number = "^[0-9]+$";
-            if (!Regex.IsMatch(trim(addressZip), number) ||
-                !Regex.IsMatch(trim(birthDate), number) ||
-                !Regex.IsMatch(trim(dataPhone), number) ||
-                !Regex.IsMatch(trim(dataTB), number))
+            if (Regex.IsMatch(trim(addressZip), number) == false ||
+                Regex.IsMatch(trim(birthDate), number) == false ||
+                Regex.IsMatch(trim(dataPhone), number) == false ||
+                Regex.IsMatch(trim(dataTB), number) == false)
+
             {
+                MessageBox.Show("Nem számadat!", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            if (dataTB.Length != 9)
+            {
+                MessageBox.Show("TB 9 számból kell állnia!", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+
+            if (nameFirst == "" || nameLast == "" || birthMother == "" || birthPlace == "" || dataTB == ""||addressCity==""||addressNumber==""||addressZip=="")
+            {
+                MessageBox.Show("Nem lehet üres!", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
             return false;
-            }
-            if (nameFirst == "" || nameLast==""|| birthMother == ""|| birthPlace=="")
-            {
-                return false;
-            }
-            return true;
 
         }
         /// <summary>
@@ -147,9 +157,10 @@ namespace FOR.Controller
         /// <param name="dataEmail">E-mail cím</param>
         public void saveNewPatient(string nameFirst, string nameLast, string addressZip, string addressCity, string addressStreet, string addressNumber, string birthMother, string birthName, string birthPlace, string birthDate, string dataTB, string dataPhone, string dataEmail, string comment)
         {
-            model.saveNewPatientData(dataTB,nameFirst,nameLast,birthDate);
-            model.saveNewPatientSecData(dataTB,birthPlace,addressZip,addressCity,addressStreet,addressNumber,dataPhone,dataEmail,birthMother,birthName,comment);
-            model.saveNewPatientWebData(dataTB,birthDate);
+                model.saveNewPatientData(dataTB, nameFirst, nameLast, birthDate);
+                model.saveNewPatientSecData(dataTB, birthPlace, addressZip, addressCity, addressStreet, addressNumber, dataPhone, dataEmail, birthMother, birthName, comment);
+                model.saveNewPatientWebData(dataTB, birthDate);
+
         }
     }
 }

@@ -60,9 +60,9 @@ namespace FOR.Controller
             patientDetailF = new PatientDetailForm(tb);
             patientDetailF.Show();
         }
-        public void patientVisits(string tb)
+        public void patientVisits(string tb, int staff_id)
         {
-            patientVisitsF = new PatientVisitsForm(tb);
+            patientVisitsF = new PatientVisitsForm(tb,staff_id);
             patientVisitsF.Show();
         }
     }

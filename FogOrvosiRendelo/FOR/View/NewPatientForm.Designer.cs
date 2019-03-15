@@ -84,7 +84,7 @@
             this.textBoxAddressZip.CustomButton.Visible = false;
             this.textBoxAddressZip.Lines = new string[0];
             this.textBoxAddressZip.Location = new System.Drawing.Point(94, 12);
-            this.textBoxAddressZip.MaxLength = 32767;
+            this.textBoxAddressZip.MaxLength = 4;
             this.textBoxAddressZip.Name = "textBoxAddressZip";
             this.textBoxAddressZip.PasswordChar = '\0';
             this.textBoxAddressZip.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -123,7 +123,7 @@
             this.textBoxAddressCity.CustomButton.Visible = false;
             this.textBoxAddressCity.Lines = new string[0];
             this.textBoxAddressCity.Location = new System.Drawing.Point(94, 42);
-            this.textBoxAddressCity.MaxLength = 32767;
+            this.textBoxAddressCity.MaxLength = 32;
             this.textBoxAddressCity.Name = "textBoxAddressCity";
             this.textBoxAddressCity.PasswordChar = '\0';
             this.textBoxAddressCity.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -179,7 +179,7 @@
             this.textBoxAddressHouseNumber.CustomButton.Visible = false;
             this.textBoxAddressHouseNumber.Lines = new string[0];
             this.textBoxAddressHouseNumber.Location = new System.Drawing.Point(94, 101);
-            this.textBoxAddressHouseNumber.MaxLength = 32767;
+            this.textBoxAddressHouseNumber.MaxLength = 32;
             this.textBoxAddressHouseNumber.Name = "textBoxAddressHouseNumber";
             this.textBoxAddressHouseNumber.PasswordChar = '\0';
             this.textBoxAddressHouseNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -218,7 +218,7 @@
             this.textBoxAddressStreet.CustomButton.Visible = false;
             this.textBoxAddressStreet.Lines = new string[0];
             this.textBoxAddressStreet.Location = new System.Drawing.Point(94, 73);
-            this.textBoxAddressStreet.MaxLength = 32767;
+            this.textBoxAddressStreet.MaxLength = 32;
             this.textBoxAddressStreet.Name = "textBoxAddressStreet";
             this.textBoxAddressStreet.PasswordChar = '\0';
             this.textBoxAddressStreet.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -271,7 +271,7 @@
             this.textBoxNameLast.CustomButton.Visible = false;
             this.textBoxNameLast.Lines = new string[0];
             this.textBoxNameLast.Location = new System.Drawing.Point(24, 95);
-            this.textBoxNameLast.MaxLength = 32767;
+            this.textBoxNameLast.MaxLength = 32;
             this.textBoxNameLast.Name = "textBoxNameLast";
             this.textBoxNameLast.PasswordChar = '\0';
             this.textBoxNameLast.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -310,7 +310,7 @@
             this.textBoxNameFirst.CustomButton.Visible = false;
             this.textBoxNameFirst.Lines = new string[0];
             this.textBoxNameFirst.Location = new System.Drawing.Point(24, 47);
-            this.textBoxNameFirst.MaxLength = 32767;
+            this.textBoxNameFirst.MaxLength = 32;
             this.textBoxNameFirst.Name = "textBoxNameFirst";
             this.textBoxNameFirst.PasswordChar = '\0';
             this.textBoxNameFirst.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -599,7 +599,7 @@
             this.textBoxDataPhone.CustomButton.Visible = false;
             this.textBoxDataPhone.Lines = new string[0];
             this.textBoxDataPhone.Location = new System.Drawing.Point(127, 42);
-            this.textBoxDataPhone.MaxLength = 32767;
+            this.textBoxDataPhone.MaxLength = 12;
             this.textBoxDataPhone.Name = "textBoxDataPhone";
             this.textBoxDataPhone.PasswordChar = '\0';
             this.textBoxDataPhone.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -638,7 +638,7 @@
             this.textBoxDataTB.CustomButton.Visible = false;
             this.textBoxDataTB.Lines = new string[0];
             this.textBoxDataTB.Location = new System.Drawing.Point(127, 12);
-            this.textBoxDataTB.MaxLength = 32767;
+            this.textBoxDataTB.MaxLength = 9;
             this.textBoxDataTB.Name = "textBoxDataTB";
             this.textBoxDataTB.PasswordChar = '\0';
             this.textBoxDataTB.ScrollBars = System.Windows.Forms.ScrollBars.None;

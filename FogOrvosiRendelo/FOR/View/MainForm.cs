@@ -69,7 +69,7 @@ namespace FOR.View
         private void mTileVisits_Click(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count != 0)
-                controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text);
+                controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text,id);
         }
 
         
