@@ -53,7 +53,13 @@ namespace FOR.Controller
         /// </summary>
         /// <param name="pat_id"></param>
         /// <param name="text"></param>
-        public void newVisits(string pat_id, string text, int staff_id) => model.setNewVisits(pat_id, text, staff_id);
+        public void newVisits(string pat_id, string text, int staff_id)
+        {
+            if (text.Trim() != "")
+                model.setNewVisits(pat_id, text, staff_id);
+            else
+                MessageBox.Show("A menteni kívánt bejegyzésnek legalább 1 karaktert kell tartalmaznia!", "Üres mező!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        }
         /// <summary>
         /// Ellenörzi és tovább küldi az új páciens adatait a model felé
         /// </summary>
@@ -67,7 +73,7 @@ namespace FOR.Controller
         /// <param name="phone">Telefonszám</param>
         /// <param name="email">Email cím</param>
         /// <param name="comment">Comment</param>
-        public void savePatientDatail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
+        public void savePatientDetail(string name, string address, string birthDate, string birthPlace, string birthName, string mother, string tb, string phone, string email, string comment)
         {
             bool correct = true;
             string number = "^[0-9]+$";
@@ -78,6 +84,11 @@ namespace FOR.Controller
                 correct = false;
                 MessageBox.Show("Születési idő, telefonszám és a TB-szám csak számot tartalmazhat!", "Hibás szám adatok", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (trim(tb).Length != 9)
+            {
+                MessageBox.Show("TB 9 számból kell állnia!", "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                correct = false;
+            }
             if (name=="" || address=="" || birthDate=="" || birthPlace==""|| mother==""|| tb==""||phone=="")
             {
                 correct = false;
@@ -87,7 +98,6 @@ namespace FOR.Controller
                 if (correct==true)
                 model.savePatientDetails(name, address, birthDate, birthPlace, birthName, mother, tb, phone, email, comment);
         }
-
         /// <summary>
         /// Szöveges adatok ellenörzése
         /// </summary>

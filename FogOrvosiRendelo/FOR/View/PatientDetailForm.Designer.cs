@@ -126,7 +126,7 @@
             this.mTextboxEmail.CustomButton.Visible = false;
             this.mTextboxEmail.Lines = new string[0];
             this.mTextboxEmail.Location = new System.Drawing.Point(143, 260);
-            this.mTextboxEmail.MaxLength = 32767;
+            this.mTextboxEmail.MaxLength = 54;
             this.mTextboxEmail.Name = "mTextboxEmail";
             this.mTextboxEmail.PasswordChar = '\0';
             this.mTextboxEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -205,7 +205,7 @@
             this.mTextboxPhone.CustomButton.Visible = false;
             this.mTextboxPhone.Lines = new string[0];
             this.mTextboxPhone.Location = new System.Drawing.Point(143, 232);
-            this.mTextboxPhone.MaxLength = 32767;
+            this.mTextboxPhone.MaxLength = 20;
             this.mTextboxPhone.Name = "mTextboxPhone";
             this.mTextboxPhone.PasswordChar = '\0';
             this.mTextboxPhone.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -244,7 +244,7 @@
             this.mTextboxTB.CustomButton.Visible = false;
             this.mTextboxTB.Lines = new string[0];
             this.mTextboxTB.Location = new System.Drawing.Point(143, 199);
-            this.mTextboxTB.MaxLength = 32767;
+            this.mTextboxTB.MaxLength = 9;
             this.mTextboxTB.Name = "mTextboxTB";
             this.mTextboxTB.PasswordChar = '\0';
             this.mTextboxTB.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -322,7 +322,7 @@
             this.mTextboxBirthName.CustomButton.Visible = false;
             this.mTextboxBirthName.Lines = new string[0];
             this.mTextboxBirthName.Location = new System.Drawing.Point(193, 140);
-            this.mTextboxBirthName.MaxLength = 32767;
+            this.mTextboxBirthName.MaxLength = 52;
             this.mTextboxBirthName.Name = "mTextboxBirthName";
             this.mTextboxBirthName.PasswordChar = '\0';
             this.mTextboxBirthName.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -361,7 +361,7 @@
             this.mTextboxBirthPlace.CustomButton.Visible = false;
             this.mTextboxBirthPlace.Lines = new string[0];
             this.mTextboxBirthPlace.Location = new System.Drawing.Point(143, 108);
-            this.mTextboxBirthPlace.MaxLength = 32767;
+            this.mTextboxBirthPlace.MaxLength = 54;
             this.mTextboxBirthPlace.Name = "mTextboxBirthPlace";
             this.mTextboxBirthPlace.PasswordChar = '\0';
             this.mTextboxBirthPlace.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -400,7 +400,7 @@
             this.mTextboxBirthDate.CustomButton.Visible = false;
             this.mTextboxBirthDate.Lines = new string[0];
             this.mTextboxBirthDate.Location = new System.Drawing.Point(143, 78);
-            this.mTextboxBirthDate.MaxLength = 32767;
+            this.mTextboxBirthDate.MaxLength = 20;
             this.mTextboxBirthDate.Name = "mTextboxBirthDate";
             this.mTextboxBirthDate.PasswordChar = '\0';
             this.mTextboxBirthDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -439,7 +439,7 @@
             this.mTextboxAddress.CustomButton.Visible = false;
             this.mTextboxAddress.Lines = new string[0];
             this.mTextboxAddress.Location = new System.Drawing.Point(143, 49);
-            this.mTextboxAddress.MaxLength = 32767;
+            this.mTextboxAddress.MaxLength = 255;
             this.mTextboxAddress.Name = "mTextboxAddress";
             this.mTextboxAddress.PasswordChar = '\0';
             this.mTextboxAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -478,7 +478,7 @@
             this.mTextboxName.CustomButton.Visible = false;
             this.mTextboxName.Lines = new string[0];
             this.mTextboxName.Location = new System.Drawing.Point(143, 19);
-            this.mTextboxName.MaxLength = 32767;
+            this.mTextboxName.MaxLength = 52;
             this.mTextboxName.Name = "mTextboxName";
             this.mTextboxName.PasswordChar = '\0';
             this.mTextboxName.ScrollBars = System.Windows.Forms.ScrollBars.None;

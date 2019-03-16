@@ -75,6 +75,7 @@ namespace FOR.View
             mTextboxMessage.Enabled = true;
             mTextboxMessage.Clear();
             mTileVisitsEditSave.Enabled = true;
+            mTileNewVisits.Enabled = false;
         }
         /// <summary>
         /// Új bejegyzés mentése, aktiális dátummal és idővel
@@ -86,6 +87,7 @@ namespace FOR.View
                 controller.newVisits(controller.getPatientID(), mTextboxMessage.Text, staff_id);
                 mTextboxMessage.Enabled = false;
                 mTileVisitsEditSave.Enabled = false;
+                mTileNewVisits.Enabled = true;
                 loadPatientVisits();
         }
     }
