@@ -33,7 +33,11 @@ namespace FOR.View
         private void loadListViewPatient() => controller.loadListViewPatient(listViewPatient);
         private void textBoxSearch_TextChanged(object sender, EventArgs e) => controller.searchPatient(listViewPatient, textBoxSearch.Text);
         private void mTileNewPatient_Click(object sender, EventArgs e) => controller.addNewPatient();
-        private void mTileRefreshDB_Click(object sender, EventArgs e) => controller.loadListViewPatient(listViewPatient);
+        private void mTileRefreshDB_Click(object sender, EventArgs e)
+        {
+            textBoxSearch.Clear();
+            controller.loadListViewPatient(listViewPatient);
+        }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
         /// <summary>
         /// A form aktiválásánál frissíti az adatbázist!
@@ -63,16 +67,16 @@ namespace FOR.View
         }
         private void mTileDetail_Click(object sender, EventArgs e)
         {
-            if(listViewPatient.SelectedItems.Count!=0)
+            if (listViewPatient.SelectedItems.Count != 0)
                 controller.patientDetail(listViewPatient.SelectedItems[0].SubItems[2].Text);
         }
         private void mTileVisits_Click(object sender, EventArgs e)
         {
             if (listViewPatient.SelectedItems.Count != 0)
-                controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text,id);
+                controller.patientVisits(listViewPatient.SelectedItems[0].SubItems[2].Text, id);
         }
 
-        
+
 
     }
 }
